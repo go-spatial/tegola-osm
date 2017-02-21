@@ -1,0 +1,145 @@
+[webserver]
+port = ":8080"
+
+[[providers]]
+name = "osm"
+type = "postgis"
+host = ""
+port = 5432
+database = "osm"
+user = ""
+password = ""
+
+	[[providers.layers]]
+	name = "buildings"
+	geometry_fieldname = "geometry"
+	id_fieldname = "id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, name, id, type FROM osm_buildings WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "landusages"
+	geometry_fieldname = "geometry"
+	id_fieldname = "id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type, area, z_order FROM osm_landusages WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "landusages_gen0"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area, z_order FROM osm_landusages_gen0 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "landusages_gen1"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area, z_order FROM osm_landusages_gen1 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "roads"
+	geometry_fieldname = "geometry"
+	id_fieldname = "id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type, tunnel, bridge, oneway, ref, z_order, access, service, class FROM osm_roads WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "roads_gen0"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, tunnel, bridge, oneway, ref, z_order, access, service, class FROM osm_roads_gen0 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "roads_gen1"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, tunnel, bridge, oneway, ref, z_order, access, service, class FROM osm_roads_gen1 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterareas"
+	geometry_fieldname = "geometry"
+	id_fieldname = "id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type, area FROM osm_waterareas WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterareas_gen0"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen0 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterareas_gen1"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen1 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterways"
+	geometry_fieldname = "geometry"
+	id_fieldname = "id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type FROM osm_waterways WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterways_gen0"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways_gen0 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "waterways_gen1"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways_gen1 WHERE geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "countries"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_admin WHERE geometry && !BBOX! AND admin_level=2"
+
+[[maps]]
+name = "osm"
+attribution = "<div>Test attribution</div>" # map attribution
+center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part of the TileJSON spec
+
+	[[maps.layers]]
+	provider_layer = "osm.buildings"
+	min_zoom = 14
+	max_zoom = 20
+
+	[[maps.layers]]
+	provider_layer = "osm.countries"
+	min_zoom = 0
+	max_zoom = 8
+
+	[[maps.layers]]
+	provider_layer = "osm.landusages"
+	min_zoom = 12
+	max_zoom = 20
+
+	[[maps.layers]]
+	provider_layer = "osm.landusages_gen0"
+	min_zoom = 3
+	max_zoom = 9
+
+	[[maps.layers]]
+	provider_layer = "osm.landusages_gen1"
+	min_zoom = 9
+	max_zoom = 12
+
+	[[maps.layers]]
+	provider_layer = "osm.roads"
+	min_zoom = 10
+	max_zoom = 20
+
+	[[maps.layers]]
+	provider_layer = "osm.roads_gen0"
+	min_zoom = 8
+	max_zoom = 14
+
+	[[maps.layers]]
+	provider_layer = "osm.roads_gen1"
+	min_zoom = 5
+	max_zoom = 8
+
+	[[maps.layers]]
+	provider_layer = "osm.waterareas"
+	min_zoom = 14
+	max_zoom = 20
