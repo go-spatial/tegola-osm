@@ -1,1 +1,171 @@
-../../mapbox.json
+{
+  "version": 8,
+  "name": "Klokantech Basic",
+  "metadata": {
+    "mapbox:autocomposite": false,
+    "mapbox:type": "template",
+    "maputnik:renderer": "mbgljs",
+    "openmaptiles:version": "3.x",
+    "openmaptiles:mapbox:owner": "openmaptiles",
+    "openmaptiles:mapbox:source:url": "mapbox://openmaptiles.4qljc88t"
+  },
+  "center": [
+    8.54806714892635,
+    47.37180823552663
+  ],
+  "zoom": 12.241790506353492,
+  "bearing": 0,
+  "pitch": 0,
+  "sources": {
+    "tegola-osm": {
+      "type": "vector",
+      "url": "http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
+    }
+  },
+  "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
+  "layers": [
+    {
+      "id": "bg",
+      "type": "background",
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "background-color": "rgba(18, 66, 93, 1)"
+      }
+    },
+    {
+      "id": "countries",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "countries",
+      "minzoom": 0,
+      "maxzoom": 8,
+      "layout": {},
+      "paint": {
+        "fill-color": "rgba(120, 72, 0, 1)",
+        "fill-outline-color": "rgba(31, 22, 0, 1)"
+      }
+    },
+    {
+      "id": "landusages",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 12,
+      "maxzoom": 20,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(29, 148, 48, 1)",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "landusages_gen0",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen0",
+      "minzoom": 9,
+      "maxzoom": 12,
+      "paint": {
+        "fill-color": "rgba(29, 148, 48, 1)",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "landusages_gen1",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen1",
+      "minzoom": 3,
+      "maxzoom": 9,
+      "paint": {
+        "fill-color": "rgba(29, 148, 48, 1)",
+        "fill-opacity": 0.5
+      }
+    },
+    {
+      "id": "waterareas",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "waterareas",
+      "minzoom": 14,
+      "maxzoom": 20,
+      "layout": {},
+      "paint": {
+        "fill-color": "rgba(75, 52, 195, 1)"
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "buildings",
+      "minzoom": 14,
+      "maxzoom": 20,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(179, 58, 61, 1)",
+        "fill-translate-anchor": "map"
+      }
+    },
+    {
+      "id": "roads",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "roads",
+      "minzoom": 12,
+      "maxzoom": 20,
+      "layout": {},
+      "paint": {
+        "line-color": "rgba(175, 167, 167, 1)"
+      }
+    },
+    {
+      "id": "roads_gen0",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "roads_gen0",
+      "minzoom": 9,
+      "maxzoom": 12,
+      "layout": {},
+      "paint": {
+        "line-color": "rgba(175, 167, 167, 1)"
+      }
+    },
+    {
+      "id": "debug",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "debug",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(255, 0, 0, 1)"
+      }
+    },
+    {
+      "id": "debug-point",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "debug",
+      "layout": {
+        "text-field": "{zxy}",
+        "visibility": "visible"
+      },
+      "paint": {
+        "text-color": "rgba(255, 0, 0, 1)",
+        "text-halo-color": "rgba(10, 0, 0, 1)",
+        "text-halo-width": 1
+      }
+    }
+  ],
+  "id": "ciwf4zbsv007y2pmt2rspc1dc"
+}
