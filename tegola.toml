@@ -38,7 +38,7 @@ password = ""
 	name = "roads_gen1"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, ref, type, tunnel, bridge FROM osm_roads_gen1 WHERE type IN ('motorway', 'trunk', 'primary', 'secondary', 'motorway_link', 'trunk_link') AND geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, ref, type, tunnel, bridge FROM osm_roads_gen1 WHERE type IN ('motorway', 'trunk', 'primary', 'primary_link', 'secondary', motorway_link', 'trunk_link') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "roads_gen0"
@@ -50,19 +50,19 @@ password = ""
 	name = "roads_11-12"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql="SELECT ST_AsBinary(geometry) AS geometry, osm_id, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE type IN ('motorway', 'trunk', 'rail', 'primary', 'secondary', 'motorway_link', 'trunk_link','tertiary','tertiary_link') AND geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE type IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'rail') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "roads_13"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql="SELECT ST_AsBinary(geometry) AS geometry, osm_id, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE type IN ('motorway', 'trunk', 'rail', 'primary', 'secondary', 'motorway_link', 'trunk_link','tertiary','tertiary_link','residential') AND geometry && !BBOX!"	
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE type IN ('motorway', 'motorway_link', 'trunk', 'trunk_link', 'primary', 'primary_link', 'secondary', 'secondary_link', 'tertiary', 'tertiary_link', 'rail', 'residential') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "roads_14-20"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql="SELECT ST_AsBinary(geometry) AS geometry, osm_id, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, ref, type, tunnel, bridge, access, service FROM osm_roads WHERE geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterareas"
