@@ -37,6 +37,371 @@
       }
     },
     {
+      "id": "landusages_wetland",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "wetland"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(227, 233, 226, 1)"
+      }
+    },
+    {
+      "id": "landusages_military",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "military"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(209, 191, 170, 1)"
+      }
+    },
+    {
+      "id": "landusages_saltpond",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "salt_pond"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(236, 240, 241, 1)"
+      }
+    },
+    {
+      "id": "landusages_water",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "basin"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(144, 204, 203, 1)"
+      }
+    },
+    {
+      "id": "landusages_beach",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "beach",
+          "desert"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(238, 229, 178, 1)"
+      }
+    },
+    {
+      "id": "landusages_agriculture",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "farmland",
+          "farm",
+          "orchard",
+          "allotments"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(222, 221, 190, 1)"
+      }
+    },
+    {
+      "id": "landusages_heath",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "heath",
+          "meadow"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(225, 233, 214, 1)"
+      }
+    },
+    {
+      "id": "landusages_residential",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "residential",
+          "retail"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(237, 236, 231, 1)"
+      }
+    },
+    {
+      "id": "landusages_industrial",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "industrial",
+          "quarry",
+          "landfill",
+          ""
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(215, 200, 203, 1)"
+      }
+    },
+    {
+      "id": "landusages_school",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "college",
+          "school",
+          "education",
+          "university",
+          ""
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(226, 214, 205, 1)"
+      }
+    },
+    {
+      "id": "landusages_cemetery",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "cemetery",
+          "grave_yard"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(214, 222, 210, 1)"
+      }
+    },
+    {
+      "id": "landusages_park",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "park",
+          "sports_centre",
+          "stadium",
+          "grass",
+          "grassland",
+          "garden",
+          "village_green",
+          "recreation_ground",
+          "picnic_site",
+          "camp_site",
+          "playground"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(208, 220, 174, 1)"
+      }
+    },
+    {
+      "id": "landusages_forest",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 13,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood",
+          "nature_reserve"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
+      "id": "landusages_gen1forest",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen1",
+      "minzoom": 10,
+      "maxzoom": 13,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood",
+          "nature_reserve"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
+      "id": "landusages_gen1park",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen1",
+      "minzoom": 10,
+      "maxzoom": 13,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "park"
+        ]
+      ],
+      "paint": {
+        "fill-color": "rgba(208, 220, 174, 1)"
+      }
+    },
+    {
+      "id": "landusages_gen0_z9",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen0",
+      "minzoom": 7,
+      "maxzoom": 10,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood",
+          "nature_reserve"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
+      "id": "landusages_gen0_z6",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen0",
+      "minzoom": 4,
+      "maxzoom": 7,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood"
+        ],
+        [
+          ">",
+          "area",
+          50000000
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
       "id": "roads14_trackfillcase",
       "type": "line",
       "source": "tegola-osm",
@@ -2582,6 +2947,201 @@
         "text-color": "rgba(255, 0, 0, 1)",
         "text-halo-color": "rgba(10, 0, 0, 1)",
         "text-halo-width": 1
+      }
+    },
+    {
+      "id": "landusageslabels_park",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "park",
+          "sports_centre",
+          "stadium",
+          "grass",
+          "grassland",
+          "garden",
+          "village_green",
+          "recreation_ground",
+          "picnic_site",
+          "camp_site",
+          "playground"
+        ],
+        [
+          ">",
+          "area",
+          12000
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(122, 143, 61, 1)",
+        "text-halo-color": "rgba(228, 235, 209, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "landusageslabels_forest",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood",
+          "nature_reserve"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(95, 107, 71, 1)",
+        "text-halo-color": "rgba(201, 213, 190, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "landusageslabels_school",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "college",
+          "school",
+          "education",
+          "university",
+          ""
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(176, 130, 130, 1)",
+        "text-halo-color": "rgba(245, 239, 239, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "road_labels_most",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "roads_14-20",
+      "minzoom": 0,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "symbol-placement": "line",
+        "symbol-spacing": 250,
+        "symbol-avoid-edges": false,
+        "text-size": {
+          "stops": [
+            [
+              13,
+              10
+            ],
+            [
+              20,
+              18
+            ]
+          ]
+        },
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-pitch-alignment": "auto",
+        "text-rotation-alignment": "auto"
+      },
+      "paint": {
+        "text-color": "rgba(82, 82, 82, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 0.8)"
+      }
+    },
+    {
+      "id": "road_labels_some2",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "roads_13",
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "motorway",
+          "trunk"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "symbol-placement": "line",
+        "symbol-spacing": 250,
+        "symbol-avoid-edges": false,
+        "text-size": 10,
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-pitch-alignment": "auto",
+        "text-rotation-alignment": "auto"
+      },
+      "paint": {
+        "text-color": "rgba(82, 82, 82, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 0.8)"
+      }
+    },
+    {
+      "id": "road_labels_some",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "roads_11-12",
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "motorway",
+          "trunk"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "symbol-placement": "line",
+        "symbol-spacing": 250,
+        "symbol-avoid-edges": false,
+        "text-size": 10,
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-pitch-alignment": "auto",
+        "text-rotation-alignment": "auto"
+      },
+      "paint": {
+        "text-color": "rgba(82, 82, 82, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(255, 255, 255, 0.8)"
       }
     }
   ],
