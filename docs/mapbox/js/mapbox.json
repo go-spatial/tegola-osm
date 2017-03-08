@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "HOTOSMroadstyle",
+  "name": "HOTOSMstyle",
   "metadata": {
     "mapbox:autocomposite": false,
     "mapbox:type": "template",
@@ -399,6 +399,247 @@
       },
       "paint": {
         "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
+      "id": "buildings",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "buildings",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all"
+      ],
+      "paint": {
+        "fill-color": "rgba(220, 215, 215, 1)",
+        "fill-outline-color": "rgba(195, 188, 188, 1)"
+      }
+    },
+    {
+      "id": "waterways",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways",
+      "minzoom": 15,
+      "maxzoom": 20,
+      "filter": [
+        "all",
+        [
+          "!in",
+          "type",
+          "stream",
+          "drain",
+          "ditch"
+        ]
+      ],
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              15,
+              5
+            ],
+            [
+              20,
+              8
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterways_stream",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways",
+      "minzoom": 15,
+      "maxzoom": 20,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "stream"
+        ]
+      ],
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              15,
+              0.8
+            ],
+            [
+              20,
+              2
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterways_ditch",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways",
+      "minzoom": 15,
+      "maxzoom": 20,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "ditch",
+          "drain"
+        ]
+      ],
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              15,
+              0.2
+            ],
+            [
+              20,
+              1.5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterways_gen1",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways_gen1",
+      "minzoom": 13,
+      "maxzoom": 15,
+      "filter": [
+        "all",
+        [
+          "!=",
+          "type",
+          "stream"
+        ]
+      ],
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              13,
+              1
+            ],
+            [
+              14,
+              1.5
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterways_gen1stream",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways_gen1",
+      "minzoom": 13,
+      "maxzoom": 15,
+      "filter": [
+        "all",
+        [
+          "==",
+          "type",
+          "stream"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              13,
+              0.5
+            ],
+            [
+              14,
+              0.8
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterways_gen0",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "waterways_gen0",
+      "minzoom": 8,
+      "maxzoom": 13,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "river",
+          "canal"
+        ]
+      ],
+      "paint": {
+        "line-color": "rgba(144, 204, 203, 1)",
+        "line-width": {
+          "stops": [
+            [
+              8,
+              0.1
+            ],
+            [
+              13,
+              0.8
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "id": "waterareas",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "waterareas",
+      "minzoom": 12,
+      "maxzoom": 20,
+      "paint": {
+        "fill-color": "rgba(144, 204, 203, 1)"
+      }
+    },
+    {
+      "id": "waterareas_gen1",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "waterareas_gen1",
+      "minzoom": 9,
+      "maxzoom": 13,
+      "paint": {
+        "fill-color": "rgba(144, 204, 203, 1)"
+      }
+    },
+    {
+      "id": "waterareas_gen0",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "waterareas_gen0",
+      "minzoom": 4,
+      "maxzoom": 10,
+      "paint": {
+        "fill-color": "rgba(144, 204, 203, 1)"
       }
     },
     {
@@ -3046,7 +3287,7 @@
       }
     },
     {
-      "id": "road_labels_most",
+      "id": "roadlabels_most",
       "type": "symbol",
       "source": "tegola-osm",
       "source-layer": "roads_14-20",
@@ -3083,7 +3324,7 @@
       }
     },
     {
-      "id": "road_labels_some2",
+      "id": "roadlabels_some2",
       "type": "symbol",
       "source": "tegola-osm",
       "source-layer": "roads_13",
@@ -3114,7 +3355,7 @@
       }
     },
     {
-      "id": "road_labels_some",
+      "id": "roadlabels_some",
       "type": "symbol",
       "source": "tegola-osm",
       "source-layer": "roads_11-12",
@@ -3142,6 +3383,180 @@
         "text-color": "rgba(82, 82, 82, 1)",
         "text-halo-width": 1,
         "text-halo-color": "rgba(255, 255, 255, 0.8)"
+      }
+    },
+    {
+      "id": "waterareaslabels_bigest",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "waterareas_gen1",
+      "minzoom": 8,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          ">",
+          "area",
+          10000000
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Open Sans Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-size": {
+          "stops": [
+            [
+              15,
+              11
+            ],
+            [
+              20,
+              20
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(68, 136, 136, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(178, 220, 220, 1)"
+      }
+    },
+    {
+      "id": "waterareaslabels_big",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "waterareas",
+      "minzoom": 12,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          ">",
+          "area",
+          100000000
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Open Sans Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-size": {
+          "stops": [
+            [
+              15,
+              11
+            ],
+            [
+              20,
+              20
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(68, 136, 136, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(178, 220, 220, 1)"
+      }
+    },
+    {
+      "id": "waterareaslabels_small",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "waterareas",
+      "minzoom": 15,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          ">",
+          "area",
+          100000
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Open Sans Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "text-padding": 2,
+        "text-allow-overlap": false,
+        "text-size": {
+          "stops": [
+            [
+              15,
+              11
+            ],
+            [
+              20,
+              20
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(68, 136, 136, 1)",
+        "text-halo-width": 1,
+        "text-halo-color": "rgba(178, 220, 220, 1)"
+      }
+    },
+    {
+      "id": "waterwaysabels_gen1",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "waterways_gen1",
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Open Sans Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "symbol-placement": "line",
+        "text-pitch-alignment": "auto",
+        "text-rotation-alignment": "auto",
+        "text-size": 11,
+        "symbol-spacing": 500,
+        "text-anchor": "bottom"
+      },
+      "paint": {
+        "text-color": "rgba(68, 136, 136, 1)",
+        "text-halo-color": "rgba(178, 220, 220, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "waterwayslabels",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "waterways",
+      "layout": {
+        "text-field": "{name}",
+        "text-font": [
+          "Open Sans Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "symbol-placement": "line",
+        "text-pitch-alignment": "auto",
+        "text-rotation-alignment": "auto",
+        "text-anchor": "bottom",
+        "text-size": 13,
+        "symbol-spacing": 500
+      },
+      "paint": {
+        "text-color": "rgba(68, 136, 136, 1)",
+        "text-halo-color": "rgba(178, 220, 220, 1)",
+        "text-halo-width": 1
       }
     }
   ],
