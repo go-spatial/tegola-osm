@@ -13,13 +13,13 @@ password = ""
 	[[providers.layers]]
 	name = "buildings"
 	geometry_fieldname = "geometry"
-	id_fieldname = "id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, name, id, type FROM osm_buildings WHERE geometry && !BBOX!"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_buildings WHERE geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "landusages"
 	geometry_fieldname = "geometry"
-	id_fieldname = "id"
+	id_fieldname = "osm_id"
 	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area, z_order FROM osm_landusages WHERE geometry && !BBOX!"
 
 	[[providers.layers]]
@@ -67,38 +67,38 @@ password = ""
 	[[providers.layers]]
 	name = "waterareas"
 	geometry_fieldname = "geometry"
-	id_fieldname = "id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type, area FROM osm_waterareas WHERE geometry && !BBOX!"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas WHERE type IN ('water', 'pond', 'basin', 'canal', 'mill_pond', 'riverbank', 'dock') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterareas_gen0"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen0 WHERE geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen0 WHERE type IN ('water', 'pond', 'basin', 'canal', 'mill_pond', 'riverbank') AND area > 10000 AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterareas_gen1"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen1 WHERE geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area FROM osm_waterareas_gen1 WHERE type IN ('water', 'pond', 'basin', 'canal', 'mill_pond', 'riverbank') AND area > 1000 AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterways"
 	geometry_fieldname = "geometry"
-	id_fieldname = "id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, id, osm_id, name, type FROM osm_waterways WHERE geometry && !BBOX!"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways WHERE type IN ('river', 'canal', 'stream', 'ditch', 'drain') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterways_gen0"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways_gen0 WHERE geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways WHERE type IN ('river', 'canal') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "waterways_gen1"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways_gen1 WHERE geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways WHERE type IN ('river', 'canal', 'stream') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "countries"
@@ -156,23 +156,37 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 #	min_zoom = 0 
 #	max_zoom = 8 
 
-#	[[maps.layers]]
-#	provider_layer = "osm.buildings"
-#	min_zoom = 14
-#	max_zoom = 20
+	[[maps.layers]]
+	provider_layer = "osm.buildings"
+	min_zoom = 14
+	max_zoom = 20
 
-#	[[maps.layers]]
-#	provider_layer = "osm.waterareas"
-#	min_zoom = 14
-#	max_zoom = 20
+	[[maps.layers]]
+	provider_layer = "osm.waterareas_gen0"
+	min_zoom = 4
+	max_zoom = 9
 
-#	[[maps.layers]]
-#	provider_layer = "osm.waterareas_gen0"
-#	min_zoom = 9
-#	max_zoom = 12
+	[[maps.layers]]
+	provider_layer = "osm.waterareas_gen1"
+	min_zoom = 10
+	max_zoom = 12
 
-#	[[maps.layers]]
-#	provider_layer = "osm.waterareas_gen1"
-#	min_zoom = 3
-#	max_zoom = 9
+	[[maps.layers]]
+	provider_layer = "osm.waterareas"
+	min_zoom = 13
+	max_zoom = 20
 
+	[[maps.layers]]
+	provider_layer = "osm.waterways_gen0"
+	min_zoom = 8
+	max_zoom = 12
+
+	[[maps.layers]]
+	provider_layer = "osm.waterways_gen1"
+	min_zoom = 13
+	max_zoom = 14
+
+	[[maps.layers]]
+	provider_layer = "osm.waterways"
+	min_zoom = 15
+	max_zoom = 20
