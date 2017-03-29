@@ -6,7 +6,7 @@ name = "osm"
 type = "postgis"
 host = ""
 port = 5432
-database = "" 
+database = ""
 user = ""
 password = ""
 
@@ -106,10 +106,108 @@ password = ""
 	id_fieldname = "osm_id"
 	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_admin WHERE geometry && !BBOX! AND admin_level=2"
 
+#	natural earth
+[[providers]]
+name = "ne"
+type = "postgis"
+host = ""
+port = 5432
+database = ""
+user = ""
+password = ""
+
+	[[providers.layers]]
+	name = "admin_boundaries_0-2"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name, name_alt FROM ne_110m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "land_0-2"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla FROM ne_110m_land WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_3-4"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_50m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_disputed_3-4"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, nameå FROM ne_50m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "land_3-4"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla FROM ne_50m_land WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_5-6"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_10m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_disputed_5-6"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_10m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "land_5-6"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla FROM ne_10m_land_scale_rank WHERE wkb_geometry && !BBOX!"
+
 [[maps]]
 name = "osm"
 attribution = "Tegola OSM" # map attribution
 center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part of the TileJSON spec
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_boundaries_0-2"
+	min_zoom = 0
+	max_zoom = 2
+
+	[[maps.layers]]
+	provider_layer = "ne.land_0-2"
+	min_zoom = 0
+	max_zoom = 2
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_boundaries_3-4"
+	min_zoom = 3
+	max_zoom = 4
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_boundaries_disputed_3-4"
+	min_zoom = 3
+	max_zoom = 4
+
+	[[maps.layers]]
+	provider_layer = "ne.land_3-4"
+	min_zoom = 3
+	max_zoom = 4
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_boundaries_5-6"
+	min_zoom = 5
+	max_zoom = 6
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_boundaries_5-6"
+	min_zoom = 5
+	max_zoom = 6
+
+	[[maps.layers]]
+	provider_layer = "ne.land_5-6"
+	min_zoom = 5
+	max_zoom = 6
 
 	[[maps.layers]]
 	provider_layer = "osm.roads_gen0"
