@@ -25,7 +25,7 @@
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
   "layers": [
     {
-      "id": "bg",
+      "id": "background",
       "type": "background",
       "minzoom": 0,
       "maxzoom": 20,
@@ -33,7 +33,58 @@
         "visibility": "visible"
       },
       "paint": {
-        "background-color": "rgba(247, 246, 241, 1)"
+        "background-color": "rgba(144, 204, 203, 1)"
+      }
+    },
+    {
+      "id": "land_lowzoom4",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "land_3-4",
+      "minzoom": 3,
+      "maxzoom": 20,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(247, 246, 241, 1)"
+      }
+    },
+    {
+      "id": "land_lowzoom2",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "land_0-2",
+      "minzoom": 0,
+      "maxzoom": 3,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(247, 246, 241, 1)"
+      }
+    },
+    {
+      "id": "admin_boundaries_5-10",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_5-10",
+      "minzoom": 5,
+      "maxzoom": 11,
+      "filter": [
+        "all"
+      ],
+      "layout": {
+        "visibility": "none"
+      },
+      "paint": {
+        "line-color": "rgba(216, 23, 23, 1)"
       }
     },
     {
@@ -3159,6 +3210,61 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "admin_boundaries2",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_0-2",
+      "minzoom": 0,
+      "maxzoom": 3,
+      "paint": {
+        "line-color": "rgba(83, 112, 118, 1)"
+      }
+    },
+    {
+      "id": "admin_boundaries4",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_3-4",
+      "minzoom": 3,
+      "maxzoom": 5,
+      "paint": {
+        "line-color": "rgba(83, 112, 118, 1)"
+      }
+    },
+    {
+      "id": "admin_boundariesdisputed4",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_disputed_3-4",
+      "minzoom": 3,
+      "maxzoom": 5,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(83, 112, 118, 1)",
+        "line-dasharray": [
+          4,
+          1
+        ],
+        "line-width": 1
+      }
+    },
+    {
+      "id": "admin_boundaries6",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_5-6",
+      "minzoom": 5,
+      "maxzoom": 7,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "line-color": "rgba(83, 112, 118, 1)"
       }
     },
     {
