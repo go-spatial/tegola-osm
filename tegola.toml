@@ -11,6 +11,24 @@ user = ""
 password = ""
 
 	[[providers.layers]]
+	name = "admin_boundaries_5-10"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level FROM osm_admin WHERE admin_level IN (1,2,3,4) AND geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_11-12"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level FROM osm_admin WHERE admin_level IN (1,2,3,4,5,8,7,8) AND geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_boundaries_13-20"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level FROM osm_admin WHERE admin_level IN (1,2,3,4,5,8,7,8,9,10) AND geometry && !BBOX!"
+
+	[[providers.layers]]
 	name = "buildings"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
@@ -210,6 +228,21 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	max_zoom = 6
 
 	[[maps.layers]]
+	provider_layer = "osm.admin_boundaries_5-10"
+	min_zoom = 5
+	max_zoom = 10
+
+	[[maps.layers]]
+	provider_layer = "osm.admin_boundaries_11-12"
+	min_zoom = 11
+	max_zoom = 12
+
+	[[maps.layers]]
+	provider_layer = "osm.admin_boundaries_13-20"
+	min_zoom = 13
+	max_zoom = 20
+
+	[[maps.layers]]
 	provider_layer = "osm.roads_gen0"
 	min_zoom = 5
 	max_zoom = 8
@@ -234,25 +267,25 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 14
 	max_zoom = 20
 
-    [[maps.layers]]
-    provider_layer = "osm.landusages_gen0"
-    min_zoom = 4
-    max_zoom = 9
+	[[maps.layers]]
+	provider_layer = "osm.landusages_gen0"
+	min_zoom = 4
+	max_zoom = 9
 
-    [[maps.layers]]
-    provider_layer = "osm.landusages_gen1"
-    min_zoom = 10
-    max_zoom = 12
+	[[maps.layers]]
+	provider_layer = "osm.landusages_gen1"
+	min_zoom = 10
+	max_zoom = 12
 
-    [[maps.layers]]
-    provider_layer = "osm.landusages"
-    min_zoom = 13
-    max_zoom = 20
+	[[maps.layers]]
+	provider_layer = "osm.landusages"
+	min_zoom = 13
+	max_zoom = 20
 
-#	[[maps.layers]]
-#	provider_layer = "osm.countries"
-#	min_zoom = 0 
-#	max_zoom = 8 
+	#	[[maps.layers]]
+	#	provider_layer = "osm.countries"
+	#	min_zoom = 0 
+	#	max_zoom = 8 
 
 	[[maps.layers]]
 	provider_layer = "osm.buildings"
