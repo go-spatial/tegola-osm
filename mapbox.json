@@ -37,54 +37,24 @@
       }
     },
     {
-      "id": "land_lowzoom4",
+      "id": "land_10-20",
       "type": "fill",
       "source": "tegola-osm",
-      "source-layer": "land_3-4",
-      "minzoom": 3,
+      "source-layer": "land_10-20",
+      "minzoom": 10,
       "maxzoom": 20,
-      "filter": [
-        "all"
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
       "paint": {
         "fill-color": "rgba(247, 246, 241, 1)"
       }
     },
     {
-      "id": "land_lowzoom2",
+      "id": "land_0-9",
       "type": "fill",
       "source": "tegola-osm",
-      "source-layer": "land_0-2",
-      "minzoom": 0,
-      "maxzoom": 3,
-      "filter": [
-        "all"
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
+      "source-layer": "land_0-9",
+      "maxzoom": 10,
       "paint": {
         "fill-color": "rgba(247, 246, 241, 1)"
-      }
-    },
-    {
-      "id": "admin_boundaries_5-10",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "admin_boundaries_5-10",
-      "minzoom": 5,
-      "maxzoom": 11,
-      "filter": [
-        "all"
-      ],
-      "layout": {
-        "visibility": "none"
-      },
-      "paint": {
-        "line-color": "rgba(216, 23, 23, 1)"
       }
     },
     {
@@ -425,11 +395,11 @@
       }
     },
     {
-      "id": "landusages_gen0_z6",
+      "id": "landusages_gen0_z7",
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "landusages_gen0",
-      "minzoom": 4,
+      "minzoom": 5,
       "maxzoom": 7,
       "filter": [
         "all",
@@ -447,6 +417,34 @@
       ],
       "layout": {
         "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(178, 194, 157, 1)"
+      }
+    },
+    {
+      "id": "landusages_gen0_z5",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "landusages_gen0",
+      "minzoom": 3,
+      "maxzoom": 5,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood"
+        ],
+        [
+          ">",
+          "area",
+          500000000
+        ]
+      ],
+      "layout": {
+        "visibility": "none"
       },
       "paint": {
         "fill-color": "rgba(178, 194, 157, 1)"
@@ -665,7 +663,7 @@
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "waterareas",
-      "minzoom": 12,
+      "minzoom": 13,
       "maxzoom": 20,
       "paint": {
         "fill-color": "rgba(144, 204, 203, 1)"
@@ -676,19 +674,44 @@
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "waterareas_gen1",
-      "minzoom": 9,
+      "minzoom": 10,
       "maxzoom": 13,
       "paint": {
         "fill-color": "rgba(144, 204, 203, 1)"
       }
     },
     {
-      "id": "waterareas_gen0",
+      "id": "waterareas_gen0_z9",
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "waterareas_gen0",
-      "minzoom": 4,
+      "minzoom": 5,
       "maxzoom": 10,
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "rgba(144, 204, 203, 1)"
+      }
+    },
+    {
+      "id": "waterareas_gen0_z5",
+      "type": "fill",
+      "source": "tegola-osm",
+      "source-layer": "waterareas_gen0",
+      "minzoom": 3,
+      "maxzoom": 5,
+      "filter": [
+        "all",
+        [
+          ">",
+          "area",
+          1000000000
+        ]
+      ],
+      "layout": {
+        "visibility": "none"
+      },
       "paint": {
         "fill-color": "rgba(144, 204, 203, 1)"
       }
@@ -3141,7 +3164,7 @@
       "type": "line",
       "source": "tegola-osm",
       "source-layer": "roads_gen0",
-      "minzoom": 5,
+      "minzoom": 4,
       "maxzoom": 9,
       "filter": [
         "all",
@@ -3179,7 +3202,7 @@
       "type": "line",
       "source": "tegola-osm",
       "source-layer": "roads_gen0",
-      "minzoom": 5,
+      "minzoom": 4,
       "maxzoom": 9,
       "filter": [
         "all",
@@ -3213,23 +3236,15 @@
       }
     },
     {
-      "id": "admin_boundaries2",
+      "id": "admin_boundaries6",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "admin_boundaries_0-2",
-      "minzoom": 0,
-      "maxzoom": 3,
-      "paint": {
-        "line-color": "rgba(83, 112, 118, 1)"
-      }
-    },
-    {
-      "id": "admin_boundaries4",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "admin_boundaries_3-4",
-      "minzoom": 3,
-      "maxzoom": 5,
+      "source-layer": "admin_boundaries_5-6",
+      "minzoom": 5,
+      "maxzoom": 7,
+      "layout": {
+        "visibility": "visible"
+      },
       "paint": {
         "line-color": "rgba(83, 112, 118, 1)"
       }
@@ -3254,15 +3269,26 @@
       }
     },
     {
-      "id": "admin_boundaries6",
+      "id": "admin_boundaries4",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "admin_boundaries_5-6",
-      "minzoom": 5,
-      "maxzoom": 7,
+      "source-layer": "admin_boundaries_3-4",
+      "minzoom": 3,
+      "maxzoom": 5,
       "layout": {
         "visibility": "visible"
       },
+      "paint": {
+        "line-color": "rgba(83, 112, 118, 1)"
+      }
+    },
+    {
+      "id": "admin_boundaries2",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_boundaries_0-2",
+      "minzoom": 0,
+      "maxzoom": 3,
       "paint": {
         "line-color": "rgba(83, 112, 118, 1)"
       }
