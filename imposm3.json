@@ -224,6 +224,11 @@
                     "type": "mapping_value",
                     "name": "type",
                     "key": null
+                },
+                {
+                    "type":"integer",
+                    "name":"height",
+                    "key": null
                 }
             ],
             "type": "polygon",
