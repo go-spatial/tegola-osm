@@ -27,12 +27,9 @@ DB_PW=""
 
 # array of natural earth dataset URLs
  dataurls=(
-	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_land.zip"
 	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip"
-	"http://naciscdn.org/naturalearth/50m/physical/ne_50m_land.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_disputed_areas.zip"
-	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_land_scale_rank.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_disputed_areas.zip"
 )
