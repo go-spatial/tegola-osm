@@ -444,7 +444,7 @@
         ]
       ],
       "layout": {
-        "visibility": "none"
+        "visibility": "visible"
       },
       "paint": {
         "fill-color": "rgba(178, 194, 157, 1)"
