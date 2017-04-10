@@ -226,9 +226,9 @@
                     "key": null
                 },
                 {
-                    "type":"integer",
+                    "type":"string",
                     "name":"height",
-                    "key": null
+                    "key": "height"
                 }
             ],
             "type": "polygon",

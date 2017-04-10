@@ -196,7 +196,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	max_zoom = 6
 
 	[[maps.layers]]
-	provider_layer = "ne.admin_boundaries_5-6"
+	provider_layer = "ne.admin_boundaries_disputed_5-6"
 	min_zoom = 5
 	max_zoom = 6
 
