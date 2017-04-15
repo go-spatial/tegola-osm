@@ -451,7 +451,7 @@
       }
     },
     {
-      "id": "buildings",
+      "id": "buildings_flat",
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "buildings",
@@ -460,6 +460,9 @@
       "filter": [
         "all"
       ],
+      "layout": {
+        "visibility": "none"
+      },
       "paint": {
         "fill-color": "rgba(220, 215, 215, 1)",
         "fill-outline-color": "rgba(195, 188, 188, 1)"
@@ -3291,6 +3294,49 @@
       "maxzoom": 3,
       "paint": {
         "line-color": "rgba(83, 112, 118, 1)"
+      }
+    },
+    {
+      "id": "buildings_tilt",
+      "type": "fill-extrusion",
+      "source": "tegola-osm",
+      "source-layer": "buildings",
+      "filter": [
+        "all",
+        [
+          "has",
+          "height"
+        ]
+      ],
+      "layout": {},
+      "paint": {
+        "fill-extrusion-color": "rgba(220, 215, 215, 1)",
+        "fill-extrusion-height": {
+          "property": "height",
+          "type": "identity"
+        },
+        "fill-extrusion-base": 0
+      }
+    },
+    {
+      "id": "buildings_tilt_na",
+      "type": "fill-extrusion",
+      "source": "tegola-osm",
+      "source-layer": "buildings",
+      "filter": [
+        "all",
+        [
+          "!has",
+          "height"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-extrusion-color": "rgba(220, 215, 215, 1)",
+        "fill-extrusion-height": 5,
+        "fill-extrusion-base": 0
       }
     },
     {
