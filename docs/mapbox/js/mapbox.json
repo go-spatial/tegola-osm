@@ -19,7 +19,7 @@
   "sources": {
     "tegola-osm": {
       "type": "vector",
-      "url": "http://tegola-osm-alb-892676143.us-west-2.elb.amazonaws.com/capabilities/osm.json?debug=true"
+      "url": "http://http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
     }
   },
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
