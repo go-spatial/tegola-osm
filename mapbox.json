@@ -3737,8 +3737,8 @@
 		  
           "stops": [
             [
-              "hospital",
-              "rgba(229, 198, 195, 1)"
+              "",
+              "rgba(220, 215, 215, 1)"
             ],
             [
               "school",
@@ -3751,7 +3751,11 @@
             [
               "college",
               "rgba(249, 233, 222, 1)"
-            ]
+            ],
+			[
+			  "hospital",
+			  "rgba(255, 0, 0, 1)"
+			]
           ]
         },
         "fill-extrusion-height": {
