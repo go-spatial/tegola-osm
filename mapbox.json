@@ -3710,7 +3710,32 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-extrusion-color": "rgba(220, 215, 215, 1)",
+        "fill-extrusion-color": {
+          "property": "type",
+          "type": "categorical",
+          "stops": [
+            [
+              "",
+              "rgba(220, 215, 215, 1)"
+            ],
+            [
+              "school",
+              "rgba(249, 233, 222, 1)"
+            ],
+            [
+              "university",
+              "rgba(249, 233, 222, 1)"
+            ],
+            [
+              "college",
+              "rgba(249, 233, 222, 1)"
+            ],
+			[
+			  "hospital",
+			  "rgba(229, 198, 195, 1)"
+			]
+          ]
+        },
         "fill-extrusion-height": 5,
         "fill-extrusion-base": 0
       }
