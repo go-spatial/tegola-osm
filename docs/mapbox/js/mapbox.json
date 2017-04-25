@@ -3326,102 +3326,6 @@
       }
     },
     {
-      "id": "landusageslabels_park",
-      "type": "symbol",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 14,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "park",
-          "sports_centre",
-          "stadium",
-          "grass",
-          "grassland",
-          "garden",
-          "village_green",
-          "recreation_ground",
-          "picnic_site",
-          "camp_site",
-          "playground"
-        ],
-        [
-          ">",
-          "area",
-          12000
-        ]
-      ],
-      "layout": {
-        "text-field": "{name}",
-        "text-size": 11
-      },
-      "paint": {
-        "text-color": "rgba(122, 143, 61, 1)",
-        "text-halo-color": "rgba(228, 235, 209, 1)",
-        "text-halo-width": 1
-      }
-    },
-    {
-      "id": "landusageslabels_forest",
-      "type": "symbol",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 14,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "forest",
-          "wood",
-          "nature_reserve"
-        ]
-      ],
-      "layout": {
-        "text-field": "{name}",
-        "text-size": 11
-      },
-      "paint": {
-        "text-color": "rgba(95, 107, 71, 1)",
-        "text-halo-color": "rgba(201, 213, 190, 1)",
-        "text-halo-width": 1
-      }
-    },
-    {
-      "id": "landusageslabels_school",
-      "type": "symbol",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 14,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "college",
-          "school",
-          "education",
-          "university",
-          ""
-        ]
-      ],
-      "layout": {
-        "text-field": "{name}",
-        "text-size": 11
-      },
-      "paint": {
-        "text-color": "rgba(176, 130, 130, 1)",
-        "text-halo-color": "rgba(245, 239, 239, 1)",
-        "text-halo-width": 1
-      }
-    },
-    {
       "id": "roadlabels_most",
       "type": "symbol",
       "source": "tegola-osm",
@@ -3730,10 +3634,10 @@
               "college",
               "rgba(249, 233, 222, 1)"
             ],
-			[
-			  "hospital",
-			  "rgba(229, 198, 195, 1)"
-			]
+            [
+              "hospital",
+              "rgba(229, 198, 195, 1)"
+            ]
           ]
         },
         "fill-extrusion-height": 5,
@@ -3776,10 +3680,10 @@
               "college",
               "rgba(249, 233, 222, 1)"
             ],
-			[
-			  "hospital",
-			  "rgba(229, 198, 195, 1)"
-			]
+            [
+              "hospital",
+              "rgba(229, 198, 195, 1)"
+            ]
           ]
         },
         "fill-extrusion-height": {
@@ -3787,6 +3691,102 @@
           "type": "identity"
         },
         "fill-extrusion-base": 0
+      }
+    },
+    {
+      "id": "landusageslabels_park",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "park",
+          "sports_centre",
+          "stadium",
+          "grass",
+          "grassland",
+          "garden",
+          "village_green",
+          "recreation_ground",
+          "picnic_site",
+          "camp_site",
+          "playground"
+        ],
+        [
+          ">",
+          "area",
+          12000
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(122, 143, 61, 1)",
+        "text-halo-color": "rgba(228, 235, 209, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "landusageslabels_forest",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "forest",
+          "wood",
+          "nature_reserve"
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(95, 107, 71, 1)",
+        "text-halo-color": "rgba(201, 213, 190, 1)",
+        "text-halo-width": 1
+      }
+    },
+    {
+      "id": "landusageslabels_school",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "landusages",
+      "minzoom": 14,
+      "maxzoom": 24,
+      "filter": [
+        "all",
+        [
+          "in",
+          "type",
+          "college",
+          "school",
+          "education",
+          "university",
+          ""
+        ]
+      ],
+      "layout": {
+        "text-field": "{name}",
+        "text-size": 11
+      },
+      "paint": {
+        "text-color": "rgba(176, 130, 130, 1)",
+        "text-halo-color": "rgba(245, 239, 239, 1)",
+        "text-halo-width": 1
       }
     }
   ],
