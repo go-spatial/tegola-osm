@@ -31,3 +31,63 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ```bash
 ./tegola -config=tegola.toml
 ```
+
+## Layer import progress
+| imported  | source                                       | table/layer                   | zoom  |
+|---|----------------------------------------------|-------------------------------|-------|
+|   | ne_110m_rivers_lake_centerlines              |                               | 0-2   |
+|   | ne_110m_lakes                                |                               | 0-2   |
+| y | ne_110m_admin0_boundary_lines_land           | admin_boundaries_0-2          | 0-2   |
+|   | ne_50m_rivers_lake_centerlines               |                               | 3-4   |
+|   | ne_50m_lakes                                 |                               | 3-4   |
+| y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          | 3-4   |
+| y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 | 3-4   |
+|   | ne_50m_admin1_states_provinces_lines         |                               | 3-4   |
+|   | ne_50m_populated_places                      |                               | 3-4   |
+|   | ne_10m_rivers_lake_centerlines               |                               | 5-6   |
+|   | ne_10m_lakes                                 |                               | 5-6   |
+|   | ne_10m_geography_regions_points              |                               | 5-6   |
+|   | ne_10m_lakes_north_america                   |                               | 5-6   |
+| y | ne_10m_admin_0_boundary_lines_land           | admin_boundaries_5-6          | 5-6   |
+| y | ne_10m_admin_0_boundary_lines_disputed_areas |                               | 5-6   |
+|   | ne_10m_populated_places                      |                               | 5-6   |
+|   | ne_10m_admin_1_states_provinces              |                               | 5-6   |
+|   | ne_10m_admin_1_states_provinces_lines        |                               | 5-6   |
+|   | ne_10m_roads                                 |                               | 5-6   |
+|   | ne_10m_roads_north_america                   |                               | 5-6   |
+|   | ne_10m_parks_and_protected_lands             |                               | 5-6   |
+|   | ne_10m_admin_0_label_points                  |                               | 5-6   |
+|   | ne_10m_admin_1_label_points                  |                               | 5-6   |
+| y | osm                                          | land_0-9                      | 0-9   |
+| y | osm                                          | land_10-20                    | 10-20 |
+| y | osm                                          | osm_landusages_gen0           | 4-9   |
+| y | osm                                          | osm_landusages_gen1           | 10-12 |
+| y | osm                                          | osm_landusages                | 13-20 |
+| y | osm                                          | osm_waterways_gen0            | 8-12  |
+| y | osm                                          | osm_waterways_gen1            | 13-14 |
+| y | osm                                          | osm_waterways                 | 15-20 |
+| y | osm                                          | osm_waterareas_gen0           | 4-9   |
+| y | osm                                          | osm_waterareas_gen1           | 10-12 |
+| y | osm                                          | osm_waterareas                | 13-20 |
+| y | osm                                          | boundaries_polygon            | 5-20  |
+|   | osm                                          | barriers_lines                | 16-20 |
+|   | osm                                          | barriers_points               | 17-20 |
+| y | osm                                          | buildings_polygons            | 14-20 |
+|   | osm                                          | military_polygons             | 4-20  |
+| y | osm                                          | osm_roads_gen0                | 5-8   |
+| y | osm                                          | osm_roads_gen1                | 9-10  |
+| y | osm                                          | osm_roads_11-12               | 11-12 |
+| y | osm                                          | osm_roads_13                  | 13    |
+| y | osm                                          | osm_roads_14-20               | 14-20 |
+|   | osm                                          | amenities                     | 14-20 |
+|   | osm                                          | aviation_points               | 10-20 |
+|   | osm                                          | aviation_lines                | 14-20 |
+|   | osm                                          | aviation_polygons             | 14-20 |
+|   | osm                                          | power_lines                   | 16-20 |
+|   | osm                                          | railway_lines_gen0            | 5-8   |
+|   | osm                                          | railway_lines_gen1            | 9-10  |
+|   | osm                                          | railway_lines                 | 11-20 |
+|   | osm                                          | leisure_points                | 14-20 |
+|   | osm                                          | leisure_polygons              | 7-20  |
+|   | osm                                          | place_points                  | 3-20  |
+|   | osm                                          | natural_polygons              | 4-20  |
