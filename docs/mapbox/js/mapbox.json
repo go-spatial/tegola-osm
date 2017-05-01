@@ -70,6 +70,10 @@
 			"property": "type",
 			  "type": "categorical",
 			  "stops": [
+			    [
+				  "",
+				  "rgba(0, 0, 0, 0)"
+				],
 				[
 				  "wetland",
 				  "rgba(227, 233, 226, 1)"
@@ -217,10 +221,6 @@
 				[
 				  "nature_reserve",
 				  "rgba(178, 194, 157, 1)"
-				],
-				[
-				  "",
-				  "rgba(0, 0, 0, 0)"
 				]
 			]
 		}
