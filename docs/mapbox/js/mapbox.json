@@ -57,278 +57,174 @@
         "fill-color": "rgba(247, 246, 241, 1)"
       }
     },
-    {
-      "id": "landusages_wetland",
+   {
+      "id": "landusages",
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "landusages",
       "minzoom": 13,
       "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "==",
-          "type",
-          "wetland"
-        ]
-      ],
+      
       "paint": {
-        "fill-color": "rgba(227, 233, 226, 1)"
-      }
-    },
-    {
-      "id": "landusages_military",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "==",
-          "type",
-          "military"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(209, 191, 170, 1)"
-      }
-    },
-    {
-      "id": "landusages_saltpond",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "==",
-          "type",
-          "salt_pond"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(236, 240, 241, 1)"
-      }
-    },
-    {
-      "id": "landusages_water",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "==",
-          "type",
-          "basin"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(144, 204, 203, 1)"
-      }
-    },
-    {
-      "id": "landusages_beach",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "beach",
-          "desert"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(238, 229, 178, 1)"
-      }
-    },
-    {
-      "id": "landusages_agriculture",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "farmland",
-          "farm",
-          "orchard",
-          "allotments"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(222, 221, 190, 1)"
-      }
-    },
-    {
-      "id": "landusages_heath",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "heath",
-          "meadow"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(225, 233, 214, 1)"
-      }
-    },
-    {
-      "id": "landusages_residential",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "residential",
-          "retail"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(237, 236, 231, 1)"
-      }
-    },
-    {
-      "id": "landusages_industrial",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "industrial",
-          "quarry",
-          "landfill",
-          ""
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(215, 200, 203, 1)"
-      }
-    },
-    {
-      "id": "landusages_school",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "college",
-          "school",
-          "education",
-          "university",
-          ""
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(226, 214, 205, 1)"
-      }
-    },
-    {
-      "id": "landusages_cemetery",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "cemetery",
-          "grave_yard"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(214, 222, 210, 1)"
-      }
-    },
-    {
-      "id": "landusages_park",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "park",
-          "sports_centre",
-          "stadium",
-          "grass",
-          "grassland",
-          "garden",
-          "village_green",
-          "recreation_ground",
-          "picnic_site",
-          "camp_site",
-          "playground"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(208, 220, 174, 1)"
-      }
-    },
-    {
-      "id": "landusages_forest",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages",
-      "minzoom": 13,
-      "maxzoom": 24,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "forest",
-          "wood",
-          "nature_reserve"
-        ]
-      ],
-      "paint": {
-        "fill-color": "rgba(178, 194, 157, 1)"
-      }
+        "fill-color": {
+			"property": "type",
+			  "type": "categorical",
+			  "stops": [
+			    [
+				  "",
+				  "rgba(0, 0, 0, 0)"
+				],
+				[
+				  "wetland",
+				  "rgba(227, 233, 226, 1)"
+				],
+				[
+				  "military",
+				  "rgba(209, 191, 170, 1)"
+				],
+				[
+				  "salt_pond",
+				  "rgba(236, 240, 241, 1)"
+				],
+				[
+				  "basin",
+				  "rgba(144, 204, 203, 1)"
+				],
+				[
+				  "beach",
+				  "rgba(238, 229, 178, 1)"
+				],
+				[
+				  "desert",
+				  "rgba(238, 229, 178, 1)"
+				],
+				[
+				  "farmland",
+				  "rgba(222, 221, 190, 1)"
+				],
+				[
+				  "farm",
+				  "rgba(222, 221, 190, 1)"
+				],
+				[
+				  "orchard",
+				  "rgba(222, 221, 190, 1)"
+				],
+				[
+				  "allotments",
+				  "rgba(222, 221, 190, 1)"
+				],
+				[
+				  "heath",
+				  "rgba(225, 233, 214, 1)"
+				],
+				[
+				  "meadow",
+				  "rgba(225, 233, 214, 1)"
+				],
+				[
+				  "residential",
+				  "rgba(237, 236, 231, 1)"
+				],
+				[
+				  "retail",
+				  "rgba(237, 236, 231, 1)"
+				],
+				[
+				  "industrial",
+				  "rgba(215, 200, 203, 1)"
+				],
+				[
+				  "quarry",
+				  "rgba(215, 200, 203, 1)"
+				],
+				[
+				  "landfill",
+				  "rgba(215, 200, 203, 1)"
+				],
+				[
+				  "college",
+				  "rgba(226, 214, 205, 1)"
+				],
+				[
+				  "school",
+				  "rgba(226, 214, 205, 1)"
+				],
+				[
+				  "education",
+				  "rgba(226, 214, 205, 1)"
+				],
+				[
+				  "university",
+				  "rgba(226, 214, 205, 1)"
+				],
+				[
+				  "cemetery",
+				  "rgba(214, 222, 210, 1)"
+				],
+				[
+				  "grave_yard",
+				  "rgba(214, 222, 210, 1)"
+				],
+				[
+				  "park",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "sports_centre",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "stadium",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "grass",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "grassland",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "garden",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "village_green",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "recreation_ground",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "picnic_site",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "camp_site",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "playground",
+				  "rgba(208, 220, 174, 1)"
+				],
+				[
+				  "forest",
+				  "rgba(178, 194, 157, 1)"
+				],
+				[
+				  "wood",
+				  "rgba(178, 194, 157, 1)"
+				],
+				[
+				  "nature_reserve",
+				  "rgba(178, 194, 157, 1)"
+				]
+			]
+		}
+	  }
     },
     {
       "id": "landusages_gen1forest",
