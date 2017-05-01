@@ -42,7 +42,7 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 |   | ne_50m_lakes                                 |                               | 3-4   |
 | y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          | 3-4   |
 | y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 | 3-4   |
-|   | ne_50m_admin1_states_provinces_lines         |                               | 3-4   |
+| y | ne_50m_admin1_states_provinces_lines         |                               | 3-4   |
 |   | ne_50m_populated_places                      |                               | 3-4   |
 |   | ne_10m_rivers_lake_centerlines               |                               | 5-6   |
 |   | ne_10m_lakes                                 |                               | 5-6   |
@@ -52,12 +52,12 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 | y | ne_10m_admin_0_boundary_lines_disputed_areas |                               | 5-6   |
 |   | ne_10m_populated_places                      |                               | 5-6   |
 |   | ne_10m_admin_1_states_provinces              |                               | 5-6   |
-|   | ne_10m_admin_1_states_provinces_lines        |                               | 5-6   |
+| y | ne_10m_admin_1_states_provinces_lines        |                               | 5-6   |
 |   | ne_10m_roads                                 |                               | 5-6   |
 |   | ne_10m_roads_north_america                   |                               | 5-6   |
 |   | ne_10m_parks_and_protected_lands             |                               | 5-6   |
 |   | ne_10m_admin_0_label_points                  |                               | 5-6   |
-|   | ne_10m_admin_1_label_points                  |                               | 5-6   |
+| y | ne_10m_admin_1_label_points                  |                               | 5-6   |
 | y | osm                                          | land_0-9                      | 0-9   |
 | y | osm                                          | land_10-20                    | 10-20 |
 | y | osm                                          | osm_landusages_gen0           | 4-9   |

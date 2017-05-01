@@ -30,8 +30,11 @@ DB_PW=""
 	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_disputed_areas.zip"
+	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_1_states_provinces_lines.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_disputed_areas.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_label_points.zip"
 )
 
 # remove old database if it exists, create a new one and add the postgis extension
@@ -47,8 +50,11 @@ for i in "${!dataurls[@]}"; do
 	curl $url > $i.zip;
 	unzip $i -d $i
 
-	# reproject data to webmercator (3857) and insert into our database
-	OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $i/*.shp
+	# support for archives with more than one shapefile
+	for f in $i/*.shp; do
+		# reproject data to webmercator (3857) and insert into our database
+		OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $f
+	done
 
 	# clean up
 	rm -rf $i/ $i.zip
