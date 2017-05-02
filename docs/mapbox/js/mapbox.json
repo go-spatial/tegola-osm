@@ -3224,35 +3224,6 @@
       }
     },
     {
-      "id": "debug",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "debug",
-      "minzoom": 0,
-      "maxzoom": 24,
-      "layout": {
-        "visibility": "none"
-      },
-      "paint": {
-        "line-color": "rgba(255, 0, 0, 1)"
-      }
-    },
-    {
-      "id": "debug-point",
-      "type": "symbol",
-      "source": "tegola-osm",
-      "source-layer": "debug",
-      "layout": {
-        "text-field": "{zxy}",
-        "visibility": "none"
-      },
-      "paint": {
-        "text-color": "rgba(255, 0, 0, 1)",
-        "text-halo-color": "rgba(10, 0, 0, 1)",
-        "text-halo-width": 1
-      }
-    },
-    {
       "id": "roadlabels_most",
       "type": "symbol",
       "source": "tegola-osm",
