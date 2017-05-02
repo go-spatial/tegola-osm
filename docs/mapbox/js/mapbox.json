@@ -3686,6 +3686,47 @@
         "text-halo-color": "rgba(245, 239, 239, 1)",
         "text-halo-width": 1
       }
+    },
+    {
+      "id": "state_labels",
+      "type": "symbol",
+      "source": "tegola-osm",
+      "source-layer": "admin_label_points_5-20",
+      "minzoom": 5,
+      "maxzoom": 11,
+      "layout": {
+        "text-font": [
+          "Open Sans Bold Italic",
+          "Arial Unicode MS Regular"
+        ],
+        "text-field": "{name}",
+        "text-size": {
+          "stops": [
+            [
+              5,
+              9
+            ],
+            [
+              7,
+              11
+            ],
+            [
+              9,
+              12
+            ],
+            [
+              13,
+              14
+            ]
+          ]
+        }
+      },
+      "paint": {
+        "text-color": "rgba(166, 166, 170, 1)",
+        "text-halo-color": "rgba(255, 255, 255, 0.35)",
+        "text-halo-width": 2,
+        "text-halo-blur": 0
+      }
     }
   ],
   "id": "ciwf4zbsv007y2pmt2rspc1dc",
