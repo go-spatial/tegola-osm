@@ -19,7 +19,7 @@
   "sources": {
     "tegola-osm": {
       "type": "vector",
-      "url": "http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
+      "url": "http://tegola-osm-alb-892676143.us-west-2.elb.amazonaws.com/capabilities/osm.json"
     }
   },
   "glyphs": "https://free.tilehosting.com/fonts/{fontstack}/{range}.pbf?key={key}",
@@ -57,174 +57,173 @@
         "fill-color": "rgba(247, 246, 241, 1)"
       }
     },
-   {
+    {
       "id": "landusages",
       "type": "fill",
       "source": "tegola-osm",
       "source-layer": "landusages",
       "minzoom": 13,
       "maxzoom": 24,
-      
       "paint": {
         "fill-color": {
-			"property": "type",
-			  "type": "categorical",
-			  "stops": [
-			  [
-				  "",
-				  "rgba(0, 0, 0, 0)"
-				],
-				[
-				  "wetland",
-				  "rgba(227, 233, 226, 1)"
-				],
-				[
-				  "military",
-				  "rgba(209, 191, 170, 1)"
-				],
-				[
-				  "salt_pond",
-				  "rgba(236, 240, 241, 1)"
-				],
-				[
-				  "basin",
-				  "rgba(144, 204, 203, 1)"
-				],
-				[
-				  "beach",
-				  "rgba(238, 229, 178, 1)"
-				],
-				[
-				  "desert",
-				  "rgba(238, 229, 178, 1)"
-				],
-				[
-				  "farmland",
-				  "rgba(222, 221, 190, 1)"
-				],
-				[
-				  "farm",
-				  "rgba(222, 221, 190, 1)"
-				],
-				[
-				  "orchard",
-				  "rgba(222, 221, 190, 1)"
-				],
-				[
-				  "allotments",
-				  "rgba(222, 221, 190, 1)"
-				],
-				[
-				  "heath",
-				  "rgba(225, 233, 214, 1)"
-				],
-				[
-				  "meadow",
-				  "rgba(225, 233, 214, 1)"
-				],
-				[
-				  "residential",
-				  "rgba(237, 236, 231, 1)"
-				],
-				[
-				  "retail",
-				  "rgba(237, 236, 231, 1)"
-				],
-				[
-				  "industrial",
-				  "rgba(215, 200, 203, 1)"
-				],
-				[
-				  "quarry",
-				  "rgba(215, 200, 203, 1)"
-				],
-				[
-				  "landfill",
-				  "rgba(215, 200, 203, 1)"
-				],
-				[
-				  "college",
-				  "rgba(226, 214, 205, 1)"
-				],
-				[
-				  "school",
-				  "rgba(226, 214, 205, 1)"
-				],
-				[
-				  "education",
-				  "rgba(226, 214, 205, 1)"
-				],
-				[
-				  "university",
-				  "rgba(226, 214, 205, 1)"
-				],
-				[
-				  "cemetery",
-				  "rgba(214, 222, 210, 1)"
-				],
-				[
-				  "grave_yard",
-				  "rgba(214, 222, 210, 1)"
-				],
-				[
-				  "park",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "sports_centre",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "stadium",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "grass",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "grassland",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "garden",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "village_green",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "recreation_ground",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "picnic_site",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "camp_site",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "playground",
-				  "rgba(208, 220, 174, 1)"
-				],
-				[
-				  "forest",
-				  "rgba(178, 194, 157, 1)"
-				],
-				[
-				  "wood",
-				  "rgba(178, 194, 157, 1)"
-				],
-				[
-				  "nature_reserve",
-				  "rgba(178, 194, 157, 1)"
-				]
-			]
-		}
-	  }
+          "property": "type",
+          "type": "categorical",
+          "stops": [
+            [
+              "wetland",
+              "rgba(227, 233, 226, 1)"
+            ],
+            [
+              "military",
+              "rgba(209, 191, 170, 1)"
+            ],
+            [
+              "salt_pond",
+              "rgba(236, 240, 241, 1)"
+            ],
+            [
+              "basin",
+              "rgba(144, 204, 203, 1)"
+            ],
+            [
+              "beach",
+              "rgba(238, 229, 178, 1)"
+            ],
+            [
+              "desert",
+              "rgba(238, 229, 178, 1)"
+            ],
+            [
+              "farmland",
+              "rgba(222, 221, 190, 1)"
+            ],
+            [
+              "farm",
+              "rgba(222, 221, 190, 1)"
+            ],
+            [
+              "orchard",
+              "rgba(222, 221, 190, 1)"
+            ],
+            [
+              "allotments",
+              "rgba(222, 221, 190, 1)"
+            ],
+            [
+              "heath",
+              "rgba(225, 233, 214, 1)"
+            ],
+            [
+              "meadow",
+              "rgba(225, 233, 214, 1)"
+            ],
+            [
+              "residential",
+              "rgba(237, 236, 231, 1)"
+            ],
+            [
+              "retail",
+              "rgba(237, 236, 231, 1)"
+            ],
+            [
+              "industrial",
+              "rgba(215, 200, 203, 1)"
+            ],
+            [
+              "quarry",
+              "rgba(215, 200, 203, 1)"
+            ],
+            [
+              "landfill",
+              "rgba(215, 200, 203, 1)"
+            ],
+            [
+              "college",
+              "rgba(226, 214, 205, 1)"
+            ],
+            [
+              "school",
+              "rgba(226, 214, 205, 1)"
+            ],
+            [
+              "education",
+              "rgba(226, 214, 205, 1)"
+            ],
+            [
+              "university",
+              "rgba(226, 214, 205, 1)"
+            ],
+            [
+              "cemetery",
+              "rgba(214, 222, 210, 1)"
+            ],
+            [
+              "grave_yard",
+              "rgba(214, 222, 210, 1)"
+            ],
+            [
+              "park",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "sports_centre",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "stadium",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "grass",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "grassland",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "garden",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "village_green",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "recreation_ground",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "picnic_site",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "camp_site",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "playground",
+              "rgba(208, 220, 174, 1)"
+            ],
+            [
+              "forest",
+              "rgba(178, 194, 157, 1)"
+            ],
+            [
+              "wood",
+              "rgba(178, 194, 157, 1)"
+            ],
+            [
+              "nature_reserve",
+              "rgba(178, 194, 157, 1)"
+            ],
+            [
+              "",
+              "rgba(202, 57, 57, 0)"
+            ]
+          ]
+        }
+      }
     },
     {
       "id": "landusages_gen1forest",
@@ -3132,6 +3131,38 @@
             ]
           ]
         }
+      }
+    },
+    {
+      "id": "admin_statelines6",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_states_provinces_lines_5-6",
+      "minzoom": 5,
+      "maxzoom": 7,
+      "paint": {
+        "line-width": 1,
+        "line-color": "rgba(165, 156, 155, 1)",
+        "line-dasharray": [
+          10,
+          5
+        ]
+      }
+    },
+    {
+      "id": "admin_statelines4",
+      "type": "line",
+      "source": "tegola-osm",
+      "source-layer": "admin_states_provinces_lines_3-4",
+      "minzoom": 3,
+      "maxzoom": 5,
+      "paint": {
+        "line-width": 1,
+        "line-color": "#A59C9B",
+        "line-dasharray": [
+          10,
+          5
+        ]
       }
     },
     {
