@@ -35,29 +35,29 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ## Layer import progress
 | imported  | source                                       | table/layer                   | zoom  |
 |---|----------------------------------------------|-------------------------------|-------|
-|   | ne_110m_rivers_lake_centerlines              |                               | 0-2   |
-|   | ne_110m_lakes                                |                               | 0-2   |
-| y | ne_110m_admin0_boundary_lines_land           | admin_boundaries_0-2          | 0-2   |
-|   | ne_50m_rivers_lake_centerlines               |                               | 3-4   |
-|   | ne_50m_lakes                                 |                               | 3-4   |
-| y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          | 3-4   |
-| y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 | 3-4   |
-| y | ne_50m_admin1_states_provinces_lines         |                               | 3-4   |
-|   | ne_50m_populated_places                      |                               | 3-4   |
-|   | ne_10m_rivers_lake_centerlines               |                               | 5-6   |
-|   | ne_10m_lakes                                 |                               | 5-6   |
-|   | ne_10m_geography_regions_points              |                               | 5-6   |
-|   | ne_10m_lakes_north_america                   |                               | 5-6   |
-| y | ne_10m_admin_0_boundary_lines_land           | admin_boundaries_5-6          | 5-6   |
-| y | ne_10m_admin_0_boundary_lines_disputed_areas |                               | 5-6   |
-|   | ne_10m_populated_places                      |                               | 5-6   |
+|   | ne_110m_rivers_lake_centerlines              |                               		| 0-2   |
+|   | ne_110m_lakes                                |                               		| 0-2   |
+| y | ne_110m_admin0_boundary_lines_land           | admin_boundaries_0-2          		| 0-2   |
+|   | ne_50m_rivers_lake_centerlines               |                               		| 3-4   |
+|   | ne_50m_lakes                                 |                               		| 3-4   |
+| y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          		| 3-4   |
+| y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 		| 3-4   |
+| y | ne_50m_admin1_states_provinces_lines         | admin_states_provinces_lines_3-4   | 3-4   |
+|   | ne_50m_populated_places                      |                               		| 3-4   |
+|   | ne_10m_rivers_lake_centerlines               |                               		| 5-6   |
+|   | ne_10m_lakes                                 |                               		| 5-6   |
+|   | ne_10m_geography_regions_points              |                               		| 5-6   |
+|   | ne_10m_lakes_north_america                   |                               		| 5-6   |
+| y | ne_10m_admin_0_boundary_lines_land           | admin_boundaries_5-6          		| 5-6   |
+| y | ne_10m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_5-6 		| 5-6   |
+|   | ne_10m_populated_places                      |                               		| 5-6   |
 |   | ne_10m_admin_1_states_provinces              |                               | 5-6   |
-| y | ne_10m_admin_1_states_provinces_lines        |                               | 5-6   |
+| y | ne_10m_admin_1_states_provinces_lines        | admin_states_provinces_lines_5-20  | 5-20   |
 |   | ne_10m_roads                                 |                               | 5-6   |
 |   | ne_10m_roads_north_america                   |                               | 5-6   |
 |   | ne_10m_parks_and_protected_lands             |                               | 5-6   |
 |   | ne_10m_admin_0_label_points                  |                               | 5-6   |
-| y | ne_10m_admin_1_label_points                  |                               | 5-6   |
+| y | ne_10m_admin_1_label_points                  | admin_label_points_5-20       | 5-20   |
 | y | osm                                          | land_0-9                      | 0-9   |
 | y | osm                                          | land_10-20                    | 10-20 |
 | y | osm                                          | osm_landusages_gen0           | 4-9   |
