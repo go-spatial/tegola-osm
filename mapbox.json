@@ -3137,9 +3137,9 @@
       "id": "admin_statelines6",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "admin_states_provinces_lines_5-6",
+      "source-layer": "admin_states_provinces_lines_5-20",
       "minzoom": 5,
-      "maxzoom": 7,
+      "maxzoom": 20,
       "paint": {
         "line-width": 1,
         "line-color": "rgba(165, 156, 155, 1)",
