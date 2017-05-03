@@ -3694,6 +3694,14 @@
       "source-layer": "admin_label_points_5-20",
       "minzoom": 5,
       "maxzoom": 11,
+      "filter": [
+        "all",
+        [
+          "==",
+          "adm0_sr",
+          1
+        ]
+      ],
       "layout": {
         "text-font": [
           "Open Sans Bold Italic",
