@@ -43,14 +43,12 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 | y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          		| 3-4   |
 | y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 		| 3-4   |
 | y | ne_50m_admin1_states_provinces_lines         | admin_states_provinces_lines_3-4   | 3-4   |
-|   | ne_50m_populated_places                      |                               		| 3-4   |
 |   | ne_10m_rivers_lake_centerlines               |                               		| 5-6   |
 |   | ne_10m_lakes                                 |                               		| 5-6   |
 |   | ne_10m_geography_regions_points              |                               		| 5-6   |
 |   | ne_10m_lakes_north_america                   |                               		| 5-6   |
 | y | ne_10m_admin_0_boundary_lines_land           | admin_boundaries_5-6          		| 5-6   |
 | y | ne_10m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_5-6 		| 5-6   |
-|   | ne_10m_populated_places                      |                               		| 5-6   |
 |   | ne_10m_admin_1_states_provinces              |                               | 5-6   |
 | y | ne_10m_admin_1_states_provinces_lines        | admin_states_provinces_lines_5-20  | 5-20   |
 |   | ne_10m_roads                                 |                               | 5-6   |
