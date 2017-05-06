@@ -20,9 +20,9 @@ set -e
 
 # database connection variables
 DB_NAME="natural_earth"
-DB_HOST=""
-DB_PORT=""
-DB_USER=""
+DB_HOST="localhost"
+DB_PORT="5432"
+DB_USER="arolek"
 DB_PW=""
 
 # array of natural earth dataset URLs
@@ -33,8 +33,10 @@ DB_PW=""
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_1_states_provinces_lines.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_disputed_areas.zip"
-	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_label_points.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip"
+
 )
 
 # remove old database if it exists, create a new one and add the postgis extension
