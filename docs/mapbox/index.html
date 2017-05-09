@@ -14,37 +14,17 @@
 	<body>
 	<div id='map'></div>
 	<script>
-		// starting position
-		var center = {
-			lat: 32.72269876352742,
-			lng: -117.15117725013909
-		};
-		// starting zoom
-		var zoom = 15;
-
-		//	center recreation
-		if (window.location.hash){
-			var parts = window.location.hash.split(',');
-			if (parts.length == 3) {
-				zoom = parts[0].replace('#','');
-				center.lng = parts[1];
-				center.lat = parts[2];
-			};
-		}
-
 		//	init map
-		mapboxgl.accessToken = 'pk.eyJ1IjoiYXJvbGVrIiwiYSI6IkFqeVVOUnMifQ.JPIIcBsgdLn3ZcUNVMMN-g';
 		var map = new mapboxgl.Map({
 			container: 'map', // container id
 			style: 'js/mapbox.json',
-			center: [center.lng, center.lat], 
-			zoom: zoom 
+			center: [-117.15117725013909, 32.72269876352742], 
+			zoom: 15,
+			hash: true 
 		});
 
-		//	update url hash on moveend
-		map.on('moveend', function (e) {
-			window.location.hash = parseFloat(map.getZoom()).toFixed(2) + ',' + parseFloat(map.getCenter().lng).toFixed(5) + ',' + parseFloat(map.getCenter().lat).toFixed(5);
-		});
+		// Add zoom and rotation controls to the map.
+		map.addControl(new mapboxgl.NavigationControl());
 	</script>
 	</body>
 </html>
