@@ -3787,7 +3787,8 @@
               1
             ]
           ]
-        }
+        },
+        "text-field": "{name}"
       },
       "paint": {
         "text-color": "rgba(68, 51, 85, 1)",
