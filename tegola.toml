@@ -207,7 +207,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	[[maps.layers]]
 	provider_layer = "ne.admin_countries_3-7"
 	min_zoom = 3
-	max_zoom = 4
+	max_zoom = 7
 
 	[[maps.layers]]
 	provider_layer = "ne.admin_boundaries_3-4"
