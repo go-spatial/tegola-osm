@@ -56,6 +56,7 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 |   | ne_10m_parks_and_protected_lands             |                               | 5-6   |
 |   | ne_10m_admin_0_countries                     | admin_countries_3-7           | 3-7   |
 | y | ne_10m_admin_1_label_points                  | admin_label_points_5-20       | 5-20   |
+| y | ne_10m_admin_0_label_points                  | admin_0_label_points_3-20       | 3-20   |
 | y | osm                                          | land_0-9                      | 0-9   |
 | y | osm                                          | land_10-20                    | 10-20 |
 | y | osm                                          | osm_landusages_gen0           | 4-9   |
