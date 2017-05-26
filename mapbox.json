@@ -3735,68 +3735,8 @@
         "text-halo-width": 2,
         "text-halo-blur": 0
       }
-    },
-    {
-      "id": "country_labels",
-      "type": "symbol",
-      "source": "tegola-osm",
-      "source-layer": "admin_countries_3-7",
-      "minzoom": 3,
-      "maxzoom": 8,
-      "layout": {
-        "text-font": [
-          "Open Sans Bold",
-          "Arial Unicode MS Regular"
-        ],
-        "text-size": {
-          "stops": [
-            [
-              3,
-              9
-            ],
-            [
-              8,
-              14
-            ]
-          ]
-        },
-        "text-max-width": {
-          "stops": [
-            [
-              3,
-              40
-            ],
-            [
-              8,
-              80
-            ]
-          ]
-        },
-        "text-letter-spacing": {
-          "stops": [
-            [
-              3,
-              0
-            ],
-            [
-              7,
-              1
-            ],
-            [
-              8,
-              1
-            ]
-          ]
-        },
-        "text-field": "{name}"
-      },
-      "paint": {
-        "text-color": "rgba(68, 51, 85, 1)",
-        "text-halo-width": 1,
-        "text-halo-color": "rgba(255, 255, 255, 1)",
-        "text-halo-blur": 38
-      }
     }
+    
   ],
   "id": "ciwf4zbsv007y2pmt2rspc1dc",
   "owner": ""
