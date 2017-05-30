@@ -6,8 +6,8 @@ name = "osm"
 type = "postgis"
 host = ""
 port = 5432
-database = ""
-user = ""
+database = "osm"
+user = "tegola"
 password = ""
 
 	[[providers.layers]]
@@ -32,13 +32,13 @@ password = ""
 	name = "land_0-9"
 	geometry_fieldname = "geometry"
 	id_fieldname = "fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, fid FROM simplified_land_polygons WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid FROM simplified_land_polygons WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "land_10-20"
 	geometry_fieldname = "geometry"
 	id_fieldname = "fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, fid FROM land_polygons WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid FROM land_polygons WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "buildings"
@@ -136,8 +136,8 @@ name = "ne"
 type = "postgis"
 host = ""
 port = 5432
-database = ""
-user = ""
+database = "natural_earth"
+user = "tegola"
 password = ""
 
 	[[providers.layers]]
@@ -162,7 +162,7 @@ password = ""
 	name = "admin_boundaries_disputed_3-4"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, nameå FROM ne_50m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_50m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "admin_states_provinces_lines_3-4"
@@ -189,7 +189,13 @@ password = ""
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, name FROM ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_label_points_5-6"
+	name = "admin_label_points_3-20"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, name, adm0_sr, datarank FROM ne_10m_admin_0_label_points WHERE wkb_geometry && !BBOX!"
+
+	[[providers.layers]]
+	name = "admin_label_points_5-20"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, name, adm0_sr, datarank FROM ne_10m_admin_1_label_points WHERE wkb_geometry && !BBOX!"
@@ -240,9 +246,14 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	max_zoom = 6
 
 	[[maps.layers]]
-	provider_layer = "ne.admin_label_points_5-6"
+	provider_layer = "ne.admin_label_points_3-20"
+	min_zoom = 3
+	max_zoom = 20
+
+	[[maps.layers]]
+	provider_layer = "ne.admin_label_points_5-20"
 	min_zoom = 5
-	max_zoom = 6
+	max_zoom = 20
 
 	[[maps.layers]]
 	provider_layer = "osm.land_0-9"
