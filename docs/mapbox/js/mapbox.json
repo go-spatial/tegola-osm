@@ -3741,7 +3741,7 @@
       "id": "country_labels",
        "type": "symbol",
        "source": "tegola-osm",
-       "source-layer": "admin_0_label_points_3-20",
+       "source-layer": "admin_label_points_3-20",
        "minzoom": 3,
        "maxzoom": 8,
        "layout": {
