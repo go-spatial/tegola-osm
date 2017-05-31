@@ -3689,6 +3689,7 @@
     },
     {
       "id": "state_labels",
+	  
       "type": "symbol",
       "source": "tegola-osm",
       "source-layer": "admin_label_points_5-20",
@@ -3737,65 +3738,65 @@
       }
     },
 	{
- -      "id": "country_labels",
- -      "type": "symbol",
- -      "source": "tegola-osm",
- -      "source-layer": "admin_0_label_points_3-20",
- -      "minzoom": 3,
- -      "maxzoom": 8,
- -      "layout": {
- -        "text-font": [
- -          "Open Sans Bold",
- -          "Arial Unicode MS Regular"
- -        ],
- -        "text-size": {
- -          "stops": [
- -            [
- -              3,
- -              9
- -            ],
- -            [
- -              8,
- -              14
- -            ]
- -          ]
- -        },
- -        "text-max-width": {
- -          "stops": [
- -            [
- -              3,
- -              40
- -            ],
- -            [
- -              8,
- -              80
- -            ]
- -          ]
- -        },
- -        "text-letter-spacing": {
- -          "stops": [
- -            [
- -              3,
- -              0
- -            ],
- -            [
- -              7,
- -              1
- -            ],
- -            [
- -              8,
- -              1
- -            ]
- -          ]
- -        },
- -        "text-field": "{name}"
- -      },
- -      "paint": {
- -        "text-color": "rgba(68, 51, 85, 1)",
- -        "text-halo-width": 1,
- -        "text-halo-color": "rgba(255, 255, 255, 1)",
- -        "text-halo-blur": 38
- -      }
+      "id": "country_labels",
+       "type": "symbol",
+       "source": "tegola-osm",
+       "source-layer": "admin_0_label_points_3-20",
+       "minzoom": 3,
+       "maxzoom": 8,
+       "layout": {
+         "text-font": [
+           "Open Sans Bold",
+           "Arial Unicode MS Regular"
+         ],
+         "text-size": {
+           "stops": [
+             [
+               3,
+               9
+             ],
+             [
+               8,
+               14
+             ]
+           ]
+         },
+         "text-max-width": {
+           "stops": [
+             [
+               3,
+               40
+             ],
+             [
+               8,
+               80
+             ]
+           ]
+         },
+         "text-letter-spacing": {
+           "stops": [
+             [
+               3,
+               0
+             ],
+             [
+               7,
+               1
+             ],
+             [
+               8,
+               1
+             ]
+           ]
+         },
+         "text-field": "{name}"
+       },
+       "paint": {
+         "text-color": "rgba(68, 51, 85, 1)",
+         "text-halo-width": 1,
+         "text-halo-color": "rgba(255, 255, 255, 1)",
+         "text-halo-blur": 38
+       }
 	}
     
   ],
