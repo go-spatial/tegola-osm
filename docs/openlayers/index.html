@@ -12,14 +12,29 @@
 		<style>
 			body { margin:0; padding:0; }
 			#map { position:absolute; top:0; bottom:0; width:100%; }
+      #switch-styles { position: absolute; bottom: 0px; left; 10px; }
+      .switch-style { width: 50px; height: 50px; background: #ccc; opacity: 0.8; float: left; margin: 0 1em 0; text-align: center; font-size: 14px;padding: 1em;  cursor: pointer; border: 1px solid #cecece; border-bottom: none;}
+      .switch-style.osm { background: #f7f6f1; }
+      .switch-style.camo{ background: #576759; }
 		</style>
 	</head>
 	<body>
 	<div id='map'></div>
+  <div id="switch-styles">
+    <div class="switch-style camo" onClick="switchStyle('camo');">Camo</div>
+    <div class="switch-style osm" onClick="switchStyle('mapbox');">OSM</div>
+  </div>
 	<script>
     var map = olms.apply('map', 'js/mapbox.json');
     map.getView().setCenter(ol.proj.fromLonLat([-117.15117725013909, 32.72269876352742]));
     map.getView().setZoom(15);
+
+    var switchStyle = function(style) {
+      map.getLayers().getArray().forEach(function(layer) {
+        map.removeLayer(layer);
+      });
+      map = olms.apply(map, 'js/'+style+'.json');
+    }
 	</script>
 	</body>
 </html>
