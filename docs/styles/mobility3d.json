@@ -1936,21 +1936,54 @@
       }
     },
     {
-      "id": "building",
-      "type": "fill",
+      "id": "building_tilt_na",
+      "type": "fill-extrusion",
       "source": "tegola-osm",
       "source-layer": "buildings",
       "minzoom": 0,
       "maxzoom": 24,
       "filter": [
-        "all"
+        "all",
+        [
+          "!has",
+          "height"
+        ]
       ],
       "layout": {
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(188, 191, 184, 1)",
-        "fill-outline-color": "rgba(167, 167, 148, 1)"
+        "fill-extrusion-color": "rgba(166, 169, 162, 0.9)",
+        "fill-extrusion-height": 5,
+        "fill-extrusion-base": 0,
+        "fill-extrusion-opacity": 1
+      }
+    },
+    {
+      "id": "building_tilt",
+      "type": "fill-extrusion",
+      "source": "tegola-osm",
+      "source-layer": "buildings",
+      "minzoom": 0,
+      "maxzoom": 24,
+      "filter": [
+        "any",
+        [
+          "has",
+          "height"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-extrusion-color": "rgba(166, 169, 162, 0.9)",
+        "fill-extrusion-height": {
+          "property": "height",
+          "type": "identity"
+        },
+        "fill-extrusion-base": 0,
+        "fill-extrusion-opacity": 1
       }
     }
   ],

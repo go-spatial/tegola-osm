@@ -26,7 +26,7 @@ var mapbox = {
   init: function() {
     map = new mapboxgl.Map({
       container: 'map', // container id
-      style: '/styles/'+currentStyle+'.json',
+      style: '/styles/'+currentStyle+'3d.json',
       center: [-117.15117725013909, 32.72269876352742], 
       zoom: 15,
       hash: true 
@@ -34,7 +34,7 @@ var mapbox = {
     map.addControl(new mapboxgl.NavigationControl());
   },
   switchStyle: function(style) {
-    map.setStyle('/styles/'+style+'.json');
+    map.setStyle('/styles/'+style+'3d.json');
     if(style === 'night-vision3d') {
     }
   }
