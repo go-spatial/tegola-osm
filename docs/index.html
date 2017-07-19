@@ -35,6 +35,12 @@
   </div>
 	<script>
     var map, currentLib;
+    openLayersSatellite = new ol.layer.Tile({
+                title: 'DigitalGlobe Maps API: Recent Imagery',
+                source: new ol.source.XYZ({
+                                    url: 'http://api.tiles.mapbox.com/v4/digitalglobe.nal0g75k/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg', // You will need to replace the 'access_token' and 'Map ID' values with your own. http://developer.digitalglobe.com/docs/maps-api
+                attribution: "© DigitalGlobe, Inc"
+                                })})
     var openlayers = {
       init: function() {
         map = olms.apply('map', '/styles/mapbox.json');
@@ -46,8 +52,12 @@
           map.removeLayer(layer);
         });
         map = olms.apply(map, '/styles/'+style+'.json');
+        if(style === 'night-vision3d') {
+          map.addLayer(openLayersSatellite);
+        }
       }
     }
+    mapboxgl.accessToken = 'pk.eyJ1IjoiamowaG5zMG4iLCJhIjoiY2o1YjRtMjZpMGd2MDJ3bW00bnA5NXdyMiJ9.qlR4a_qfTlKZs1Qisk6sAg';
     var mapbox = {
       init: function() {
         map = new mapboxgl.Map({
@@ -61,6 +71,8 @@
       },
       switchStyle: function(style) {
         map.setStyle('/styles/'+style+'.json');
+        if(style === 'night-vision3d') {
+        }
       }
     };
     var switchLib = function(lib) {
