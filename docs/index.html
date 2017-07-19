@@ -16,9 +16,10 @@
 			#map { position:absolute; top:0; bottom:0; width:100%; }
       #switch-libs{ position: absolute; bottom: 0px; right: 80px; }
       #switch-styles { position: absolute; bottom: 0px; left; 10px; }
-      .switch-style { width: 50px; height: 50px; background: #ccc; opacity: 0.8; float: left; margin: 0 1em 0; text-align: center; font-size: 14px;padding: 1em;  cursor: pointer; border: 1px solid #cecece; border-bottom: none;}
-      .switch-style.osm { background: #f7f6f1; }
-      .switch-style.camo{ background: #576759; }
+      .switch-style { width: 50px; height: 50px; background: #ccc; opacity: 0.8; float: left; margin: 0 1em 0; text-align: center; font-size: 14px;padding: 1em;  cursor: pointer; border: 1px solid #cecece; border-bottom: none; background: #f7f6f1;}
+      .switch-style.osm { background: url('/images/osm.png')}
+      .switch-style.camo{ background: url('/images/camo.png')}
+      .switch-style.night-vision{ background: url('/images/night-vision.png')}
 		</style>
 	</head>
 	<body>
@@ -26,15 +27,15 @@
   <div id="switch-styles">
     <div class="switch-style camo" onClick="switchStyle('camo');">Camo</div>
     <div class="switch-style osm" onClick="switchStyle('mapbox');">OSM</div>
-    <div class="switch-style osm" onClick="switchStyle('mobility');">Mobility</div>
-    <div class="switch-style osm" onClick="switchStyle('night-vision3d');">Night Vision</div>
+    <div class="switch-style" onClick="switchStyle('mobility');">Mobility</div>
+    <div class="switch-style night-vision" onClick="switchStyle('night-vision3d');">Night Vision</div>
   </div>
   <div id="switch-libs">
-    <div class="switch-style osm" onClick="switchLib(mapbox);">Mapbox GL</div>
-    <div class="switch-style osm" onClick="switchLib(openlayers);">Open Layers 3</div>
+    <div class="switch-style" onClick="switchLib(mapbox);">Mapbox GL</div>
+    <div class="switch-style" onClick="switchLib(openlayers);">Open Layers 3</div>
   </div>
 	<script>
-    var map, currentLib;
+    var map, currentLib, currentStyle;
     openLayersSatellite = new ol.layer.Tile({
                 title: 'DigitalGlobe Maps API: Recent Imagery',
                 source: new ol.source.XYZ({
@@ -43,7 +44,7 @@
                                 })})
     var openlayers = {
       init: function() {
-        map = olms.apply('map', '/styles/mapbox.json');
+        map = olms.apply('map', '/styles/'+currentStyle+'.json');
         map.getView().setCenter(ol.proj.fromLonLat([-117.15117725013909, 32.72269876352742]));
         map.getView().setZoom(15);
       },
@@ -62,7 +63,7 @@
       init: function() {
         map = new mapboxgl.Map({
           container: 'map', // container id
-          style: '/styles/mapbox.json',
+          style: '/styles/'+currentStyle+'.json',
           center: [-117.15117725013909, 32.72269876352742], 
           zoom: 15,
           hash: true 
@@ -81,9 +82,11 @@
       lib.init();
     }
     var switchStyle = function(style) {
+      currentStyle = style;
       currentLib.switchStyle(style);
     }
     currentLib = mapbox;
+    currentStyle = 'mapbox';
     mapbox.init();
 	</script>
 	</body>
