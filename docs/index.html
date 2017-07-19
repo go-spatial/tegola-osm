@@ -36,10 +36,10 @@
   </div>
 	<script>
     var map, currentLib, currentStyle;
-    openLayersSatellite = new ol.layer.Tile({
+    var openLayersSatellite = new ol.layer.Tile({
                 title: 'DigitalGlobe Maps API: Recent Imagery',
                 source: new ol.source.XYZ({
-                                    url: 'http://api.tiles.mapbox.com/v4/digitalglobe.nal0g75k/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg', // You will need to replace the 'access_token' and 'Map ID' values with your own. http://developer.digitalglobe.com/docs/maps-api
+                                    url: 'http://api.tiles.mapbox.com/v4/digitalglobe.nal0g75k/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg',
                 attribution: "© DigitalGlobe, Inc"
                                 })})
     var openlayers = {
