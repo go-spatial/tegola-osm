@@ -23,6 +23,8 @@
   <div id="switch-styles">
     <div class="switch-style camo" onClick="switchStyle('camo');">Camo</div>
     <div class="switch-style osm" onClick="switchStyle('mapbox');">OSM</div>
+    <div class="switch-style osm" onClick="switchStyle('mobility');">Mobility</div>
+    <div class="switch-style osm" onClick="switchStyle('night-vision3d');">Night Vision</div>
   </div>
 	<script>
     var map = olms.apply('map', 'js/mapbox.json');
@@ -33,7 +35,7 @@
       map.getLayers().getArray().forEach(function(layer) {
         map.removeLayer(layer);
       });
-      map = olms.apply(map, 'js/'+style+'.json');
+      map = olms.apply(map, '/styles/'+style+'.json');
     }
 	</script>
 	</body>
