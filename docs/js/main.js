@@ -34,7 +34,7 @@ var mapbox = {
     map.addControl(new mapboxgl.NavigationControl());
   },
   switchStyle: function(style) {
-    map.setStyle('/styles/'+style+'.json');
+    map.setStyle('/styles/'+style+'3d.json');
     if(style === 'night-vision3d') {
     }
   }
