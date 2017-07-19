@@ -11,16 +11,7 @@
 		<script src='js/olms.js'></script>
 		<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.js'></script>
 		<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.32.1/mapbox-gl.css' rel='stylesheet' />
-		<style>
-			body { margin:0; padding:0; }
-			#map { position:absolute; top:0; bottom:0; width:100%; }
-      #switch-libs{ position: absolute; bottom: 0px; right: 80px; }
-      #switch-styles { position: absolute; bottom: 0px; left; 10px; }
-      .switch-style { width: 50px; height: 50px; background: #ccc; opacity: 0.8; float: left; margin: 0 1em 0; text-align: center; font-size: 14px;padding: 1em;  cursor: pointer; border: 1px solid #cecece; border-bottom: none; background: #f7f6f1;}
-      .switch-style.osm { background: url('/images/osm.png')}
-      .switch-style.camo{ background: url('/images/camo.png')}
-      .switch-style.night-vision{ background: url('/images/night-vision.png')}
-		</style>
+		<link href='/css/main.css' rel='stylesheet' />
 	</head>
 	<body>
 	<div id='map'></div>
@@ -31,63 +22,9 @@
     <div class="switch-style night-vision" onClick="switchStyle('night-vision3d');">Night Vision</div>
   </div>
   <div id="switch-libs">
-    <div class="switch-style" onClick="switchLib(mapbox);">Mapbox GL</div>
-    <div class="switch-style" onClick="switchLib(openlayers);">Open Layers 3</div>
+    <div class="switch-style ol3" onClick="switchLib(mapbox);"><img src="/images/mapbox-logo.png" width="50"></div>
+    <div class="switch-style mapbox" onClick="switchLib(openlayers);"><img src="/images/ol3-logo.png" width="50"</div>
   </div>
-	<script>
-    var map, currentLib, currentStyle;
-    var openLayersSatellite = new ol.layer.Tile({
-                title: 'DigitalGlobe Maps API: Recent Imagery',
-                source: new ol.source.XYZ({
-                                    url: 'http://api.tiles.mapbox.com/v4/digitalglobe.nal0g75k/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg',
-                attribution: "© DigitalGlobe, Inc"
-                                })})
-    var openlayers = {
-      init: function() {
-        map = olms.apply('map', '/styles/'+currentStyle+'.json');
-        map.getView().setCenter(ol.proj.fromLonLat([-117.15117725013909, 32.72269876352742]));
-        map.getView().setZoom(15);
-      },
-      switchStyle: function(style) {
-        map.getLayers().getArray().forEach(function(layer) {
-          map.removeLayer(layer);
-        });
-        map = olms.apply(map, '/styles/'+style+'.json');
-        if(style === 'night-vision3d') {
-          map.addLayer(openLayersSatellite);
-        }
-      }
-    }
-    mapboxgl.accessToken = 'pk.eyJ1IjoiamowaG5zMG4iLCJhIjoiY2o1YjRtMjZpMGd2MDJ3bW00bnA5NXdyMiJ9.qlR4a_qfTlKZs1Qisk6sAg';
-    var mapbox = {
-      init: function() {
-        map = new mapboxgl.Map({
-          container: 'map', // container id
-          style: '/styles/'+currentStyle+'.json',
-          center: [-117.15117725013909, 32.72269876352742], 
-          zoom: 15,
-          hash: true 
-        });
-        map.addControl(new mapboxgl.NavigationControl());
-      },
-      switchStyle: function(style) {
-        map.setStyle('/styles/'+style+'.json');
-        if(style === 'night-vision3d') {
-        }
-      }
-    };
-    var switchLib = function(lib) {
-      currentLib = lib;
-      document.getElementById('map').innerHTML = '';
-      lib.init();
-    }
-    var switchStyle = function(style) {
-      currentStyle = style;
-      currentLib.switchStyle(style);
-    }
-    currentLib = mapbox;
-    currentStyle = 'mapbox';
-    mapbox.init();
-	</script>
+		<script src='js/main.js'></script>
 	</body>
 </html>
