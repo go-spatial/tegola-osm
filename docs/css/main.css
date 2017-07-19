@@ -37,11 +37,11 @@ body {
   box-shadow: 6px -6px 15px -10px rgba(0,0,0,0.75);
 }
 .switch-style.osm {
-  background: url('/images/osm.png')
+  background: url('../images/osm.png')
 }
 .switch-style.camo{
-  background: url('/images/camo.png')
+  background: url('../images/camo.png')
 }
 .switch-style.night-vision{
-  background: url('/images/night-vision.png')
+  background: url('../images/night-vision.png')
 }
