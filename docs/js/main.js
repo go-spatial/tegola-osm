@@ -43,7 +43,7 @@ var mapbox = {
   init: function() {
     map = new mapboxgl.Map({
       container: 'map', // container id
-      style: 'styles/'+currentStyle+'.json',
+      style: '/styles/'+currentStyle+'3d.json',
       center: config.startingCenter, 
       zoom: config.startingZoom,
       hash: true 
@@ -51,7 +51,7 @@ var mapbox = {
     map.addControl(new mapboxgl.NavigationControl());
   },
   switchStyle: function(style) {
-    map.setStyle('styles/'+style+'.json');
+    map.setStyle('/styles/'+style+'3d.json');
     //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
     if(style === 'night-vision3d') {
     }
