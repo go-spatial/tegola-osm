@@ -1,41 +1,96 @@
+'use strict'
+
+var config = {
+  mapboxAccessToken: 'pk.eyJ1IjoiamowaG5zMG4iLCJhIjoiY2o1YjRtMjZpMGd2MDJ3bW00bnA5NXdyMiJ9.qlR4a_qfTlKZs1Qisk6sAg',
+  digitalGlobeAccessToken: 'pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg',
+  digitalGlobeMapId:'digitalglobe.nal0g75k',
+  startingCenter: [-117.15117725013909, 32.72269876352742],
+  startingZoom: 15,
+  mapboxStyle: function(style) {
+    return '/styles/'+style+'3d.json';
+  },
+  ol3Style: function(style) {
+    return '/styles/'+style+'.json';
+  }
+};
+
 var map, currentLib, currentStyle;
-var openLayersSatellite = new ol.layer.Tile({
-            title: 'DigitalGlobe Maps API: Recent Imagery',
-            source: new ol.source.XYZ({
-                                url: 'http://api.tiles.mapbox.com/v4/digitalglobe.nal0g75k/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZGlnaXRhbGdsb2JlIiwiYSI6ImNqNWIyMHkxdzBmNGczNG55bGNhc2tlcncifQ.lQXsl-GCFgJWmIKEeaRpPg',
-            attribution: "© DigitalGlobe, Inc"
-                            })})
+
 var openlayers = {
+  openLayersSatellite: new ol.layer.Tile({
+    title: 'DigitalGlobe Maps API: Recent Imagery',
+    source: new ol.source.XYZ({
+      url: 'http://api.tiles.mapbox.com/v4/'+config.digitalGlobeMapId+'/{z}/{x}/{y}.png?access_token='+config.digitalGlobeAccessToken,
+      attribution: "© DigitalGlobe, Inc"
+    })
+  }),
   init: function() {
-    map = olms.apply('map', '/styles/'+currentStyle+'.json');
-    map.getView().setCenter(ol.proj.fromLonLat([-117.15117725013909, 32.72269876352742]));
-    map.getView().setZoom(15);
+    map = olms.apply('map', config.ol3Style(currentStyle));
+    map.getView().setCenter(ol.proj.fromLonLat(config.startingCenter));
+    map.getView().setZoom(config.startingZoom);
+
+    if (window.location.hash !== '') {
+    // try to restore center, zoom-level and rotation from the URL
+      var hash = window.location.hash.replace('#', '');
+      var parts = hash.split('/');
+      if (parts.length === 3) {
+        var zoom = Math.ceil(parts[0]);
+        var center = [
+        parseFloat(parts[2]),
+        parseFloat(parts[1])
+        ];
+      }
+      map.getView().setCenter(ol.proj.fromLonLat(center));
+      map.getView().setZoom(zoom);
+    }
+
+		map.getView().on('propertychange', function(e) {
+      openlayers.updateHash();
+    });
   },
   switchStyle: function(style) {
     map.getLayers().getArray().forEach(function(layer) {
       map.removeLayer(layer);
     });
-    map = olms.apply(map, '/styles/'+style+'.json');
-    if(style === 'night-vision3d') {
-      map.addLayer(openLayersSatellite);
+    map = olms.apply(map, config.ol3Style(style));
+    //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
+    //  bonus: build the style buttons from the config on app init
+    if(style === 'night-vision') {
+      map.addLayer(this.openLayersSatellite);
     }
+  },
+  updateHash: function() {
+    var view = map.getView();
+    var center = view.getCenter();
+    var lonLat = ol.proj.toLonLat(center);
+    var hash = '#' +
+      view.getZoom() + '/' +
+      lonLat[1] + '/' +
+      lonLat[0];
+    var state = {
+      zoom: view.getZoom(),
+      center: view.getCenter()
+    };
+    window.history.pushState(state, 'map', hash);
   }
 }
-mapboxgl.accessToken = 'pk.eyJ1IjoiamowaG5zMG4iLCJhIjoiY2o1YjRtMjZpMGd2MDJ3bW00bnA5NXdyMiJ9.qlR4a_qfTlKZs1Qisk6sAg';
+
 var mapbox = {
   init: function() {
+    mapboxgl.accessToken = config.mapboxAccessToken;
     map = new mapboxgl.Map({
       container: 'map', // container id
-      style: '/styles/'+currentStyle+'3d.json',
-      center: [-117.15117725013909, 32.72269876352742], 
-      zoom: 15,
-      hash: true 
+      style: config.mapboxStyle(currentStyle),
+      center: config.startingCenter,
+      zoom: config.startingZoom,
+      hash: true
     });
     map.addControl(new mapboxgl.NavigationControl());
   },
   switchStyle: function(style) {
-    map.setStyle('/styles/'+style+'3d.json');
-    if(style === 'night-vision3d') {
+    map.setStyle(config.mapboxStyle(style));
+    //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
+    if(style === 'night-vision') {
     }
   }
 };
@@ -50,4 +105,4 @@ var switchStyle = function(style) {
 }
 currentLib = mapbox;
 currentStyle = 'mapbox';
-mapbox.init();
+currentLib.init();

@@ -38,13 +38,13 @@ body {
   font-weight: 400;
 }
 .switch-style.osm {
-  background: url('/images/osm.png')
+  background: url('../images/osm.png')
 }
 .switch-style.camo{
-  background: url('/images/camo.png')
+  background: url('../images/camo.png')
 }
 .switch-style.night-vision{
-  background: url('/images/night-vision.png')
+  background: url('../images/night-vision.png')
 }
 .switch-style.mobility{
   background: url('/images/mobility.png')
