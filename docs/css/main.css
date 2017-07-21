@@ -47,5 +47,8 @@ body {
   background: url('../images/night-vision.png')
 }
 .switch-style.mobility{
-  background: url('/images/mobility.png')
+  background: url('../images/mobility.png')
+}
+.switch-style.osgeo{
+  background: url('../images/osgeo.png')
 }
