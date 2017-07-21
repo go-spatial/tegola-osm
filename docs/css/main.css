@@ -8,6 +8,11 @@ body {
   bottom:0;
   width:100%;
 }
+#switch-city{
+  position: absolute;
+  top: 20px;
+  right: 80px;
+}
 #switch-libs{
   position: absolute;
   bottom: 0px;

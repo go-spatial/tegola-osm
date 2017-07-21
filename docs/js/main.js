@@ -72,6 +72,10 @@ var openlayers = {
       center: view.getCenter()
     };
     window.history.pushState(state, 'map', hash);
+  },
+  updatePosition: function(lat, lon, zoom) {
+    map.getView().setCenter(ol.proj.fromLonLat([lon,lat]));
+    map.getView().setZoom(zoom);
   }
 }
 
@@ -92,6 +96,10 @@ var mapbox = {
     //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
     if(style === 'night-vision') {
     }
+  },
+  updatePosition: function(lat, lon, zoom) {
+    map.setCenter([lon, lat]);
+    map.setZoom(zoom);
   }
 };
 var switchLib = function(lib) {
@@ -103,6 +111,10 @@ var switchStyle = function(style) {
   currentStyle = style;
   currentLib.switchStyle(style);
 }
+document.getElementById('city-switch').addEventListener('change', function(event) {
+  var coordinates = this.value.split(",")
+  currentLib.updatePosition(parseFloat(coordinates[0]), parseFloat(coordinates[1]), 12);
+})
 currentLib = mapbox;
 currentStyle = 'mapbox';
 currentLib.init();
