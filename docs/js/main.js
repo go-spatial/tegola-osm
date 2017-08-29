@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var config = {
   mapboxAccessToken: 'pk.eyJ1IjoiamowaG5zMG4iLCJhIjoiY2o1YjRtMjZpMGd2MDJ3bW00bnA5NXdyMiJ9.qlR4a_qfTlKZs1Qisk6sAg',
@@ -11,10 +11,12 @@ var config = {
   },
   ol3Style: function(style) {
     return '/styles/'+style+'.json';
-  }
+  },
+  lambda: "https://tegola.mojodna.net/capabilities/osm.json?debug=true",
+  ec2: "http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
 };
 
-var map, currentLib, currentStyle;
+var map, currentLib, currentStyle, currentServer;
 
 var openlayers = {
   openLayersSatellite: new ol.layer.Tile({
@@ -92,7 +94,10 @@ var mapbox = {
     map.addControl(new mapboxgl.NavigationControl());
   },
   switchStyle: function(style) {
-    map.setStyle(config.mapboxStyle(style));
+    d3.json(config.mapboxStyle(style), function(error, data) {
+      data.sources["tegola-osm"].url = currentServer;
+      map.setStyle(data)
+    });
     //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
     if(style === 'night-vision') {
     }
@@ -111,10 +116,18 @@ var switchStyle = function(style) {
   currentStyle = style;
   currentLib.switchStyle(style);
 }
+var switchServer = function(type) {
+  currentServer = config[type];
+  currentLib.switchStyle(currentStyle);
+}
+document.getElementById('server-switch').addEventListener('change', function(event) {
+  switchServer(this.value);
+})
 document.getElementById('city-switch').addEventListener('change', function(event) {
   var coordinates = this.value.split(",")
   currentLib.updatePosition(parseFloat(coordinates[0]), parseFloat(coordinates[1]), 12);
 })
 currentLib = mapbox;
 currentStyle = 'mapbox';
+currentServer = 'ec2';
 currentLib.init();
