@@ -8,6 +8,11 @@ body {
   bottom:0;
   width:100%;
 }
+#switch-server{
+  position: absolute;
+  top: 20px;
+  left: 40px;
+}
 #switch-city{
   position: absolute;
   top: 20px;
