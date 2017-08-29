@@ -12,7 +12,7 @@ var config = {
   ol3Style: function(style) {
     return '/styles/'+style+'.json';
   },
-  lambda: "https://tegola.mojodna.net/capabilities/osm.json?debug=true",
+  lambda: "https://d39scxemoxfvki.cloudfront.net/capabilities/osm.json?debug=true"
   ec2: "http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
 };
 
