@@ -59,25 +59,25 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 | y | ne_10m_admin_0_label_points                  | admin_0_label_points_3-20       | 3-20   |
 | y | osm                                          | land_0-9                      | 0-9   |
 | y | osm                                          | land_10-20                    | 10-20 |
-| y | osm                                          | osm_landusages_gen0           | 4-9   |
-| y | osm                                          | osm_landusages_gen1           | 10-12 |
-| y | osm                                          | osm_landusages                | 13-20 |
-| y | osm                                          | osm_waterways_gen0            | 8-12  |
-| y | osm                                          | osm_waterways_gen1            | 13-14 |
-| y | osm                                          | osm_waterways                 | 15-20 |
-| y | osm                                          | osm_waterareas_gen0           | 4-9   |
-| y | osm                                          | osm_waterareas_gen1           | 10-12 |
-| y | osm                                          | osm_waterareas                | 13-20 |
+| y | osm                                          | landusages_gen0           | 4-9   |
+| y | osm                                          | landusages_gen1           | 10-12 |
+| y | osm                                          | landusages                | 13-20 |
+| y | osm                                          | waterways_gen0            | 8-12  |
+| y | osm                                          | waterways_gen1            | 13-14 |
+| y | osm                                          | waterways                 | 15-20 |
+| y | osm                                          | waterareas_gen0           | 4-9   |
+| y | osm                                          | waterareas_gen1           | 10-12 |
+| y | osm                                          | waterareas                | 13-20 |
 | y | osm                                          | boundaries_polygon            | 5-20  |
 |   | osm                                          | barriers_lines                | 16-20 |
 |   | osm                                          | barriers_points               | 17-20 |
 | y | osm                                          | buildings_polygons            | 14-20 |
 |   | osm                                          | military_polygons             | 4-20  |
-| y | osm                                          | osm_roads_gen0                | 5-8   |
-| y | osm                                          | osm_roads_gen1                | 9-10  |
-| y | osm                                          | osm_roads_11-12               | 11-12 |
-| y | osm                                          | osm_roads_13                  | 13    |
-| y | osm                                          | osm_roads_14-20               | 14-20 |
+| y | osm                                          | roads_gen0                | 5-8   |
+| y | osm                                          | roads_gen1                | 9-10  |
+| y | osm                                          | roads_11-12               | 11-12 |
+| y | osm                                          | roads_13                  | 13    |
+| y | osm                                          | roads_14-20               | 14-20 |
 |   | osm                                          | amenities                     | 14-20 |
 |   | osm                                          | aviation_points               | 10-20 |
 |   | osm                                          | aviation_lines                | 14-20 |
