@@ -130,6 +130,12 @@ password = ""
 	id_fieldname = "osm_id"
 	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_waterways WHERE type IN ('river', 'canal', 'stream') AND geometry && !BBOX!"
 
+	[[providers.layers]]
+	name = "amenities"
+	geometry_fieldname = "geometry"
+	id_fieldname = "osm_id"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type FROM osm_amenities AND geometry && !BBOX!"
+
 #	natural earth
 [[providers]]
 name = "ne"
@@ -352,5 +358,10 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 
 	[[maps.layers]]
 	provider_layer = "osm.waterways"
+	min_zoom = 15
+	max_zoom = 20
+
+	[[maps.layers]]
+	provider_layer = "osm.amenities"
 	min_zoom = 15
 	max_zoom = 20

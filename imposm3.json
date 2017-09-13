@@ -559,14 +559,7 @@
             "type": "point",
             "mapping": {
                 "amenity": [
-                    "university",
-                    "school",
-                    "library",
-                    "fuel",
-                    "hospital",
-                    "fire_station",
-                    "police",
-                    "townhall"
+                    "__any__"
                 ]
             }
         },
