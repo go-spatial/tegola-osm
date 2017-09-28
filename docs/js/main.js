@@ -129,5 +129,5 @@ document.getElementById('city-switch').addEventListener('change', function(event
 })
 currentLib = mapbox;
 currentStyle = 'mapbox';
-currentServer = 'ec2';
+currentServer = config['ec2'];
 currentLib.init();
