@@ -1,6 +1,6 @@
 # Tegola OSM
 
-This repo houses instructions and configuration files to aid with standing up an Open Street Map export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
+This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
 
 ## Repo config files
 
