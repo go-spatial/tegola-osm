@@ -1,6 +1,6 @@
 # Tegola OSM
 
-This repo houses instructions and configuration files to aid with standing up an Open Street Map export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
+This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
 
 ## Repo config files
 
@@ -14,7 +14,7 @@ This repo houses instructions and configuration files to aid with standing up an
 - imposm3 ([download](https://imposm.org/static/rel/) - linux only)
 - tegola ([download](https://github.com/terranodo/tegola/releases))
 
-## Download the OSM planent database in PBF format
+## Download the OSM planet database in PBF format
 
 ```bash
 curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
