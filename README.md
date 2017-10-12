@@ -68,7 +68,9 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 | y | osm                                          | waterareas_gen0           | 4-9   |
 | y | osm                                          | waterareas_gen1           | 10-12 |
 | y | osm                                          | waterareas                | 13-20 |
-| y | osm                                          | boundaries_polygon            | 5-20  |
+| y | osm                                          | admin_boundaries_5-10            | 5-10  |
+| y | osm                                          | admin_boundaries_11-12            | 11-12  |
+| y | osm                                          | admin_boundaries_13-20            | 13-20  |
 |   | osm                                          | barriers_lines                | 16-20 |
 |   | osm                                          | barriers_points               | 17-20 |
 | y | osm                                          | buildings_polygons            | 14-20 |
