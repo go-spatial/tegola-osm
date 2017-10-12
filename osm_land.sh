@@ -13,7 +13,7 @@
 #		./osm_land.sh
 #
 # Important
-#	- The tegola config file is expcting these layers to be in the same database as the rest of the OSM data imported using imposm3
+#	- The tegola config file is expecting these layers to be in the same database as the rest of the OSM data imported using imposm3
 #	- This script will drop the tables simplified_land_polygons and land_polygons if they exist and then replace them.
 
 set -e
