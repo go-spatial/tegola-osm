@@ -56,7 +56,7 @@ password = ""
 	name = "landusages_gen0"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area, z_order FROM osm_landusages_gen0 WHERE type IN ('forest','wood','nature reserve') AND geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, area, z_order FROM osm_landusages_gen0 WHERE type IN ('farm','farmland','forest','wood','nature reserve') AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "landusages_gen1"
