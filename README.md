@@ -13,6 +13,7 @@ This repo houses instructions and configuration files to aid with standing up an
 - Postgres server with [PostGIS](http://www.postgis.net) enabled.
 - imposm3 ([download](https://imposm.org/static/rel/) - linux only)
 - tegola ([download](https://github.com/terranodo/tegola/releases))
+- [gdal](http://www.gdal.org/) - required for Natural Earth import
 
 ## Download the OSM planent database in PBF format
 
@@ -25,6 +26,15 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ```bash
 ./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
 ```
+
+## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
+Update the database credentials inside of `natural_earth.sh`, then run: `./natural_earth.sh`. This will downlaod the natural earth dataset and insert it into PostGIS under a database named `natural_earth`. The script is idempotent. 
+
+## Install SQL helper functions
+Execute `postgis_helpers.sql` against your OSM database.
+
+## Setup SQL indexes
+Execute `postgis_index.sql` against your OSM database.
 
 ## Launch tegola 
 
