@@ -1,6 +1,6 @@
 # Tegola OSM
 
-This repo houses instructions and configuration files to aid with standing up an Open Street Map export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
+This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
 
 ## Repo config files
 
@@ -13,8 +13,9 @@ This repo houses instructions and configuration files to aid with standing up an
 - Postgres server with [PostGIS](http://www.postgis.net) enabled.
 - imposm3 ([download](https://imposm.org/static/rel/) - linux only)
 - tegola ([download](https://github.com/terranodo/tegola/releases))
+- [gdal](http://www.gdal.org/) - required for Natural Earth import
 
-## Download the OSM planent database in PBF format
+## Download the OSM planet database in PBF format
 
 ```bash
 curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
@@ -25,6 +26,15 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ```bash
 ./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
 ```
+
+## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
+Update the database credentials inside of `natural_earth.sh`, then run: `./natural_earth.sh`. This will downlaod the natural earth dataset and insert it into PostGIS under a database named `natural_earth`. The script is idempotent. 
+
+## Install SQL helper functions
+Execute `postgis_helpers.sql` against your OSM database.
+
+## Setup SQL indexes
+Execute `postgis_index.sql` against your OSM database.
 
 ## Launch tegola 
 
@@ -68,7 +78,9 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 | y | osm                                          | waterareas_gen0           | 4-9   |
 | y | osm                                          | waterareas_gen1           | 10-12 |
 | y | osm                                          | waterareas                | 13-20 |
-| y | osm                                          | boundaries_polygon            | 5-20  |
+| y | osm                                          | admin_boundaries_5-10            | 5-10  |
+| y | osm                                          | admin_boundaries_11-12            | 11-12  |
+| y | osm                                          | admin_boundaries_13-20            | 13-20  |
 |   | osm                                          | barriers_lines                | 16-20 |
 |   | osm                                          | barriers_points               | 17-20 |
 | y | osm                                          | buildings_polygons            | 14-20 |
