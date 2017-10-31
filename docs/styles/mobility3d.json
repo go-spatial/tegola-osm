@@ -1,6 +1,6 @@
 {
   "version": 8,
-  "name": "mobility",
+  "name": "mobility3d",
   "metadata": {
     "mapbox:autocomposite": false,
     "mapbox:type": "template",
@@ -18,7 +18,7 @@
   "sources": {
     "tegola-osm": {
       "type": "vector",
-      "url": "http://tegola-cdn.terranodo.io/capabilities/osm.json?debug=true"
+      "url": "http://osm.tegola.io/capabilities/osm.json?debug=true"
     }
   },
   "sprite": "https://petersongis.github.io/Mobility/Spritesheets",
@@ -39,36 +39,12 @@
       }
     },
     {
-      "id": "waterareas",
+      "id": "water_areas",
       "type": "fill",
       "source": "tegola-osm",
-      "source-layer": "waterareas",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "rgba(165, 167, 162, 1)"
-      }
-    },
-    {
-      "id": "waterareas_gen1",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "waterareas_gen1",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "rgba(165, 167, 162, 1)"
-      }
-    },
-    {
-      "id": "waterareas_gen0",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "waterareas_gen0",
+      "source-layer": "water_areas",
       "minzoom": 7,
-      "maxzoom": 9,
+      "maxzoom": 24,
       "layout": {
         "visibility": "visible"
       },
@@ -77,10 +53,10 @@
       }
     },
     {
-      "id": "waterareas_gen0low",
+      "id": "water_areas_z3",
       "type": "fill",
       "source": "tegola-osm",
-      "source-layer": "waterareas_gen0",
+      "source-layer": "water_areas",
       "minzoom": 3,
       "maxzoom": 7,
       "filter": [
@@ -99,10 +75,10 @@
       }
     },
     {
-      "id": "landusages_areas",
+      "id": "landuse_areas",
       "type": "fill",
       "source": "tegola-osm",
-      "source-layer": "landusages",
+      "source-layer": "landuse_areas",
       "layout": {
         "visibility": "visible"
       },
@@ -113,7 +89,7 @@
           "stops": [
             [
               "",
-              "rgba(202, 57, 57, 0)"
+              "rgba(0, 0, 0, 0)"
             ],
             [
               "hospital",
@@ -176,10 +152,10 @@
       }
     },
     {
-      "id": "landusages_lines",
+      "id": "landuse_areas_lines",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "landusages",
+      "source-layer": "landuse_areas",
       "layout": {
         "visibility": "visible"
       },
@@ -190,129 +166,7 @@
           "stops": [
             [
               "",
-              "rgba(202, 57, 57, 0)"
-            ],
-            [
-              "hospital",
-              "rgba(195, 32, 7, 0.5)"
-            ],
-            [
-              "school",
-              "rgba(105, 74, 35, 0.45)"
-            ],
-            [
-              "college",
-              "rgba(105, 74, 35, 0.45)"
-            ],
-            [
-              "education",
-              "rgba(105, 74, 35, 0.45)"
-            ],
-            [
-              "university",
-              "rgba(105, 74, 35, 0.45)"
-            ],
-            [
-              "military",
-              "rgba(64, 63, 63, 1)"
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "landusages_areas_gen1",
-      "type": "fill",
-      "source": "tegola-osm",
-      "source-layer": "landusages_gen1",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": {
-          "property": "type",
-          "type": "categorical",
-          "stops": [
-            [
-              "",
-              "rgba(202, 57, 57, 0)"
-            ],
-            [
-              "hospital",
-              "rgba(189, 67, 67, 0.2)"
-            ],
-            [
-              "school",
-              "rgba(107, 73, 38, 0.15)"
-            ],
-            [
-              "college",
-              "rgba(107, 73, 38, 0.15)"
-            ],
-            [
-              "education",
-              "rgba(107, 73, 38, 0.15)"
-            ],
-            [
-              "university",
-              "rgba(107, 73, 38, 0.15)"
-            ],
-            [
-              "military",
-              "rgba(255, 255, 255, 0.35)"
-            ],
-            [
-              "residential",
-              "rgba(153, 195, 150, 0.2)"
-            ],
-            [
-              "grassland",
-              "rgba(159, 173, 153, .5)"
-            ],
-            [
-              "forest",
-              "rgba(100, 179, 100, 0.09)"
-            ],
-            [
-              "farm",
-              "rgba(206, 212, 203, 1)"
-            ],
-            [
-              "farmland",
-              "rgba(206, 212, 203, 1)"
-            ],
-            [
-              "orchard",
-              "rgba(206, 212, 203, 1)"
-            ],
-            [
-              "allotments",
-              "rgba(206, 212, 203, 1)"
-            ],
-            [
-              "garden",
-              "rgba(206, 212, 203, 1)"
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "landusages_lines_gen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "landusages_gen1",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": {
-          "property": "type",
-          "type": "categorical",
-          "stops": [
-            [
-              "",
-              "rgba(202, 57, 57, 0)"
+              "rgba(0, 0, 0, 0)"
             ],
             [
               "hospital",
@@ -346,7 +200,7 @@
       "id": "road_rail",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -385,7 +239,7 @@
       "id": "road_railhatch",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -428,7 +282,7 @@
       "id": "road_service",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -467,10 +321,10 @@
       }
     },
     {
-      "id": "road_res_casing14",
+      "id": "road_residential_case",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -509,10 +363,10 @@
       }
     },
     {
-      "id": "road_res_14",
+      "id": "road_residential",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -547,92 +401,10 @@
       }
     },
     {
-      "id": "road_res_casing13",
+      "id": "road_secondary_case",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "residential"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "#cfcdca",
-        "line-width": {
-          "stops": [
-            [
-              12,
-              0.5
-            ],
-            [
-              13,
-              1
-            ],
-            [
-              14,
-              4
-            ],
-            [
-              20,
-              20
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_res_13",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "residential"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(216, 213, 207, 1)",
-        "line-width": {
-          "stops": [
-            [
-              13.5,
-              0
-            ],
-            [
-              14,
-              2.5
-            ],
-            [
-              20,
-              18
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_casing14",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -663,10 +435,10 @@
       }
     },
     {
-      "id": "road_sec_14",
+      "id": "road_secondary",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -701,305 +473,10 @@
       }
     },
     {
-      "id": "road_sec_casing13",
+      "id": "road_trunk_case",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              8,
-              1.5
-            ],
-            [
-              20,
-              13
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_13",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              6.5,
-              0
-            ],
-            [
-              8,
-              0.5
-            ],
-            [
-              20,
-              9
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_casing11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              8,
-              1.5
-            ],
-            [
-              20,
-              13
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              6.5,
-              0
-            ],
-            [
-              8,
-              0.5
-            ],
-            [
-              20,
-              9
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_casinggen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              8,
-              1.5
-            ],
-            [
-              20,
-              13
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_11gen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              6.5,
-              0
-            ],
-            [
-              8,
-              0.5
-            ],
-            [
-              20,
-              9
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_casinggen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              8,
-              1.5
-            ],
-            [
-              20,
-              13
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_sec_11gen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "secondary",
-          "tertiary"
-        ]
-      ],
-      "layout": {
-        "line-cap": "round",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              6.5,
-              0
-            ],
-            [
-              8,
-              0.5
-            ],
-            [
-              20,
-              9
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_casing14",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -1042,10 +519,10 @@
       }
     },
     {
-      "id": "road_trunk_14",
+      "id": "road_trunk",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -1084,366 +561,10 @@
       }
     },
     {
-      "id": "road_trunk_casing13",
+      "id": "road_motorway_case",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "butt"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.5
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_13",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              0.8
-            ],
-            [
-              20,
-              11
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_casing11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "butt"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.5
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              0.8
-            ],
-            [
-              20,
-              11
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_casinggen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "butt"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.5
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_gen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              0.8
-            ],
-            [
-              20,
-              11
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_casinggen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "butt"
-      },
-      "paint": {
-        "line-color": "rgba(129, 130, 124, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.5
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_trunk_gen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "primary",
-          "trunk",
-          "trunk_link",
-          "motorway_link",
-          "primary_link"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-join": "round",
-        "line-cap": "round"
-      },
-      "paint": {
-        "line-color": "rgba(149, 150, 143, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              0.8
-            ],
-            [
-              20,
-              11
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_motorway_casing14",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -1478,333 +599,14 @@
               18
             ]
           ]
-        },
-        "line-blur": 0
-      }
-    },
-    {
-      "id": "road_motorway14",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_14-20",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(118, 121, 114, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              1
-            ],
-            [
-              20,
-              14
-            ]
-          ]
         }
       }
     },
     {
-      "id": "road_motorway_casing13",
+      "id": "road_motorway",
       "type": "line",
       "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "butt",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(73, 74, 69, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.75
-            ],
-            [
-              20,
-              18
-            ]
-          ]
-        },
-        "line-blur": 0
-      }
-    },
-    {
-      "id": "road_motorway13",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_13",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(118, 121, 114, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              1
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_motorway_casing11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "butt",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(73, 74, 69, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.75
-            ],
-            [
-              20,
-              18
-            ]
-          ]
-        },
-        "line-blur": 0
-      }
-    },
-    {
-      "id": "road_motorway11",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_11-12",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(118, 121, 114, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              1
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_motorway_casinggen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "butt",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(73, 74, 69, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.75
-            ],
-            [
-              20,
-              18
-            ]
-          ]
-        },
-        "line-blur": 0
-      }
-    },
-    {
-      "id": "road_motorwaygen1",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen1",
-      "minzoom": 0,
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "line-color": "rgba(118, 121, 114, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0
-            ],
-            [
-              7,
-              1
-            ],
-            [
-              20,
-              14
-            ]
-          ]
-        }
-      }
-    },
-    {
-      "id": "road_motorway_casinggen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "filter": [
-        "all",
-        [
-          "in",
-          "type",
-          "motorway"
-        ]
-      ],
-      "layout": {
-        "visibility": "visible",
-        "line-cap": "butt",
-        "line-join": "round"
-      },
-      "paint": {
-        "line-color": "rgba(73, 74, 69, 1)",
-        "line-width": {
-          "stops": [
-            [
-              5,
-              0.4
-            ],
-            [
-              6,
-              0.7
-            ],
-            [
-              7,
-              1.75
-            ],
-            [
-              20,
-              18
-            ]
-          ]
-        },
-        "line-blur": 0
-      }
-    },
-    {
-      "id": "road_motorwaygen0",
-      "type": "line",
-      "source": "tegola-osm",
-      "source-layer": "roads_gen0",
-      "minzoom": 0,
+      "source-layer": "transport_lines",
       "filter": [
         "all",
         [
@@ -1840,7 +642,7 @@
       "id": "label_road_name",
       "type": "symbol",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "minzoom": 14,
       "maxzoom": 24,
       "filter": [
@@ -1880,7 +682,7 @@
       "id": "label_motorway_shield",
       "type": "symbol",
       "source": "tegola-osm",
-      "source-layer": "roads_14-20",
+      "source-layer": "transport_lines",
       "maxzoom": 24,
       "filter": [
         "all",
