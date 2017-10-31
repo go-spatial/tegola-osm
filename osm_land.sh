@@ -24,6 +24,10 @@ DB_HOST=""
 DB_PORT=""
 DB_USER=""
 DB_PW=""
+if [ -r dbcredentials.sh ]
+then
+	 source dbcredentials.sh
+fi
 
 # array of natural earth dataset URLs
  dataurls=(
