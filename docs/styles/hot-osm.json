@@ -22,8 +22,8 @@
       "url": "http://osm.tegola.io/capabilities/osm.json?debug=true"
     }
   },
-  "sprite": "http://osm.tegola.io/spritesets/hot_osm_icons",
-  "glyphs": "http://osm.tegola.io/fonts/{fontstack}/{range}.pbf",
+  "sprite": "http://demo.tegola.io/spritesets/hot_osm_icons",
+  "glyphs": "http://demo.tegola.io/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",

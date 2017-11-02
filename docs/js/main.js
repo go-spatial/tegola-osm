@@ -7,10 +7,10 @@ var config = {
   startingCenter: [-117.15117725013909, 32.72269876352742],
   startingZoom: 15,
   mapboxStyle: function(style) {
-    return '/styles/'+style+'3d.json';
+    return 'styles/'+style+'3d.json';
   },
   ol3Style: function(style) {
-    return '/styles/'+style+'.json';
+    return 'styles/'+style+'.json';
   },
   lambda: "https://d39scxemoxfvki.cloudfront.net/capabilities/osm.json?debug=true",
   ec2: "http://osm.tegola.io/capabilities/osm.json?debug=true"
@@ -127,7 +127,9 @@ document.getElementById('city-switch').addEventListener('change', function(event
   var coordinates = this.value.split(",")
   currentLib.updatePosition(parseFloat(coordinates[0]), parseFloat(coordinates[1]), 12);
 })
+
+// init
 currentLib = mapbox;
-currentStyle = 'mapbox';
+currentStyle = 'hot-osm';
 currentServer = config['ec2'];
 currentLib.init();
