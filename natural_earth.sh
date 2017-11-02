@@ -25,6 +25,11 @@ DB_PORT="5432"
 DB_USER=""
 DB_PW=""
 
+if [ -r dbcredentials.sh ]
+then
+	 source dbcredentials.sh
+fi
+
 # array of natural earth dataset URLs
  dataurls=(
 	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip"
