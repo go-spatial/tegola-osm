@@ -19,11 +19,11 @@
   "sources": { 
     "osm": {
       "type": "vector",
-      "url": "http://34.231.253.92/capabilities/osm.json?debug=true"
+      "url": "http://osm.tegola.io/capabilities/osm.json?debug=true"
     }
   },
-  "sprite": "http://34.231.253.92/spritesets/hot_osm_icons",
-  "glyphs": "http://34.231.253.92/fonts/{fontstack}/{range}.pbf",
+  "sprite": "http://osm.tegola.io/spritesets/hot_osm_icons",
+  "glyphs": "http://osm.tegola.io/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
