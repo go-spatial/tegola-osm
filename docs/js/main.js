@@ -95,34 +95,36 @@ var mapbox = {
   },
   switchStyle: function(style) {
     d3.json(config.mapboxStyle(style), function(error, data) {
-      data.sources["tegola-osm"].url = currentServer;
+      data.sources["osm"].url = currentServer;
       map.setStyle(data)
     });
-    //  TODO: move this to a gloabl config that maps the style names with style.json files and satellite basemaps if necessary.
-    if(style === 'night-vision') {
-    }
   },
   updatePosition: function(lat, lon, zoom) {
     map.setCenter([lon, lat]);
     map.setZoom(zoom);
   }
 };
+
 var switchLib = function(lib) {
   currentLib = lib;
   document.getElementById('map').innerHTML = '';
   lib.init();
 }
+
 var switchStyle = function(style) {
   currentStyle = style;
   currentLib.switchStyle(style);
 }
+
 var switchServer = function(type) {
   currentServer = config[type];
   currentLib.switchStyle(currentStyle);
 }
+
 document.getElementById('server-switch').addEventListener('change', function(event) {
   switchServer(this.value);
 })
+
 document.getElementById('city-switch').addEventListener('change', function(event) {
   var coordinates = this.value.split(",")
   currentLib.updatePosition(parseFloat(coordinates[0]), parseFloat(coordinates[1]), 12);
