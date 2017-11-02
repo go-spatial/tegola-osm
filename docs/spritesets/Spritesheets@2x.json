@@ -1,0 +1,191 @@
+{
+  "aid-kit": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 0,
+    "y": 0
+  },
+  "airplane": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 32,
+    "y": 0
+  },
+  "arrow-down-left2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 0,
+    "y": 32
+  },
+  "arrow-down-right2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 32,
+    "y": 32
+  },
+  "arrow-down2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 64,
+    "y": 0
+  },
+  "arrow-left2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 96,
+    "y": 0
+  },
+  "arrow-right2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 64,
+    "y": 32
+  },
+  "arrow-up-left2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 96,
+    "y": 32
+  },
+  "arrow-up-right2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 0,
+    "y": 64
+  },
+  "arrow-up2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 32,
+    "y": 64
+  },
+  "autobahn1": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 64,
+    "y": 64
+  },
+  "autobahn2": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 96,
+    "y": 64
+  },
+  "book": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 0,
+    "y": 96
+  },
+  "camoshield6": {
+    "height": 20,
+    "pixelRatio": 1,
+    "width": 44,
+    "x": 160,
+    "y": 64
+  },
+  "cart": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 32,
+    "y": 96
+  },
+  "checkbox-unchecked": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 64,
+    "y": 96
+  },
+  "envelop": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 96,
+    "y": 96
+  },
+  "glass": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 128,
+    "y": 0
+  },
+  "mug": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 160,
+    "y": 0
+  },
+  "plus": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 192,
+    "y": 0
+  },
+  "radio-checked": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 224,
+    "y": 0
+  },
+  "radio-unchecked": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 128,
+    "y": 32
+  },
+  "rectangle-3": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 160,
+    "y": 32
+  },
+  "rectangle-6": {
+    "height": 20,
+    "pixelRatio": 1,
+    "width": 44,
+    "x": 204,
+    "y": 64
+  },
+  "shield1": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 192,
+    "y": 32
+  },
+  "spoon-knife": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 224,
+    "y": 32
+  },
+  "waves": {
+    "height": 32,
+    "pixelRatio": 1,
+    "width": 32,
+    "x": 128,
+    "y": 64
+  }
+}

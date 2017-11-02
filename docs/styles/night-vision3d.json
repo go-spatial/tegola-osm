@@ -16,12 +16,12 @@
   "bearing": 0,
   "pitch": 50,
   "sources": {
-    "tegola-osm": {
+    "osm": {
       "type": "vector",
-      "url": "http://osm.tegola.io/capabilities/osm.json?debug=true"
+      "url": "http://34.231.253.92/capabilities/osm.json?debug=true"
     }
   },
-  "glyphs": "https://fonts.openmaptiles.org/{fontstack}/{range}.pbf",
+  "glyphs": "http://34.231.253.92/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
       "id": "background",
@@ -37,7 +37,7 @@
     {
       "id": "land",
       "type": "fill",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "land",
       "layout": {
         "visibility": "visible"
@@ -49,7 +49,7 @@
     {
       "id": "landuse_areas",
       "type": "fill",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "layout": {
         "visibility": "visible"
@@ -94,7 +94,7 @@
     {
       "id": "landuse_areas_lines",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "minzoom": 14,
       "layout": {
@@ -141,7 +141,7 @@
     {
       "id": "admin_states_provinces_lines_5-20",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "state_lines",
       "paint": {
         "line-color": "rgba(253, 239, 180, 1)",
@@ -155,7 +155,7 @@
     {
       "id": "country_lines_z0",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "admin_lines",
       "minzoom": 0,
       "maxzoom": 2,
@@ -166,7 +166,7 @@
     {
       "id": "country_lines_z3",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "country_polygons",
       "minzoom": 3,
       "maxzoom": 20,
@@ -178,7 +178,7 @@
     {
       "id": "country_lines_disputed",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "country_lines_disputed",
       "minzoom": 3,
       "maxzoom": 6,
@@ -197,7 +197,7 @@
     {
       "id": "water_lines",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "water_lines",
       "layout": {
         "visibility": "visible"
@@ -226,7 +226,7 @@
     {
       "id": "water_areas_z7",
       "type": "fill",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "water_areas",
       "minzoom": 7,
       "layout": {
@@ -240,7 +240,7 @@
     {
       "id": "water_areas_z3",
       "type": "fill",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "water_areas",
       "minzoom": 3,
       "maxzoom": 7,
@@ -263,7 +263,7 @@
     {
       "id": "island",
       "type": "fill",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "filter": [
         "all",
@@ -283,7 +283,7 @@
     {
       "id": "road_subway_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -317,7 +317,7 @@
     {
       "id": "road_subway",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -352,7 +352,7 @@
     {
       "id": "road_footways",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -398,7 +398,7 @@
     {
       "id": "road_major_links_tunnel",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -436,7 +436,7 @@
     {
       "id": "road_major_links_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 12,
       "filter": [
@@ -480,7 +480,7 @@
     {
       "id": "road_major_links_bridge_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 12,
       "maxzoom": 24,
@@ -520,7 +520,7 @@
     {
       "id": "road_major_links",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 12,
       "maxzoom": 24,
@@ -568,7 +568,7 @@
     {
       "id": "road_residential_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -610,7 +610,7 @@
     {
       "id": "road_residential",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -657,7 +657,7 @@
     {
       "id": "road_major_tunnel",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -708,7 +708,7 @@
     {
       "id": "road_major_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 7,
       "filter": [
@@ -761,7 +761,7 @@
     {
       "id": "road_major_bridge_case",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 14,
       "maxzoom": 24,
@@ -806,7 +806,7 @@
     {
       "id": "road_major",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "filter": [
         "all",
@@ -867,7 +867,7 @@
     {
       "id": "farm_line",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "filter": [
         "all",
@@ -894,7 +894,7 @@
     {
       "id": "farm_line_z12",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "minzoom": 12,
       "maxzoom": 13,
@@ -925,7 +925,7 @@
     {
       "id": "farm_line_z0",
       "type": "line",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "minzoom": 0,
       "maxzoom": 12,
@@ -956,7 +956,7 @@
     {
       "id": "label_road_minor",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 14,
       "maxzoom": 24,
@@ -1001,7 +1001,7 @@
     {
       "id": "label_road_majortunnel",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 14,
       "maxzoom": 24,
@@ -1060,7 +1060,7 @@
     {
       "id": "label_road_major",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "transport_lines",
       "minzoom": 14,
       "maxzoom": 24,
@@ -1119,7 +1119,7 @@
     {
       "id": "label_island",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "landuse_areas",
       "minzoom": 4,
       "maxzoom": 24,
@@ -1170,7 +1170,7 @@
     {
       "id": "label_states",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "state_label_points",
       "minzoom": 4,
       "maxzoom": 24,
@@ -1220,7 +1220,7 @@
     {
       "id": "label_countries",
       "type": "symbol",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "country_label_points",
       "minzoom": 4,
       "maxzoom": 24,
@@ -1270,7 +1270,7 @@
     {
       "id": "building_tilt_na",
       "type": "fill-extrusion",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "buildings",
       "minzoom": 0,
       "maxzoom": 24,
@@ -1335,7 +1335,7 @@
     {
       "id": "building_tilt",
       "type": "fill-extrusion",
-      "source": "tegola-osm",
+      "source": "osm",
       "source-layer": "buildings",
       "minzoom": 0,
       "maxzoom": 24,

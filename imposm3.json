@@ -4,7 +4,7 @@
         "exclude": [
             "created_by",
             "source",
-	    "source:datetime"
+            "source:datetime"
         ]
     },
     "generalized_tables": {

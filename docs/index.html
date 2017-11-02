@@ -16,10 +16,10 @@
 	<body>
 	<div id='map'></div>
   <div id="switch-styles">
-    <div class="switch-style camo" onClick="switchStyle('camo');">Camo</div>
-    <div class="switch-style hot_osm" onClick="switchStyle('mapbox');">HOT OSM</div>
+    <div class="switch-style hot-osm" onClick="switchStyle('hot-osm');">HOT OSM</div>
     <div class="switch-style mobility" onClick="switchStyle('mobility');">Mobility</div>
     <div class="switch-style night-vision" onClick="switchStyle('night-vision');">Night Vision</div>
+    <div class="switch-style camo" onClick="switchStyle('camo');">Camo</div>
     <div class="switch-style osgeo" onClick="switchStyle('osgeo');">OSGeo</div>
   </div>
   <div id="switch-libs">
@@ -40,8 +40,7 @@
   </div>
   <div id="switch-server">
     <select id="server-switch" name="server-switch">
-      <option value="ec2">Ec2</option>
-      <option value="lambda">Lambda</option>
+      <option value="osm">OSM</option>
 		</select>
 	</div>
 	<script src="https://d3js.org/d3-collection.v1.min.js"></script>

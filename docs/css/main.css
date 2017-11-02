@@ -47,8 +47,8 @@ body {
   box-shadow: 6px -6px 15px -10px rgba(0,0,0,0.75);
   font-weight: 400;
 }
-.switch-style.osm {
-  background: url('../images/osm.png')
+.switch-style.hot-osm {
+  background: url('../images/hot-osm.png')
 }
 .switch-style.camo{
   background: url('../images/camo.png')
