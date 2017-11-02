@@ -3,15 +3,15 @@
 */
 
 BEGIN;
-	CREATE INDEX ON osm_roads_gen0 (type);
-	CREATE INDEX ON osm_roads_gen1 (type);
-	CREATE INDEX ON osm_roads (type);
-	CREATE INDEX ON osm_admin (admin_level);
-	CREATE INDEX ON osm_landusages_gen0 (type);
-	CREATE INDEX ON osm_waterways (type);
-	CREATE INDEX ON osm_waterways_gen0 (type);
-	CREATE INDEX ON osm_waterways_gen1 (type);
-	CREATE INDEX ON osm_waterareas (type);
-	CREATE INDEX ON osm_waterareas_gen0 (type);	
-	CREATE INDEX ON osm_waterareas_gen1 (type);
+	CREATE INDEX ON osm_transport_lines_gen0 (type);
+	CREATE INDEX ON osm_transport_lines_gen1 (type);
+	CREATE INDEX ON osm_transport_lines (type);
+	CREATE INDEX ON osm_admin_areas (admin_areas_level);
+	CREATE INDEX ON osm_landuse_areas_gen0 (type);
+	CREATE INDEX ON osm_water_lines (type);
+	CREATE INDEX ON osm_water_lines_gen0 (type);
+	CREATE INDEX ON osm_water_lines_gen1 (type);
+	CREATE INDEX ON osm_water_areas (type);
+	CREATE INDEX ON osm_water_areas_gen0 (type);	
+	CREATE INDEX ON osm_water_areas_gen1 (type);
 COMMIT;
