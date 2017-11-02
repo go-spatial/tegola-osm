@@ -84,11 +84,9 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(0, 0, 0, 0)"
-            ],
+           
             [
               "wetland",
               "rgba(227, 233, 226, 1)"
@@ -263,11 +261,9 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(0, 0, 0, 0)"
-            ],
+            
             [
               "military",
               "rgba(230, 224, 212, 1)"
@@ -2575,11 +2571,8 @@
         "fill-extrusion-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "rgba(220, 215, 215, 1)",
           "stops": [
-            [
-              "",
-              "rgba(220, 215, 215, 1)"
-            ],
             [
               "school",
               "rgba(249, 233, 222, 1)"
@@ -2621,11 +2614,8 @@
         "fill-extrusion-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "rgba(220, 215, 215, 1)",
           "stops": [
-            [
-              "",
-              "rgba(220, 215, 215, 1)"
-            ],
             [
               "school",
               "rgba(249, 233, 222, 1)"
