@@ -47,58 +47,33 @@ Execute `postgis_index.sql` against your OSM database.
 |---|----------------------------------------------|-------------------------------|-------|
 |   | ne_110m_rivers_lake_centerlines              |                               		| 0-2   |
 |   | ne_110m_lakes                                |                               		| 0-2   |
-| y | ne_110m_admin0_boundary_lines_land           | admin_boundaries_0-2          		| 0-2   |
+| y | ne_110m_admin0_boundary_lines_land           | admin_lines                  		| 0-2   |
 |   | ne_50m_rivers_lake_centerlines               |                               		| 3-4   |
 |   | ne_50m_lakes                                 |                               		| 3-4   |
-| y | ne_50m_admin_0_boundary_lines_land           | admin_boundaries_3-4          		| 3-4   |
-| y | ne_50m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_3-4 		| 3-4   |
-| y | ne_50m_admin1_states_provinces_lines         | admin_states_provinces_lines_3-4   | 3-4   |
+| y | ne_50m_admin_0_boundary_lines_land and ne_10m_admin_0_boundary_lines_land           | country_lines                		| 3-6   |
+| y | ne_50m_admin_0_boundary_lines_disputed_areas and ne_10m_admin_0_boundary_lines_disputed_areas | country_lines_disputed 		| 3-6   |
 |   | ne_10m_rivers_lake_centerlines               |                               		| 5-6   |
 |   | ne_10m_lakes                                 |                               		| 5-6   |
 |   | ne_10m_geography_regions_points              |                               		| 5-6   |
 |   | ne_10m_lakes_north_america                   |                               		| 5-6   |
-| y | ne_10m_admin_0_boundary_lines_land           | admin_boundaries_5-6          		| 5-6   |
-| y | ne_10m_admin_0_boundary_lines_disputed_areas | admin_boundaries_disputed_5-6 		| 5-6   |
 |   | ne_10m_admin_1_states_provinces              |                               | 5-6   |
-| y | ne_10m_admin_1_states_provinces_lines        | admin_states_provinces_lines_5-20  | 5-20   |
+|   | ne_50m_admin1_states_provinces_lines and ne_10m_admin_1_states_provinces_lines        | state_lines                   | 3-20  |
 |   | ne_10m_roads                                 |                               | 5-6   |
 |   | ne_10m_roads_north_america                   |                               | 5-6   |
 |   | ne_10m_parks_and_protected_lands             |                               | 5-6   |
-| y | ne_10m_admin_0_countries                     | admin_countries_3-7           | 3-7   |
-| y | ne_10m_admin_1_label_points                  | admin_label_points_5-20       | 5-20   |
-| y | ne_10m_admin_0_label_points                  | admin_0_label_points_3-20       | 3-20   |
-| y | osm                                          | land_0-9                      | 0-9   |
-| y | osm                                          | land_10-20                    | 10-20 |
-| y | osm                                          | landusages_gen0           | 4-9   |
-| y | osm                                          | landusages_gen1           | 10-12 |
-| y | osm                                          | landusages                | 13-20 |
-| y | osm                                          | waterways_gen0            | 8-12  |
-| y | osm                                          | waterways_gen1            | 13-14 |
-| y | osm                                          | waterways                 | 15-20 |
-| y | osm                                          | waterareas_gen0           | 4-9   |
-| y | osm                                          | waterareas_gen1           | 10-12 |
-| y | osm                                          | waterareas                | 13-20 |
-| y | osm                                          | admin_boundaries_5-10            | 5-10  |
-| y | osm                                          | admin_boundaries_11-12            | 11-12  |
-| y | osm                                          | admin_boundaries_13-20            | 13-20  |
-|   | osm                                          | barriers_lines                | 16-20 |
-|   | osm                                          | barriers_points               | 17-20 |
-| y | osm                                          | buildings_polygons            | 14-20 |
-|   | osm                                          | military_polygons             | 4-20  |
-| y | osm                                          | roads_gen0                | 5-8   |
-| y | osm                                          | roads_gen1                | 9-10  |
-| y | osm                                          | roads_11-12               | 11-12 |
-| y | osm                                          | roads_13                  | 13    |
-| y | osm                                          | roads_14-20               | 14-20 |
-|   | osm                                          | amenities                     | 14-20 |
-|   | osm                                          | aviation_points               | 10-20 |
-|   | osm                                          | aviation_lines                | 14-20 |
-|   | osm                                          | aviation_polygons             | 14-20 |
-|   | osm                                          | power_lines                   | 16-20 |
-|   | osm                                          | railway_lines_gen0            | 5-8   |
-|   | osm                                          | railway_lines_gen1            | 9-10  |
-|   | osm                                          | railway_lines                 | 11-20 |
-|   | osm                                          | leisure_points                | 14-20 |
-|   | osm                                          | leisure_polygons              | 7-20  |
-|   | osm                                          | place_points                  | 3-20  |
-|   | osm                                          | natural_polygons              | 4-20  |
+| y | osm                                          | land                          | 0-20   |
+| y | ne_10m_admin_0_countries and osm admin boundaries                 | country_polygons           | 3-20   |
+| y | ne_10m_admin_0_label_points                  | country_label_points          | 3-20   |
+| y | ne_10m_admin_1_label_points                  | state_label_points            | 5-20  |
+| y | osm                                          | landuse_areas                 | 3-20 |
+| y | osm                                          | water_lines                   | 8-20 |
+| y | osm                                          | water_areas                   | 3-20 |
+| y | osm                                          | transport_points              | 14-20 |
+| y | osm                                          | transport_lines               | 4-20  |
+| y | osm                                          | transport_areas               | 12-20 |
+| y | osm                                          | amenity_points                | 14-20 |
+| y | osm                                          | amenity_areas                 | 14-20 |
+| y | osm                                          | other_points                  | 14-20 |
+| y | osm                                          | other_lines                   | 14-20 |
+| y | osm                                          | other_areas                   | 6-20 |
+| y | osm                                          | buildings                     | 14-20 |
