@@ -84,11 +84,8 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(0, 0, 0, 0)"
-            ],
             [
               "wetland",
               "rgba(227, 233, 226, 1)"
@@ -263,11 +260,8 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(0, 0, 0, 0)"
-            ],
             [
               "military",
               "rgba(230, 224, 212, 1)"

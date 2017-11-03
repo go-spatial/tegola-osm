@@ -58,11 +58,8 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(0, 0, 0, 0)"
-            ],
             [
               "hospital",
               "rgba(189, 67, 67, 0.2)"
@@ -104,11 +101,8 @@
         "line-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "transparent",
           "stops": [
-            [
-              "",
-              "rgba(202, 57, 57, 0)"
-            ],
             [
               "hospital",
               "rgba(218, 208, 208, 0.17)"
@@ -1282,11 +1276,8 @@
         "fill-color": {
           "property": "type",
           "type": "categorical",
+		  "default": "rgba(4, 130, 7, 1)",
           "stops": [
-            [
-              "",
-              "rgba(4, 130, 7, 1)"
-            ],
             [
               "industrial",
               "rgba(192, 4, 63, 1)"
