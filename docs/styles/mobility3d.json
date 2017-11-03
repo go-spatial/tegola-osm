@@ -35,7 +35,16 @@
         "visibility": "visible"
       },
       "paint": {
-        "background-color": "rgba(198, 201, 193, 1)"
+        "background-color": "rgba(27, 37, 52, 1)"
+      }
+    },
+    {
+      "id": "land",
+      "type": "fill",
+      "source": "osm",
+      "source-layer": "land",
+      "paint": {
+        "fill-color": "rgba(198, 201, 193, 1)"
       }
     },
     {
@@ -49,7 +58,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(165, 167, 162, 1)"
+        "fill-color": "rgba(27, 37, 52, 1)"
       }
     },
     {
@@ -71,7 +80,7 @@
         "visibility": "visible"
       },
       "paint": {
-        "fill-color": "rgba(165, 167, 162, 1)"
+        "fill-color": "rgba(27, 37, 52, 1)"
       }
     },
     {
