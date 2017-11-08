@@ -1,4 +1,6 @@
-#	helper functions that should be installed alongside the OSM import
+/*
+    helper functions that should be installed alongside the OSM import
+*/
 
 BEGIN;
 
