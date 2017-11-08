@@ -25,6 +25,7 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 
 ```bash
 ./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
+./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -deployproduction
 ```
 
 ## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
