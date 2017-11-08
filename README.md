@@ -28,7 +28,7 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ```
 
 ## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
-Update the database credentials inside of `natural_earth.sh`, then run: `./natural_earth.sh`. This will downlaod the natural earth dataset and insert it into PostGIS under a database named `natural_earth`. The script is idempotent. 
+Update the database credentials inside of `natural_earth.sh`, then run: `./natural_earth.sh`. This will download the natural earth dataset and insert it into PostGIS under a database named `natural_earth`. The script is idempotent.
 
 ## Install SQL helper functions
 Execute `postgis_helpers.sql` against your OSM database.
