@@ -69,13 +69,13 @@ password = ""
 	name = "admin_boundaries_11-12"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level, tags FROM osm_admin_areas WHERE admin_level IN (1,2,3,4,5,8,7,8) AND geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level, tags FROM osm_admin_areas WHERE admin_level IN (1,2,3,4,5,6,7,8) AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "admin_boundaries_13-20"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level, tags FROM osm_admin_areas WHERE admin_level IN (1,2,3,4,5,8,7,8,9,10) AND geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level, tags FROM osm_admin_areas WHERE admin_level IN (1,2,3,4,5,6,7,8,9,10) AND geometry && !BBOX!"
 
 	# Land Use
 	[[providers.layers]]
