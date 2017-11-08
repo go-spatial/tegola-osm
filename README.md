@@ -32,9 +32,15 @@ Update the database credentials inside of `natural_earth.sh`, then run: `./natur
 
 ## Install SQL helper functions
 Execute `postgis_helpers.sql` against your OSM database.
+```bash
+psql -U tegola -d database-name -a -f postgis_helpers.sql
+```
 
 ## Setup SQL indexes
 Execute `postgis_index.sql` against your OSM database.
+```bash
+psql -U tegola -d database-name -a -f postgis_index.sql
+```
 
 ## Launch tegola 
 
