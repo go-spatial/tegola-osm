@@ -255,7 +255,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 
 	# Country Lines 
 	[[maps.layers]]
-	name = "admin_lines"
+	name = "country_lines"
 	provider_layer = "ne.admin_boundaries_0-2"
 	min_zoom = 0
 	max_zoom = 2
