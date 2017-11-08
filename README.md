@@ -25,6 +25,7 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 
 ```bash
 ./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
+./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -deployproduction
 ```
 
 ## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
@@ -32,9 +33,15 @@ Update the database credentials inside of `natural_earth.sh`, then run: `./natur
 
 ## Install SQL helper functions
 Execute `postgis_helpers.sql` against your OSM database.
+```bash
+psql -U tegola -d database-name -a -f postgis_helpers.sql
+```
 
 ## Setup SQL indexes
 Execute `postgis_index.sql` against your OSM database.
+```bash
+psql -U tegola -d database-name -a -f postgis_index.sql
+```
 
 ## Launch tegola 
 
