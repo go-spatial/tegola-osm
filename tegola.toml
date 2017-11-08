@@ -195,7 +195,7 @@ password = ""
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name, name_alt FROM ne_110m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_countries_3-4"
+	name = "admin_countries_5-6"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, labelrank, name FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
@@ -293,9 +293,9 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	# Country Polygons
 	[[maps.layers]]
 	name = "country_polygons"
-	provider_layer = "ne.admin_countries_3-4"
-	min_zoom = 3
-	max_zoom = 4
+	provider_layer = "ne.admin_countries_5-6"
+	min_zoom = 5
+	max_zoom = 10
 
 	[[maps.layers]]
 	name = "country_polygons"
