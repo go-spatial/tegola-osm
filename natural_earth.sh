@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This script will install natural earth data (http://www.naturalearthdata.com/downloads/) into a PostGIS database name DB_NAME.
+# This script will install natural earth data (http://www.naturalearthdata.com/downloads/) into a PostGIS database named DB_NAME.
 # The script assumes the following utilities are installed:
 # 	- psql: PostgreSQL client
 #	- ogr2ogr: GDAL vector lib
@@ -9,7 +9,7 @@
 # Usage
 # 	Set the database connection variables, then run
 #
-#		./naturalearth.sh
+#		./natural_earth.sh
 #
 # Important
 # 	- This script is idempotent and will DROP the natural earth database if it already exists
