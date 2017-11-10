@@ -26,7 +26,7 @@
       "url": "https://osm.tegola.io/capabilities/osm.json?debug=true"
     }
   },
-  "sprite": "http://demo.tegola.io/spritesets/Spritesheets",
+  "sprite": "http://demo.tegola.io/spritesets/osm_tegola_spritesheet",
   "glyphs": "http://demo.tegola.io/fonts/{fontstack}/{range}.pbf",
   "layers": [
     {
