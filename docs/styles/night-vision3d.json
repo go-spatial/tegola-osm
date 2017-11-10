@@ -133,20 +133,6 @@
       }
     },
     {
-      "id": "admin_states_provinces_lines_5-20",
-      "type": "line",
-      "source": "osm",
-      "source-layer": "state_lines",
-      "paint": {
-        "line-color": "rgba(253, 239, 180, 1)",
-        "line-gap-width": 0,
-        "line-dasharray": [
-          6,
-          4
-        ]
-      }
-    },
-    {
       "id": "country_lines_z0",
       "type": "line",
       "source": "osm",
