@@ -13,7 +13,7 @@ var config = {
     return 'styles/'+style+'.json';
   },
   lambda: "https://d39scxemoxfvki.cloudfront.net/capabilities/osm.json?debug=true",
-  ec2: "http://osm.tegola.io/capabilities/osm.json?debug=true"
+  ec2: "https://osm.tegola.io/capabilities/osm.json?debug=true"
 };
 
 var map, currentLib, currentStyle, currentServer;
