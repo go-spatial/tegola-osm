@@ -24,10 +24,14 @@ DB_HOST=""
 DB_PORT=""
 DB_USER=""
 DB_PW=""
+
 if [ -r dbcredentials.sh ]
 then
 	 source dbcredentials.sh
 fi
+
+# check our connection string before we do any downloading
+psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "\q"
 
 # array of natural earth dataset URLs
  dataurls=(

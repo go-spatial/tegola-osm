@@ -30,6 +30,9 @@ then
 	 source dbcredentials.sh
 fi
 
+# check our connection string before we do any downloading
+psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "\q"
+
 # array of natural earth dataset URLs
  dataurls=(
 	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip"
