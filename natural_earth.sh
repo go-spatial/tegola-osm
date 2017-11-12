@@ -20,8 +20,8 @@ set -e
 
 # database connection variables
 DB_NAME="natural_earth"
-DB_HOST="localhost"
-DB_PORT="5432"
+DB_HOST=""
+DB_PORT=""
 DB_USER=""
 DB_PW=""
 
@@ -36,15 +36,51 @@ psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password
 # array of natural earth dataset URLs
  dataurls=(
 	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_boundary_lines_land.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_countries_lakes.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_map_units.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_pacific_groupings.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_scale_rank.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_sovereignty.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_0_tiny_countries.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_1_states_provinces.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_1_states_provinces_lakes.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_admin_1_states_provinces_scale_rank.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_populated_places.zip"
+	"http://naciscdn.org/naturalearth/110m/cultural/ne_110m_populated_places_simple.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_coastline.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_geography_marine_polys.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_geography_regions_points.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_geography_regions_polys.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_lakes.zip"
+	"http://naciscdn.org/naturalearth/110m/physical/ne_110m_ocean.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_0_boundary_lines_disputed_areas.zip"
 	"http://naciscdn.org/naturalearth/50m/cultural/ne_50m_admin_1_states_provinces_lines.zip"
-	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_disputed_areas.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_land.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_boundary_lines_maritime_indicator.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_countries.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_disputed_areas.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_label_points.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_subunits.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_map_units.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_0_scale_rank_minor_islands.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_label_points.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces.zip"
 	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_admin_1_states_provinces_lines.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_populated_places.zip"
+	"http://naciscdn.org/naturalearth/10m/cultural/ne_10m_urban_areas.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_coastline.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_geography_marine_polys.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_geography_regions_elevation_points.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_geography_regions_points.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_geography_regions_polys.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_lakes.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_minor_islands.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_ocean.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_rivers_lake_centerlines.zip"
+	"http://naciscdn.org/naturalearth/10m/physical/ne_10m_rivers_lake_centerlines_scale_rank.zip"
 )
 
 # remove old database if it exists, create a new one and add the postgis extension
@@ -63,7 +99,7 @@ for i in "${!dataurls[@]}"; do
 	# support for archives with more than one shapefile
 	for f in $i/*.shp; do
 		# reproject data to webmercator (3857) and insert into our database
-		OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $f
+		OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -unsetFieldWidth -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $f
 	done
 
 	# clean up
