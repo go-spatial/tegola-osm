@@ -1,12 +1,11 @@
 # Tegola OSM
 
-This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
+This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export and Natural Earth dataset into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
 
 ## Repo config files
 
 - imposm3.json - an [imposm3](https://github.com/omniscale/imposm3) mapping file for the OSM PBF file.
 - tegola.toml - a [tegola](https://github.com/terranodo/tegola) configuration file for the OSM import produced by imposm3.
-- mapbox.json - a [mapbox-gl style](https://www.mapbox.com/mapbox-gl-js/style-spec/) config used for client side rendering.
 
 ## Dependencies
 
@@ -48,6 +47,8 @@ psql -U tegola -d database-name -a -f postgis_index.sql
 ```bash
 ./tegola -config=tegola.toml
 ```
+
+Open your browser to localhost and the port you configured tegola to run on (i.e. localhost:8080) to see the built in viewer. 
 
 ## Layer import progress
 | imported  | source                                       | table/layer                   | zoom  |
