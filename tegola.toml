@@ -291,6 +291,18 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	max_zoom = 7
 
 	[[maps.layers]]
+	name = "state_lines"
+	provider_layer = "ne.admin_states_provinces_lines_3-4"
+	min_zoom = 3
+	max_zoom = 4
+
+	[[maps.layers]]
+	name = "state_lines"
+	provider_layer = "ne.admin_states_provinces_lines_5-6"
+	min_zoom = 5
+	max_zoom = 7
+
+	[[maps.layers]]
 	name = "land"
 	provider_layer = "osm.land_8-20"
 	min_zoom = 8
