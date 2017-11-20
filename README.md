@@ -30,8 +30,12 @@ curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ## Import the Natural Earth dataset (requires gdal. can be skipped if you're only interested in OSM)
 Update the database credentials inside of `natural_earth.sh`, then run: `./natural_earth.sh`. This will download the natural earth dataset and insert it into PostGIS under a database named `natural_earth`. The script is idempotent.
 
+## Import the OSM land data set
+Update the database credentials inside of `osm_land.sh`, then run: `./osm_land.sh`. This will download the natural earth dataset and insert it into PostGIS under a database named `osm`.
+
 ## Install SQL helper functions
-Execute `postgis_helpers.sql` against your OSM database.
+Execute `postgis_helpers.sql` against your OSM database. Currently this contains a single utility function for converting building heights from strings to numbers which is important if you want to extrude buildings for the 3d effect.
+
 ```bash
 psql -U tegola -d database-name -a -f postgis_helpers.sql
 ```
