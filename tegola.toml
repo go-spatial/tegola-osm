@@ -15,15 +15,8 @@ database = "osm"
 user = ""
 password = ""
 
-	# Land
 	[[providers.layers]]
-	name = "land_0-9"
-	geometry_fieldname = "geometry"
-	id_fieldname = "fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid FROM simplified_land_polygons WHERE wkb_geometry && !BBOX!"
-
-	[[providers.layers]]
-	name = "land_10-20"
+	name = "land_8-20"
 	geometry_fieldname = "geometry"
 	id_fieldname = "fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid FROM land_polygons WHERE wkb_geometry && !BBOX!"
@@ -66,7 +59,7 @@ password = ""
 	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, name, type, tags FROM osm_water_lines WHERE type IN ('river', 'canal', 'stream', 'ditch', 'drain', 'dam') AND geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_boundaries_11-12"
+	name = "admin_boundaries_8-12"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
 	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, admin_level, tags FROM osm_admin_areas WHERE admin_level IN (1,2,3,4,5,6,7,8) AND geometry && !BBOX!"
@@ -195,7 +188,7 @@ password = ""
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name, name_alt FROM ne_110m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_countries_5-6"
+	name = "admin_countries_0-7"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, labelrank, name FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
@@ -219,19 +212,19 @@ password = ""
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, name FROM ne_50m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_boundaries_5-6"
+	name = "admin_boundaries_5-7"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_10m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_boundaries_disputed_5-6"
+	name = "admin_boundaries_disputed_5-7"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, featurecla, name FROM ne_10m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "admin_states_provinces_lines_5-6"
+	name = "admin_states_provinces_lines_5-7"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, scalerank, name FROM ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
@@ -268,9 +261,9 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 
 	[[maps.layers]]
 	name = "country_lines"
-	provider_layer = "ne.admin_boundaries_5-6"
+	provider_layer = "ne.admin_boundaries_5-7"
 	min_zoom = 5
-	max_zoom = 10
+	max_zoom = 7
 
 	[[maps.layers]]
 	name = "country_lines_disputed"
@@ -280,27 +273,45 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 
 	[[maps.layers]]
 	name = "country_lines_disputed"
-	provider_layer = "ne.admin_boundaries_disputed_5-6"
+	provider_layer = "ne.admin_boundaries_disputed_5-7"
 	min_zoom = 5
-	max_zoom = 6
+	max_zoom = 7
 
 	[[maps.layers]]
 	name = "country_label_points"
 	provider_layer = "ne.admin_label_points_3-20"
 	min_zoom = 3
-	max_zoom = 20 
+	max_zoom = 20
 
 	# Country Polygons
 	[[maps.layers]]
 	name = "country_polygons"
-	provider_layer = "ne.admin_countries_5-6"
+	provider_layer = "ne.admin_countries_0-7"
+	min_zoom = 0
+	max_zoom = 7
+
+	[[maps.layers]]
+	name = "state_lines"
+	provider_layer = "ne.admin_states_provinces_lines_3-4"
+	min_zoom = 3
+	max_zoom = 4
+
+	[[maps.layers]]
+	name = "state_lines"
+	provider_layer = "ne.admin_states_provinces_lines_5-7"
 	min_zoom = 5
-	max_zoom = 10
+	max_zoom = 7
+
+	[[maps.layers]]
+	name = "land"
+	provider_layer = "osm.land_8-20"
+	min_zoom = 8
+	max_zoom = 20
 
 	[[maps.layers]]
 	name = "admin_lines"
-	provider_layer = "osm.admin_boundaries_11-12"
-	min_zoom = 11
+	provider_layer = "osm.admin_boundaries_8-12"
+	min_zoom = 8
 	max_zoom = 12
 
 	[[maps.layers]]
@@ -313,19 +324,6 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	name = "state_label_points"
 	provider_layer = "ne.admin_label_points_5-20"
 	min_zoom = 5
-	max_zoom = 20
-
-	# Land
-	[[maps.layers]]
-	name = "land"
-	provider_layer = "osm.land_0-9"
-	min_zoom = 0
-	max_zoom = 9
-
-	[[maps.layers]]
-	name = "land"
-	provider_layer = "osm.land_10-20"
-	min_zoom = 10
 	max_zoom = 20
 
 	# Land Use    
@@ -389,7 +387,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	[[maps.layers]]
 	name = "transport_lines"
 	provider_layer = "osm.transport_lines_gen0"
-	min_zoom = 4 
+	min_zoom = 4
 	max_zoom = 8
 
 	[[maps.layers]]
@@ -462,7 +460,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	[[maps.layers]]
 	name = "other_areas"
 	provider_layer = "osm.other_areas"
-	min_zoom = 6 
+	min_zoom = 6
 	max_zoom = 20
 
 	# Buildings   
