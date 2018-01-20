@@ -56,16 +56,19 @@ Open your browser to localhost and the port you configured tegola to run on (i.e
 
 ## Data Layers
 To view these data layers in a map and query the features for a better understanding of each data layer, use the [Tegola-OSM Inspector](https://osm.tegola.io). The data layers described here are in the "Tegola-OSM" database as laid out in the tegola.toml (i.e., not the Natural Earth database that is specified in tegola-natural-earth.toml). 
+
 | source | Description |
 |--------|-------------|
 |ne      | Natural Earth data, version 4 |
 |osm     | OpenStreetMap data, current |
 |osm land| OpenStreetMap-derived land polygons from openstreetmapdata.com, currentness depends on last pull |
+
 >**Note:** All layers also have the data fields: layer id and geometry. An empty where column means that all features are retained.
 
 
 ### populated_places
 *points*
+
 | zoom | source   | table/layer   | data fields          | where |
 |------|----------|---------------|----------------------|-------|
 | 0-2  | ne       | ne_110m_populated_places  | scalerank, labelrank, name, min_zoom, featurecla, rank_max |
@@ -83,6 +86,7 @@ To view these data layers in a map and query the features for a better understan
 
 ### country_lines_disputed
 *lines*
+
 | zoom | source   | table/layer   | data fields          | where |
 |------|----------|---------------|----------------------|-------|
 | 3-4  | ne       | ne_50m_ne_50m_admin_0_boundary_lines_disputed_areas   | featurecla, name, min_zoom |
@@ -113,6 +117,7 @@ To view these data layers in a map and query the features for a better understan
 
 ### land
 *polygons*
+
 | zoom | source   | table/layer   | data fields          | where |
 |------|----------|---------------|----------------------|-------|
 | 0-2  | ne       | ne_110m_land  | featurecla, min_zoom |
@@ -137,6 +142,7 @@ To view these data layers in a map and query the features for a better understan
 ### landuse_areas
 Nature reserves, military land, forest, leisure, wood, etc.
 *polygons*
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 3-5  | osm       | landuse_areas_gen0  | name, class, type, area    | type IN ('forest','wood','nature reserve', 'nature_reserve', 'military') AND area > 1000000000 |
@@ -147,6 +153,7 @@ Nature reserves, military land, forest, leisure, wood, etc.
 
 ### water_areas
 *polygons*
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 3-5  | osm       | water_areas_gen0  | name, class, type, area    | type IN ('water', 'pond', 'basin', 'canal', 'mill_pond', 'riverbank') AND area > 1000000000 |
@@ -165,6 +172,7 @@ Nature reserves, military land, forest, leisure, wood, etc.
 
 ### transport_lines
 Roads, airport runways, ferry routes, paths, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 3-4  | ne       | ne_10m_roads_3        | name, min_zoom, min_label, type, label                       | min_zoom < 5 AND type <> 'Ferry Route' |
@@ -179,6 +187,7 @@ Roads, airport runways, ferry routes, paths, etc.
 ### transport_areas
 Airports, etc.
 *polygons*
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 12-20| osm       | transport_areas  | name, class, type      | 
@@ -186,6 +195,7 @@ Airports, etc.
 
 ### transport_points
 Airports, helipads, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | transport_points  | name, class, type      | 
@@ -194,12 +204,14 @@ Airports, helipads, etc.
 ### amenity_areas
 Fire stations, banks, embassies, government, police stations, schools, universities, etc.
 *polygons*
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | amenity_areas  | name, type      | 
 
 ### amenity_points
 Fire stations, banks, embassies, government, police stations, schools, universities, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | amenity_points  | name, type      | 
@@ -207,6 +219,7 @@ Fire stations, banks, embassies, government, police stations, schools, universit
 
 ### other_points
 Man made, historic, military, barriers, power towers, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | other_points  | name, class, type      | 
@@ -214,6 +227,7 @@ Man made, historic, military, barriers, power towers, etc.
 
 ### other_lines
 Man made, historic, military, barriers, power lines, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | other_lines  | name, class, type      |
@@ -222,6 +236,7 @@ Man made, historic, military, barriers, power lines, etc.
 ### other_areas 
 *polygons*
 Man made, historic, military, power, barriers, piers, etc.
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 6-8  | osm       | other_areas_filter  | name, class, type      | area > 1000000 |
@@ -230,6 +245,7 @@ Man made, historic, military, power, barriers, piers, etc.
 
 ### buildings
 *polygons*
+
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | buildings  | name, height, type      |
