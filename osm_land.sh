@@ -18,6 +18,23 @@
 
 set -e
 
+CONFIG_FILE=''
+while getopts ":c:v" flag; do
+  case ${flag} in
+    c)
+      if [[ ! -r $OPTARG ]]; then echo "Config File $OPTARG Not Found!"; exit 2;
+      else echo "Using config file: $OPTARG"; CONFIG_FILE=$OPTARG
+      fi  ;;
+    v)
+      echo "Running in Verbose Mode"
+      set -x ;;
+    \?)
+      printf '\nUnrecognized option: -%s \nUsage: \n[-c file] Path to Config File \n[-v] verbose\n' $OPTARG; exit 2 ;;
+    :)
+      echo "Option -$OPTARG requires an argument"; exit 2 ;;
+  esac
+done
+
 # database connection variables
 DB_NAME="osm"
 DB_HOST=""
@@ -25,9 +42,9 @@ DB_PORT=""
 DB_USER=""
 DB_PW=""
 
-if [ -r dbcredentials.sh ]
-then
-	 source dbcredentials.sh
+# Check if we're using a config file
+if [[ -r $CONFIG_FILE ]]; then source $CONFIG_FILE
+elif [ -r dbcredentials.sh ]; then source dbcredentials.sh
 fi
 
 # check our connection string before we do any downloading
