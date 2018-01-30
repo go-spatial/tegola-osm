@@ -38,7 +38,7 @@ psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password
 	"http://data.openstreetmapdata.com/land-polygons-split-3857.zip"
 )
 
- psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP TABLE IF EXISTS land_polygons"
+psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP TABLE IF EXISTS land_polygons"
 
 # iterate our dataurls
 for i in "${!dataurls[@]}"; do
@@ -53,7 +53,7 @@ for i in "${!dataurls[@]}"; do
 	echo $shape_file
 
 	# reproject data to webmercator (3857) and insert into our database
-	OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $shape_file
+	OGR_ENABLE_PARTIAL_REPROJECTION=true ogr2ogr -overwrite -t_srs EPSG:3857 -nlt PROMOTE_TO_MULTI -f PostgreSQL PG:"dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" $shape_file
 
 	# clean up
 	rm -rf $i/ $i.zip
