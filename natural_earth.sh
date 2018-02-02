@@ -18,6 +18,27 @@
 
 set -e
 
+CONFIG_FILE=''
+DROP_DB=false
+
+while getopts ":c:dv" flag; do
+  case ${flag} in
+    c)
+      if [[ ! -r $OPTARG ]]; then echo "Config File $OPTARG Not Found!"; exit 2;
+      else echo "Using config file: $OPTARG"; CONFIG_FILE=$OPTARG
+      fi  ;;
+    v)
+      echo "Running in Verbose Mode"
+      set -x ;;
+    d)
+      echo "Dropping Existing DB"; DROP_DB=true ;;
+    \?)
+      printf '\nUnrecognized option: -%s \nUsage: \n[-c file] Path to Config File \n[-d] drop existing database \n[-v] verbose\n' $OPTARG; exit 2 ;;
+    :)
+      echo "Option -$OPTARG requires an argument"; exit 2 ;;
+  esac
+done
+
 # database connection variables
 DB_NAME="natural_earth"
 DB_HOST=""
@@ -25,9 +46,9 @@ DB_PORT=""
 DB_USER=""
 DB_PW=""
 
-if [ -r dbcredentials.sh ]
-then
-	 source dbcredentials.sh
+# Check if we're using a config file
+if [[ -r $CONFIG_FILE ]]; then source $CONFIG_FILE
+elif [ -r dbcredentials.sh ]; then source dbcredentials.sh
 fi
 
 # check our connection string before we do any downloading
@@ -105,10 +126,15 @@ psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password
     "http://naciscdn.org/naturalearth/10m/physical/ne_10m_ocean.zip"
 )
 
-# remove old database if it exists, create a new one and add the postgis extension
-psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP DATABASE IF EXISTS $DB_NAME"
-psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "CREATE DATABASE $DB_NAME"
-psql "dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "CREATE EXTENSION postgis"
+# remove old database if -d flag is set and create a new one
+if [[ "$DROP_DB" = true ]];
+then
+  psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP DATABASE IF EXISTS $DB_NAME"
+  psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "CREATE DATABASE $DB_NAME"
+fi
+
+# Create postgis extension if it doesn't exist
+psql "dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "CREATE EXTENSION IF NOT EXISTS postgis"
 
 # iterate our dataurls
 for i in "${!dataurls[@]}"; do
