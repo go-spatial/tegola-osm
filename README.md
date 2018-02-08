@@ -272,3 +272,8 @@ Man made, historic, military, power, barriers, piers, etc.
 | zoom | source   | table/layer   | data fields                       | where |
 |------|----------|---------------|-----------------------------------|-------|
 | 14-20| osm       | buildings  | name, height, type      |
+
+# How long does it take to import the entire planent?
+If you run this import, please send in a PR to report your import machine specs and how long it takes.
+
+**@peldhose**: 11.30 hours on a Google cloud server with 8 vCPU, 30GB RAM and 1TB storage (400GB used)
