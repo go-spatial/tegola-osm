@@ -457,6 +457,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	[[maps.layers]]
 	name = "land"
 	provider_layer = "osm.land_8-20"
+	dont_simplify = true
 	min_zoom = 8
 	max_zoom = 20
 
