@@ -246,6 +246,7 @@ password = "tegola-ne-password"
 	[[providers.layers]]
 	name = "ne_50m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
+	dont_simplify = true
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_50m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
