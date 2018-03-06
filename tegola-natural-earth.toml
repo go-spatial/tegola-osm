@@ -458,6 +458,7 @@ center = [-76.275329586789, 39.153492567373, 5.0] # optional center value. part 
 	[[maps.layers]]
 	name = "boundary_lines_land"
 	provider_layer = "ne.ne_50m_admin_0_boundary_lines_land"
+	dont_simplify = true
 	min_zoom = 3
 	max_zoom = 4
 	
