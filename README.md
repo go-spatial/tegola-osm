@@ -17,7 +17,7 @@ This repo houses instructions and configuration files to aid with standing up an
 ## Download the OSM planet database in PBF format
 
 ```bash
-curl -O http://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
+curl -O https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
 ```
 
 ## Import the OSM export into PostGIS using imposm3
