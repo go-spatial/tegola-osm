@@ -1,9 +1,23 @@
-[webserver]
-port = ":8080"
+# This Tegola configuration file reads environment variables for sensitive and installation-specific settings. See
+# .env-example or simply hardcode correct values for your installation.
 
+[webserver]
+port = ":${TEGOLA_PORT}"
+
+# Tegola offers three tile caching strategies: "file", "redis", and "s3"
 [cache]
-type="file"
-basepath="/tmp/tegola-cache-test"
+type = "${CACHE_TYPE}"
+
+# FileCache. See https://github.com/go-spatial/tegola/tree/master/cache/file
+# basepath = "${FILECACHE_BASEPATH}
+
+# RedisCache. See https://github.com/go-spatial/tegola/tree/master/cache/redis
+
+# S3Cache. See https://github.com/go-spatial/tegola/tree/master/cache/s3
+S3CACHE_BUCKET=tegola-test-data
+
+basepath = "/tmp/tegola-cache-test"
+
 
 # See https://github.com/terranodo/tegola/blob/master/cache/s3cache/README.md
 #[cache]
@@ -17,11 +31,11 @@ basepath="/tmp/tegola-cache-test"
 [[providers]]
 name = "osm"
 type = "postgis"
-host = "tegola-osm-host"
-port = 5432
-database = "osm"
-user = "tegola-osm-user"
-password = "tegola-osm-password"
+host = "${OSM_DB_HOST}"
+port = $OSM_DB_PORT
+database = "${OSM_DB_NAME}"
+user = "${OSM_DB_USER}"
+password = "${OSM_DB_PASS}"
 
 	[[providers.layers]]
 	name = "land_8-20"
@@ -126,7 +140,7 @@ password = "tegola-osm-password"
 	name = "transport_lines_gen0"
 	geometry_fieldname = "geometry"
 	id_fieldname = "osm_id"
-	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, type, tunnel, bridge, ref FROM osm_transport_lines_gen0 WHERE type IN ('motorway','trunk','motorway_link','trunk_link','primary') AND tunnel = 0 AND bridge = 0  AND geometry && !BBOX!"		
+	sql = "SELECT ST_AsBinary(geometry) AS geometry, osm_id, type, tunnel, bridge, ref FROM osm_transport_lines_gen0 WHERE type IN ('motorway','trunk','motorway_link','trunk_link','primary') AND tunnel = 0 AND bridge = 0  AND geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "transport_lines_gen1"
@@ -272,7 +286,7 @@ password = "tegola-ne-password"
 	name = "ne_110m_admin_0_countries"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_110m_admin_0_countries WHERE wkb_geometry && !BBOX!" 
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_110m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_0_countries"
@@ -284,25 +298,25 @@ password = "tegola-ne-password"
 	name = "ne_10m_admin_0_countries"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!" 
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_110m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!" 
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_110m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
     [[providers.layers]]
 	name = "ne_50m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_50m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!" 
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_50m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom, min_label FROM ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"  
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom, min_label FROM ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_land"
@@ -314,13 +328,13 @@ password = "tegola-ne-password"
 	name = "ne_50m_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_50m_land WHERE wkb_geometry && !BBOX!"	
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_50m_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_10m_land WHERE wkb_geometry && !BBOX!" 
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_10m_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_1_states_provinces_lakes"
@@ -338,7 +352,7 @@ password = "tegola-ne-password"
 	name = "ne_10m_roads_5"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM ne_10m_roads WHERE min_zoom <= 7  AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"	
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM ne_10m_roads WHERE min_zoom <= 7  AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"
 
 
 [[maps]]
@@ -480,7 +494,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 3
 	max_zoom = 20
 
-	# Land Use    
+	# Land Use
 	[[maps.layers]]
 	name = "landuse_areas"
 	provider_layer = "osm.landuse_areas_gen0"
@@ -599,7 +613,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 12
 	max_zoom = 20
 
-	# Transport Points 
+	# Transport Points
 	[[maps.layers]]
 	name = "transport_points"
 	provider_layer = "osm.transport_points"
@@ -620,7 +634,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 14
 	max_zoom = 20
 
-	# Other Points 
+	# Other Points
 	[[maps.layers]]
 	name = "other_points"
 	provider_layer = "osm.other_points"
@@ -634,7 +648,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 14
 	max_zoom = 20
 
-	# Other Areas 
+	# Other Areas
 	[[maps.layers]]
 	name = "other_areas"
 	provider_layer = "osm.other_areas_filter"
@@ -647,7 +661,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	min_zoom = 9
 	max_zoom = 20
 
-	# Buildings   
+	# Buildings
 	[[maps.layers]]
 	name = "buildings"
 	provider_layer = "osm.buildings"
