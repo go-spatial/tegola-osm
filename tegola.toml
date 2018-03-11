@@ -215,11 +215,11 @@ password = "${OSM_DB_PASS}"
 [[providers]]
 name = "ne"
 type = "postgis"
-host = "natural_earth"
-port = 5432
-database = "tegola-ne-db"
-user = "tegola-ne-user"
-password = "tegola-ne-password"
+host = "${NE_DB_HOST}"
+port = $NE_DB_PORT
+database = "${NE_DB_NAME}"
+user = "${NE_DB_USER}"
+password = "${NE_DB_PASS}"
 
 	[[providers.layers]]
 	name = "ne_110m_populated_places"
