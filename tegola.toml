@@ -9,10 +9,7 @@ port = ":${TEGOLA_PORT}"
 type = "${CACHE_TYPE}"
 
 # FileCache. See https://github.com/go-spatial/tegola/tree/master/cache/file
-# basepath = "${FILECACHE_BASEPATH}
-
 # RedisCache. See https://github.com/go-spatial/tegola/tree/master/cache/redis
-
 # S3Cache. See https://github.com/go-spatial/tegola/tree/master/cache/s3
 bucket = "${S3CACHE_BUCKET}"
 basepath = "${S3CACHE_BASEPATH}"
