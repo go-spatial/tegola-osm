@@ -347,7 +347,7 @@ password = "${NE_DB_PASS}"
 
 [[maps]]
 name = "osm"
-attribution = "Open Street Map" # map attribution
+attribution = "OpenStreetMap" # map attribution
 center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part of the TileJSON spec
 
 	[[maps.layers]]
