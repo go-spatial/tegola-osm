@@ -251,7 +251,6 @@ password = "${NE_DB_PASS}"
 	[[providers.layers]]
 	name = "ne_50m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
-	dont_simplify = true
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_50m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
@@ -378,6 +377,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	[[maps.layers]]
 	name = "country_lines"
 	provider_layer = "ne.ne_50m_admin_0_boundary_lines_land"
+	dont_simplify = true
 	min_zoom = 3
 	max_zoom = 4
 
