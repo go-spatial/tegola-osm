@@ -14,20 +14,14 @@ type = "${CACHE_TYPE}"
 # RedisCache. See https://github.com/go-spatial/tegola/tree/master/cache/redis
 
 # S3Cache. See https://github.com/go-spatial/tegola/tree/master/cache/s3
-S3CACHE_BUCKET=tegola-test-data
+bucket = "${S3CACHE_BUCKET}"
+basepath = "${S3CACHE_BASEPATH}"
+region = "${S3CACHE_REGION}"
+aws_access_key_id = "${S3CACHE_AWS_ACCESS_KEY_ID}"
+aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 
-basepath = "/tmp/tegola-cache-test"
 
-
-# See https://github.com/terranodo/tegola/blob/master/cache/s3cache/README.md
-#[cache]
-#type="s3"
-#bucket=""
-#region = ""
-#aws_access_key_id = ""
-#aws_secret_access_key = ""
-
-#   Open Street Map (OSM)
+#   OpenStreetMap (OSM)
 [[providers]]
 name = "osm"
 type = "postgis"
