@@ -2,21 +2,26 @@
 # .env-example or simply hardcode correct values for your installation.
 
 [webserver]
-port = ":${TEGOLA_PORT}"
+port = ":${NE_PORT}"
 
 [cache]
-type="file"
-basepath="/tmp/tegola-cache"
+type="${CACHE_TYPE}"
+bucket="${S3CACHE_BUCKET}"
+basepath="${NE_S3CACHE_BASEPATH}"
+region="${S3CACHE_REGION}"
+aws_access_key_id = "${S3CACHE_AWS_ACCESS_KEY_ID}"
+aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
+
 
 #	Natural Earth
 [[providers]]
 name = "ne"
 type = "postgis"
-host = ""
-port = 5432
-database = "natural_earth"
-user = "postgres"
-password = ""
+host = "${NE_DB_HOST}"
+port = $NE_DB_PORT
+database = "${NE_DB_NAME}"
+user = "${NE_DB_USER}"
+password = "${NE_DB_PASS}"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_label_points"
