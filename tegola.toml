@@ -237,12 +237,6 @@ password = "${NE_DB_PASS}"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, sr_subunit, scalerank FROM ne_10m_admin_0_label_points WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
-	name = "ne_10m_admin_1_label_points"
-	geometry_fieldname = "geometry"
-	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, name, scalerank FROM ne_10m_admin_1_label_points WHERE wkb_geometry && !BBOX!"
-
-	[[providers.layers]]
 	name = "ne_110m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
@@ -290,6 +284,12 @@ password = "${NE_DB_PASS}"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
+	[[providers.layers]]
+	name = "ne_10m_admin_1_states_provinces"
+	geometry_fieldname = "geometry"
+	id_fieldname = "ogc_fid"
+	sql = "SELECT DISTINCT ON (name) name, admin, scalerank, ST_AsBinary(ST_PointOnSurface(wkb_geometry)) AS geometry, ogc_fid, name, admin, scalerank, min_label, max_label FROM ne_10m_admin_1_states_provinces WHERE (min_label - 1) <= !ZOOM! AND wkb_geometry && !BBOX!"
+	
 	[[providers.layers]]
 	name = "ne_110m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
@@ -422,6 +422,12 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	provider_layer = "ne.ne_10m_admin_0_countries"
 	min_zoom = 5
 	max_zoom = 10
+	
+	[[maps.layers]]
+	name = "state_label_points"
+	provider_layer = "ne.ne_10m_admin_1_states_provinces"
+	min_zoom = 3
+	max_zoom = 20
 
 	[[maps.layers]]
 	name = "state_lines"
@@ -477,12 +483,6 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	name = "admin_lines"
 	provider_layer = "osm.admin_boundaries_13-20"
 	min_zoom = 13
-	max_zoom = 20
-
-	[[maps.layers]]
-	name = "state_label_points"
-	provider_layer = "ne.ne_10m_admin_1_label_points"
-	min_zoom = 3
 	max_zoom = 20
 
 	# Land Use
