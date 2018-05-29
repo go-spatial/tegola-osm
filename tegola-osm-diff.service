@@ -1,0 +1,10 @@
+[Unit]
+Description=Service for updating tegola's cache via diffs
+
+[Service]
+EnvironmentFile=/home/ubuntu/repos/tegola-osm/.env
+ExecStart=/home/ubuntu/repos/tegola-osm/seed-by-diffs.sh
+WorkingDirectory=/home/ubuntu/repos/tegola-osm
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog

@@ -2,7 +2,7 @@
 # .env-example or simply hardcode correct values for your installation.
 
 [webserver]
-port = ":${TEGOLA_PORT}"
+port = ":8080"
 
 # Tegola offers three tile caching strategies: "file", "redis", and "s3"
 [cache]
