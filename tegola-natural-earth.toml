@@ -22,6 +22,7 @@ port = $NE_DB_PORT
 database = "${NE_DB_NAME}"
 user = "${NE_DB_USER}"
 password = "${NE_DB_PASS}"
+max_connections = 30
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_label_points"

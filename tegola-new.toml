@@ -2,7 +2,7 @@
 # .env-example or simply hardcode correct values for your installation.
 
 [webserver]
-port = ":${TEGOLA_PORT}"
+port = ":8080"
 
 # Tegola offers three tile caching strategies: "file", "redis", and "s3"
 [cache]
@@ -23,7 +23,7 @@ aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 name = "osm"
 type = "postgis"
 host = "${OSM_DB_HOST}"
-port = ${OSM_DB_PORT}
+port = "${OSM_DB_PORT}"
 database = "${OSM_DB_NAME}"
 user = "${OSM_DB_USER}"
 password = "${OSM_DB_PASS}"
@@ -208,7 +208,7 @@ max_connections = 30
 name = "ne"
 type = "postgis"
 host = "${NE_DB_HOST}"
-port = ${NE_DB_PORT}
+port = "${NE_DB_PORT}"
 database = "${NE_DB_NAME}"
 user = "${NE_DB_USER}"
 password = "${NE_DB_PASS}"

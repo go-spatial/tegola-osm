@@ -1,0 +1,8 @@
+[Unit]
+Description=Service for updating tegola's cache via diffs
+
+[Path]
+PathExistsGlob=/mnt/ebs/osm_data/imposm3_expire/*/*.tiles
+
+[Install]
+WantedBy=multi-user.target

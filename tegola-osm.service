@@ -1,0 +1,23 @@
+[Unit]
+Description=Tegola OpenStreetMap Server
+Documentation=https://github.com/go-spatial/tegola-osm
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/env /home/ubuntu/bin/tegola --config=tegola.toml serve # for release versions
+# ExecStart=/usr/bin/env /home/ubuntu/go/src/github.com/go-spatial/tegola/cmd/tegola/tegola --config=tegola.toml serve # for testing non-release versions
+WorkingDirectory=/home/ubuntu/repos/tegola-osm
+
+User=root
+Group=root
+
+EnvironmentFile=/home/ubuntu/repos/tegola-osm/.env
+
+StandardInput=null
+StandardOutput=syslog
+StandardError=syslog
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
+
