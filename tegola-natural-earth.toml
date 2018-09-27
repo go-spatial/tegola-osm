@@ -18,7 +18,7 @@ aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 name = "ne"
 type = "postgis"
 host = "${NE_DB_HOST}"
-port = $NE_DB_PORT
+port = "${NE_DB_PORT}"
 database = "${NE_DB_NAME}"
 user = "${NE_DB_USER}"
 password = "${NE_DB_PASS}"
@@ -436,9 +436,6 @@ password = "${NE_DB_PASS}"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_10m_ocean WHERE min_zoom <= !ZOOM! AND wkb_geometry && !BBOX!"
-
-
-
 
 [[maps]]
 name = "ne"
