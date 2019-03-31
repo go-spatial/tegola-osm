@@ -1,32 +1,106 @@
 # Tegola OSM
 
-This repo houses instructions and configuration files to aid with standing up an OpenStreetMap export and Natural Earth dataset into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
-
-## Repo config files
-
-- imposm3.json - an [imposm3](https://github.com/omniscale/imposm3) mapping file for the OSM PBF file.
-- tegola.toml - a [tegola](https://github.com/terranodo/tegola) configuration file for the OSM import produced by imposm3.
+This repo houses instructions, configuration files, and a docker container to aid with standing up an OpenStreetMap export and Natural Earth dataset into a PostGIS enabled database that uses [tegola](https://github.com/terranodo/tegola) for creating and serving vector tiles.
 
 ## Dependencies
 
-- Postgres server with [PostGIS](http://www.postgis.net) enabled.
-- imposm3 ([download](https://imposm.org/static/rel/) - linux only)
-- tegola ([download](https://github.com/terranodo/tegola/releases))
-- [gdal](http://www.gdal.org/) - required for Natural Earth import
+* [Docker](https://www.docker.com)
+* Postgres server with [PostGIS](http://www.postgis.net) enabled
+* tegola ([download](https://github.com/terranodo/tegola/releases))
 
-## Download the OSM planet database in PBF format
+Additional dependencies if not using docker:
+
+* imposm ([download](https://imposm.org/static/rel/) - linux only)
+* [gdal](http://www.gdal.org/) - required for Natural Earth import
+
+## Example Config
+
+* `config/imposm-mapping.json`: An [imposm](https://github.com/omniscale/imposm3) mapping file for mapping the osm pbf data to postgis.
+* `config/imposm-config.json`: An [imposm](https://github.com/omniscale/imposm3) config file for replication and srid settings. Note that imposm config properties such as the db connection string, cache and diff directories are not specified via the config but are configured as env vars to docker instead.
+* `tegola.toml` - A [tegola](https://github.com/terranodo/tegola) configuration file for the OSM import produced by imposm.
+* `tegola-natural-earth.toml` - A [tegola](https://github.com/terranodo/tegola) configuration file for the natural earth data import.
+
+## Docker Setup
+
+To build the container run the following command from the root directory of this repo:
 
 ```bash
-curl -O https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
+docker build -t tegola-osm .
 ```
 
-## Import the OSM export into PostGIS using imposm3
+The container can also be pulled down from dockerhub.
+
+## Available Scripts / Docker Commands
+
+Each of the bash scripts is installed into the docker container and available as a global command. The scripts could also be run outside of a docker container if you meet the dependencies. The scripts all expect certain env vars to be set.
+
+### scripts/osm_import.sh
+
+Imports an OSM PBF file into a PostgreSQL/PostGIS instance using imposm `import` command. You are required to provide an imposm-cache and imposm-diff folder to which imposm will persist data. Those same directories must then be used for the osm update script. If you run an import against an existing db and cache/diff folders the existing data will be squashed.
+
+#### Required Env Vars
+
+* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: postgis://<user>:<password>@<db_host>/<db_name>
+* `OSM_SOURCE_PBF`: Full path to the osm pbf file that we will import. Eg: ~/osm/data/north-america-latest.osm.pbf
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: ~/osm/config/imposm-config.json
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: ~/osm/config/imposm-mapping.json
+* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: /osm/cache
+* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: /osm/cache
+
+#### Example Docker Command
+
+All of our data, config files, and directories remain on the host and are exposed to the docker container through bind mounts. We then set the appropriate env vars on the container and reference the internal mount point of each object. This way imposm can not only read data and config dynamically from the host, but it can also persist cache/diff data back.
 
 ```bash
-./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
-./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -deployproduction
+docker run -i --rm \
+	-u "${UID}" \
+	--mount "type=bind,source=/osm_data/data/north-america-latest.osm.pbf,target=/osm/data/north-america-latest.osm.pbf" \
+	--mount "type=bind,source=/osm_data/config/imposm-config.json,target=/osm/config/imposm-config.json" \
+	--mount "type=bind,source=/osm_data/config/imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
+	--mount "type=bind,source=/osm_data/cache,target=/osm/cache" \
+	--mount "type=bind,source=/osm_data/diff,target=/osm/diff" \
+	-e "PG_CONN_STRING=postgis://username:password@localhost:5432/osm_data" \
+	-e "OSM_SOURCE_PBF=/osm/data/north-america-latest.osm.pbf" \
+	-e "IMPOSM_CONFIG=/osm/config/imposm-config.json" \
+	-e "IMPOSM_MAPPING=/osm/config/imposm-mapping.json" \
+	-e "IMPOSM_CACHE_DIR=/osm/cache" \
+	-e "IMPOSM_DIFF_DIR=/osm/diff" \
+	"tegola-osm:latest" \
+	bash -c "osm_import.sh"
 ```
 
+### scripts/osm_update.sh
+
+Updates an existing PostgreSQL/PostGIS instance using imposm `diff` command. In this case we also use osmosis to generate a single changes list which we pass to imposm `diff`. This method is robust and supports updates from different data sources and data subsets across any replication interval. You are required to provide the imposm-cache and imposm-diff folder which was populated during the initial import and prior updates. Additionally, updates require a working directory for osmosis which may or may not be persisted.
+
+Required Env Vars:
+
+* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: postgis://<user>:<password>@<db_host>/<db_name>
+* `OSMOSIS_DIR`: Full path to a working directory for osmosis to create changes lists. Eg: /osm/osmosis
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: ~/osm/config/imposm-config.json
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: ~/osm/config/imposm-mapping.json
+* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: /osm/cache
+* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: /osm/cache
+
+#### Example Docker Command
+
+```bash
+docker run -i --rm \
+	-u "${UID}" \
+	--mount "type=bind,source=/osm_data/osmosis,target=/osm/osmosis" \
+	--mount "type=bind,source=/osm_data/config/imposm-config.json,target=/osm/config/imposm-config.json" \
+	--mount "type=bind,source=/osm_data/config/imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
+	--mount "type=bind,source=/osm_data/cache,target=/osm/cache" \
+	--mount "type=bind,source=/osm_data/diff,target=/osm/diff" \
+	-e "PG_CONN_STRING=postgis://username:password@localhost:5432/osm_data" \
+	-e "OSMOSIS_DIR=/osm/osmosis" \
+	-e "IMPOSM_CONFIG=/osm/config/imposm-config.json" \
+	-e "IMPOSM_MAPPING=/osm/config/imposm-mapping.json" \
+	-e "IMPOSM_CACHE_DIR=/osm/cache" \
+	-e "IMPOSM_DIFF_DIR=/osm/diff" \
+	"tegola-osm:latest" \
+	bash -c "osm_import.sh"
+```
 ## Import the OSM Land and Natural Earth dataset (requires gdal, Natural Earth can be skipped if you're only interested in OSM)
 
 ### Option 1: Embed Credentials

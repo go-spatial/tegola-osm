@@ -1,0 +1,5 @@
+{
+    "replication_url": "http://download.geofabrik.de/north-america-updates/",
+    "replication_interval": "24h",
+    "srid": 3857
+}
