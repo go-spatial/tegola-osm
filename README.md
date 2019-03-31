@@ -40,12 +40,12 @@ Imports an OSM PBF file into a PostgreSQL/PostGIS instance using imposm `import`
 
 #### Required Env Vars
 
-* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: postgis://<user>:<password>@<db_host>/<db_name>
-* `OSM_SOURCE_PBF`: Full path to the osm pbf file that we will import. Eg: ~/osm/data/north-america-latest.osm.pbf
-* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: ~/osm/config/imposm-config.json
-* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: ~/osm/config/imposm-mapping.json
-* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: /osm/cache
-* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: /osm/cache
+* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: `postgis://<user>:<password>@<db_host>/<db_name>`
+* `OSM_SOURCE_PBF`: Full path to the osm pbf file that we will import. Eg: `/osm_data/data/north-america-latest.osm.pbf`
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/imposm-config.json`
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/imposm-mapping.json`
+* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: `/osm_data/cache`
+* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: `/osm_data/cache`
 
 #### Example Docker Command
 
@@ -73,14 +73,14 @@ docker run -i --rm \
 
 Updates an existing PostgreSQL/PostGIS instance using imposm `diff` command. In this case we also use osmosis to generate a single changes list which we pass to imposm `diff`. This method is robust and supports updates from different data sources and data subsets across any replication interval. You are required to provide the imposm-cache and imposm-diff folder which was populated during the initial import and prior updates. Additionally, updates require a working directory for osmosis which may or may not be persisted.
 
-Required Env Vars:
+#### Required Env Vars
 
-* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: postgis://<user>:<password>@<db_host>/<db_name>
-* `OSMOSIS_DIR`: Full path to a working directory for osmosis to create changes lists. Eg: /osm/osmosis
-* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: ~/osm/config/imposm-config.json
-* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: ~/osm/config/imposm-mapping.json
-* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: /osm/cache
-* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: /osm/cache
+* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: `postgis://<user>:<password>@<db_host>/<db_name>`
+* `OSMOSIS_DIR`: Full path to a working directory for osmosis to create changes lists. Eg: `/osm_data/osmosis`
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/imposm-config.json`
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/imposm-mapping.json`
+* `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: `/osm_data/cache`
+* `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: `/osm_data/cache`
 
 #### Example Docker Command
 
@@ -101,6 +101,7 @@ docker run -i --rm \
 	"tegola-osm:latest" \
 	bash -c "osm_import.sh"
 ```
+
 ## Import the OSM Land and Natural Earth dataset (requires gdal, Natural Earth can be skipped if you're only interested in OSM)
 
 ### Option 1: Embed Credentials
