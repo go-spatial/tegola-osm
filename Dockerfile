@@ -22,6 +22,20 @@ RUN apt-get update -y && \
 RUN apt-get update -y && \
 	apt-get install -y default-jre
 
+# Install gdal/ogr v2.1.3 from the ubuntugis ppa
+RUN add-apt-repository ppa:ubuntugis/ubuntugis-unstable && \
+	apt-get update -y && \
+	apt-get install -y \
+	gdal-bin
+
+# Install psql (postgres client) and postgis (contains shp2pgsql) from the postgresql repo
+RUN wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
+	add-apt-repository "deb http://apt.postgresql.org/pub/repos/apt/ $(lsb_release -sc)-pgdg main" && \
+	apt-get update -y && \
+	apt-get install -y \
+	postgresql-client-11 \
+	postgis
+
 # Install osmosis
 RUN mkdir -p /usr/local/bin/osmosis-src && \
 	wget --quiet -O - https://bretth.dev.openstreetmap.org/osmosis-build/osmosis-latest.tgz | tar -xz -C /usr/local/bin/osmosis-src && \
@@ -33,6 +47,13 @@ RUN mkdir -p /usr/local/bin/imposm-src && \
 	ln -s /usr/local/bin/imposm-src/imposm-0.6.0-alpha.4-linux-x86-64/imposm /usr/local/bin/imposm && \
 	ln -s /usr/local/bin/imposm-src/imposm-0.6.0-alpha.4-linux-x86-64/lib/* /usr/lib/
 
+# Install additional packages
+RUN apt-get update -y && \
+	apt-get install -y \
+	jq
+
 # Install the local scripts
-COPY scripts/osm_import.sh /usr/local/bin/osm_import.sh
-COPY scripts/osm_update.sh /usr/local/bin/osm_update.sh
+COPY scripts/osm_imposm_import.sh /usr/local/bin/osm_imposm_import.sh
+COPY scripts/osm_imposm_update.sh /usr/local/bin/osm_imposm_update.sh
+COPY scripts/osm_land_import.sh /usr/local/bin/osm_land_import.sh
+COPY scripts/ne_import.sh /usr/local/bin/ne_import.sh

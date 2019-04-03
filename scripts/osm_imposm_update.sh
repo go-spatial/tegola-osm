@@ -2,12 +2,27 @@
 
 # Validate required env vars
 
-# PG_CONN_STRING
-# A connection string for the PostgreSQL/PostGIS database we are targetting.
-# Format: postgis://<user>:<password>@<db_host>/<db_name>
-if [ -z "$PG_CONN_STRING" ]; then
-	printf "Missing env var: PG_CONN_STRING\n"
-	exit 1
+# DB_HOST, DB_PORT, DB_NAME, DB_USER, DB_PW
+# All db connection parameters for postgres.
+if [ -z "$DB_HOST" ]; then
+  printf "Missing env var: DB_HOST\n"
+  exit 1
+fi
+if [ -z "$DB_PORT" ]; then
+  printf "Missing env var: DB_PORT\n"
+  exit 1
+fi
+if [ -z "$DB_NAME" ]; then
+  printf "Missing env var: DB_NAME\n"
+  exit 1
+fi
+if [ -z "$DB_USER" ]; then
+  printf "Missing env var: DB_USER\n"
+  exit 1
+fi
+if [ -z "$DB_PW" ]; then
+  printf "Missing env var: DB_PW\n"
+  exit 1
 fi
 
 # IMPOSM_CONFIG
@@ -70,6 +85,11 @@ if [ ! -d "$OSMOSIS_DIFF_DIR" ]; then
 	exit 1
 fi
 
+# check our db connection before we proceed
+psql "dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "\q"
+
+conn_string="postgis://${DB_USER}:${DB_PW}@${DB_HOST}/${DB_NAME}"
+
 printf "Initializing osmosis directory...\n"
 cp ${IMPOSM_DIFF_DIR}/last.state.txt ${OSMOSIS_DIFF_DIR}/state.txt
 
@@ -83,4 +103,4 @@ cd ${DATA_ROOT_DIR}/osmosis
 osmosis --read-replication-interval workingDirectory=${OSMOSIS_DIFF_DIR} --write-xml-change ${OSMOSIS_DIFF_DIR}/update.osc.gz
 
 log_info "Running imposm diff update...\n"
-imposm diff -config ${IMPOSM_CONFIG} -mapping ${IMPOSM_MAPPING} -connection ${PG_CONN_STRING} -cachedir ${IMPOSM_CACHE_DIR} -diffdir ${IMPOSM_DIFF_DIR} ${OSMOSIS_DIFF_DIR}/update.osc.gz
+imposm diff -config ${IMPOSM_CONFIG} -mapping ${IMPOSM_MAPPING} -connection ${conn_string} -cachedir ${IMPOSM_CACHE_DIR} -diffdir ${IMPOSM_DIFF_DIR} ${OSMOSIS_DIFF_DIR}/update.osc.gz

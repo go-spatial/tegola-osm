@@ -15,9 +15,9 @@ Additional dependencies if not using docker:
 
 ## Example Config
 
-* `config/imposm-mapping.json`: An [imposm](https://github.com/omniscale/imposm3) mapping file for mapping the osm pbf data to postgis.
-* `config/imposm-config.json`: An [imposm](https://github.com/omniscale/imposm3) config file for replication and srid settings. Note that imposm config properties such as the db connection string, cache and diff directories are not specified via the config but are configured as env vars to docker instead.
-* `tegola.toml` - A [tegola](https://github.com/terranodo/tegola) configuration file for the OSM import produced by imposm.
+* `config/osm-imposm-mapping.json`: An [imposm](https://github.com/omniscale/imposm3) mapping file for mapping the osm pbf data to postgis.
+* `config/osm-imposm-config.json`: An [imposm](https://github.com/omniscale/imposm3) config file for replication and srid settings. Note that imposm config properties such as the db connection string, cache and diff directories are not specified via the config but are configured as env vars to docker instead.
+* `tegola-osm.toml` - A [tegola](https://github.com/terranodo/tegola) configuration file for the OSM import produced by imposm and osm land.
 * `tegola-natural-earth.toml` - A [tegola](https://github.com/terranodo/tegola) configuration file for the natural earth data import.
 
 ## Docker Setup
@@ -34,16 +34,20 @@ The container can also be pulled down from dockerhub.
 
 Each of the bash scripts is installed into the docker container and available as a global command. The scripts could also be run outside of a docker container if you meet the dependencies. The scripts all expect certain env vars to be set.
 
-### scripts/osm_import.sh
+### scripts/osm_imposm_import.sh
 
 Imports an OSM PBF file into a PostgreSQL/PostGIS instance using imposm `import` command. You are required to provide an imposm-cache and imposm-diff folder to which imposm will persist data. Those same directories must then be used for the osm update script. If you run an import against an existing db and cache/diff folders the existing data will be squashed.
 
 #### Required Env Vars
 
-* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: `postgis://<user>:<password>@<db_host>/<db_name>`
+* `DB_HOST`: PostgreSQL database host name
+* `DB_PORT`: PostgreSQL database port
+* `DB_NAME`: PostgreSQL database name
+* `DB_USER`: PostgreSQL database username
+* `DB_PW`: PostgreSQL database password
 * `OSM_SOURCE_PBF`: Full path to the osm pbf file that we will import. Eg: `/osm_data/data/north-america-latest.osm.pbf`
-* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/imposm-config.json`
-* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/imposm-mapping.json`
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/osm-imposm-config.json`
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/osm-imposm-mapping.json`
 * `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: `/osm_data/cache`
 * `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: `/osm_data/cache`
 
@@ -55,11 +59,15 @@ All of our data, config files, and directories remain on the host and are expose
 docker run -i --rm \
 	-u "${UID}" \
 	--mount "type=bind,source=/osm_data/data/north-america-latest.osm.pbf,target=/osm/data/north-america-latest.osm.pbf" \
-	--mount "type=bind,source=/osm_data/config/imposm-config.json,target=/osm/config/imposm-config.json" \
-	--mount "type=bind,source=/osm_data/config/imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
+	--mount "type=bind,source=/osm_data/config/osm-imposm-config.json,target=/osm/config/imposm-config.json" \
+	--mount "type=bind,source=/osm_data/config/osm-imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
 	--mount "type=bind,source=/osm_data/cache,target=/osm/cache" \
 	--mount "type=bind,source=/osm_data/diff,target=/osm/diff" \
-	-e "PG_CONN_STRING=postgis://username:password@localhost:5432/osm_data" \
+	-e "DB_HOST=localhost" \
+	-e "DB_PORT=5432" \
+	-e "DB_NAME=osm_data" \
+	-e "DB_USER=postgres" \
+	-e "DB_PW=postgres" \
 	-e "OSM_SOURCE_PBF=/osm/data/north-america-latest.osm.pbf" \
 	-e "IMPOSM_CONFIG=/osm/config/imposm-config.json" \
 	-e "IMPOSM_MAPPING=/osm/config/imposm-mapping.json" \
@@ -69,16 +77,20 @@ docker run -i --rm \
 	bash -c "osm_import.sh"
 ```
 
-### scripts/osm_update.sh
+### scripts/osm_imposm_update.sh
 
 Updates an existing PostgreSQL/PostGIS instance using imposm `diff` command. In this case we also use osmosis to generate a single changes list which we pass to imposm `diff`. This method is robust and supports updates from different data sources and data subsets across any replication interval. You are required to provide the imposm-cache and imposm-diff folder which was populated during the initial import and prior updates. Additionally, updates require a working directory for osmosis which may or may not be persisted.
 
 #### Required Env Vars
 
-* `PG_CONN_STRING`: A connection string for the PostgreSQL/PostGIS database we are targetting. Format: `postgis://<user>:<password>@<db_host>/<db_name>`
+* `DB_HOST`: PostgreSQL database host name
+* `DB_PORT`: PostgreSQL database port
+* `DB_NAME`: PostgreSQL database name
+* `DB_USER`: PostgreSQL database username
+* `DB_PW`: PostgreSQL database password
 * `OSMOSIS_DIR`: Full path to a working directory for osmosis to create changes lists. Eg: `/osm_data/osmosis`
-* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/imposm-config.json`
-* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/imposm-mapping.json`
+* `IMPOSM_CONFIG`: Full path to the imposm config file we want to use. Eg: `/osm_data/config/osm-imposm-config.json`
+* `IMPOSM_MAPPING`: Full path to the imposm mapping file we want to use. Eg: `/osm_data/config/osm-imposm-mapping.json`
 * `IMPOSM_CACHE_DIR`: Full path to an empty writeable directory where imposm will persist a cache of the import. Eg: `/osm_data/cache`
 * `IMPOSM_DIFF_DIR`: Full path to an empty writeable directory where imposm will persist diffs for the import. Eg: `/osm_data/cache`
 
@@ -88,11 +100,15 @@ Updates an existing PostgreSQL/PostGIS instance using imposm `diff` command. In 
 docker run -i --rm \
 	-u "${UID}" \
 	--mount "type=bind,source=/osm_data/osmosis,target=/osm/osmosis" \
-	--mount "type=bind,source=/osm_data/config/imposm-config.json,target=/osm/config/imposm-config.json" \
-	--mount "type=bind,source=/osm_data/config/imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
+	--mount "type=bind,source=/osm_data/config/osm-imposm-config.json,target=/osm/config/imposm-config.json" \
+	--mount "type=bind,source=/osm_data/config/osm-imposm-mapping.json,target=/osm/config/imposm-mapping.json" \
 	--mount "type=bind,source=/osm_data/cache,target=/osm/cache" \
 	--mount "type=bind,source=/osm_data/diff,target=/osm/diff" \
-	-e "PG_CONN_STRING=postgis://username:password@localhost:5432/osm_data" \
+	-e "DB_HOST=localhost" \
+	-e "DB_PORT=5432" \
+	-e "DB_NAME=osm_data" \
+	-e "DB_USER=postgres" \
+	-e "DB_PW=postgres" \
 	-e "OSMOSIS_DIR=/osm/osmosis" \
 	-e "IMPOSM_CONFIG=/osm/config/imposm-config.json" \
 	-e "IMPOSM_MAPPING=/osm/config/imposm-mapping.json" \
@@ -102,34 +118,83 @@ docker run -i --rm \
 	bash -c "osm_import.sh"
 ```
 
-## Import the OSM Land and Natural Earth dataset (requires gdal, Natural Earth can be skipped if you're only interested in OSM)
+### scripts/ne_import.sh
 
-### Option 1: Embed Credentials
-Update the database credentials inside of `natural_earth.sh` and `osm_land.sh`, then run each file: `./natural_earth.sh && ./osm_land.sh`. This will download the natural earth and osm land datasets and insert it into PostGIS under a database named `natural_earth` and `osm` respectively.
+Imports the Natural Earth data into the specified database. The import process will drop and recreate existing tables. Data is reprojected to 3857 on import but can be changed.
 
-### Option 2: Create a dbcredentials.sh file
-Create a `dbcredentials.sh` file which will be shared with the `osm_land` script.  This option is ideal for when the `natural_earth` and `osm` databases will reside on the same database server, and will use the same credentials. Ensure that the following variables are defined in your file:
+**Note:** If you are looking for the old `natural_earth.sh` script it can be found in `scripts/deprecated/`.
+
+#### Command Args
+
+* `-d` Setting this flag will force the entire database to be dropped and recreated.
+* `-s SRID` Setting this will reproject that data to the specified EPSG:SRID during import. 
+* `-v` Verbose mode
+
+#### Required Env Vars
+
+* `DB_HOST`: PostgreSQL database host name
+* `DB_PORT`: PostgreSQL database port
+* `DB_NAME`: PostgreSQL database name
+* `DB_USER`: PostgreSQL database username
+* `DB_PW`: PostgreSQL database password
+* `NE_MAPPING`: Full path to the json mapping file we want to use. Eg: `/ne/config/ne-mapping.json`
+* `TEMP_DATA_DIR`: Full path to the directory where this script will temporarily store data. Script user must have permissions to read/write/delete from this directory. Eg: `/tmp`
+
+#### Example Docker Command
+
 ```bash
-DB_HOST="mydbhost"
-DB_PORT="myport"
-DB_USER="myuser"
-DB_PW="mypassword"
+docker run -i --rm \
+	-u "${UID}" \
+	--mount "type=bind,source=/ne_data/config/ne-mapping.json,target=/ne/mapping.json" \
+	--mount "type=bind,source=/tmp,target=/ne/temp" \
+	-e "DB_HOST=localhost" \
+	-e "DB_PORT=5432" \
+	-e "DB_NAME=ne_data" \
+	-e "DB_USER=postgres" \
+	-e "DB_PW=postgres" \
+	-e "NE_MAPPING=/ne/mapping.json" \
+	-e "TEMP_DATA_DIR=/ne/temp" \
+	"tegola-osm:latest" \
+	bash -c "ne_import.sh"
 ```
-Once you have configured the `dbcredentials.sh` file, run the scripts as above: `./natural_earth.sh && ./osm_land.sh`
 
-### Option 3:
-Create separate configuration files in the same pattern as the above `dbcredentials.sh` file and pass the path to the config file using the `-c` option.  This is ideal if you have two different servers for the databases. Ensure the file you create follows this format:
+### scripts/osm_land_import.sh
+
+Imports the OSM land polygons data into the specified database. The import process will drop and recreate existing tables. Also, you will want to write to the same DB as the main OSM data if you are using the sample `tegola-osm.toml` config.
+
+**Note:** If you are looking for the old `osm_land.sh` script it can be found in `scripts/deprecated/`.
+
+#### Command Args
+
+* `-v` Verbose mode
+
+#### Required Env Vars
+
+* `DB_HOST`: PostgreSQL database host name
+* `DB_PORT`: PostgreSQL database port
+* `DB_NAME`: PostgreSQL database name
+* `DB_USER`: PostgreSQL database username
+* `DB_PW`: PostgreSQL database password
+* `OSM_LAND_MAPPING`: Full path to the json mapping file we want to use. Eg: `/osm/config/osm-land-mapping.json`
+* `TEMP_DATA_DIR`: Full path to the directory where this script will temporarily store data. Script user must have permissions to read/write/delete from this directory. Eg: `/tmp`
+
+#### Example Docker Command
+
 ```bash
-DB_NAME="mydb"
-DB_HOST="mydbhost"
-DB_PORT="myport"
-DB_USER="myuser"
-DB_PW="mypassword"
+docker run -i --rm \
+	-u "${UID}" \
+	--mount "type=bind,source=/osm_data/config/osm-land-mapping.json,target=/osm/config/osm-land-mapping.json" \
+	--mount "type=bind,source=/tmp,target=/osm/temp" \
+	-e "DB_HOST=localhost" \
+	-e "DB_PORT=5432" \
+	-e "DB_NAME=ne_data" \
+	-e "DB_USER=postgres" \
+	-e "DB_PW=postgres" \
+	-e "OSM_LAND_MAPPING=/ne/mapping.json" \
+	-e "TEMP_DATA_DIR=/ne/temp" \
+	"tegola-osm:latest" \
+	bash -c "osm_land_import.sh"
 ```
-Once you have configured the files, run the scripts with the `-c` flag and provide the path to the credentials file, ie: `./natural_earth.sh -c natural_earth_creds.sh && ./osm_land.sh -c osm_creds.sh`
-
-### Usage:
-Both scripts support a `-v` flag for debugging.  `natural_earth.sh` also supports a `-d` flag, which will drop the existing natural earth database prior to import if set.  Since the `osm_land.sh` imports into a database shared with other data, it lacks this functionality.  Instead, only the relevent tables are dropped.
 
 ## Install SQL helper functions
 Execute `postgis_helpers.sql` against your OSM database. Currently this contains a single utility function for converting building heights from strings to numbers which is important if you want to extrude buildings for the 3d effect.
@@ -147,13 +212,13 @@ psql -U tegola -d database-name -a -f postgis_index.sql
 ## Launch tegola 
 
 ```bash
-./tegola -config=tegola.toml
+./tegola -config=tegola-osm.toml
 ```
 
 Open your browser to localhost and the port you configured tegola to run on (i.e. localhost:8080) to see the built in viewer. 
 
 ## Data Layers
-To view these data layers in a map and query the features for a better understanding of each data layer, use the [Tegola-OSM Inspector](https://osm.tegola.io). The data layers described here are in the "Tegola-OSM" database as laid out in the tegola.toml (i.e., not the Natural Earth database that is specified in tegola-natural-earth.toml). 
+To view these data layers in a map and query the features for a better understanding of each data layer, use the [Tegola-OSM Inspector](https://osm.tegola.io). The data layers described here are in the "Tegola-OSM" database as laid out in the tegola-osm.toml (i.e., not the Natural Earth database that is specified in tegola-natural-earth.toml). 
 
 | source | Description |
 |--------|-------------|
