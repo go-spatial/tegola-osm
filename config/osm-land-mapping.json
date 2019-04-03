@@ -1,0 +1,12 @@
+[
+    {
+        "layer":"osm_land",
+        "filename":"land-polygons-split-3857.zip",
+        "srid":"3857"
+    },
+    {
+        "layer":"osm_land_gen0",
+        "filename":"simplified-land-polygons-complete-3857.zip",
+        "srid":"3857"
+    }
+]
