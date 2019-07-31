@@ -195,7 +195,7 @@ password = "${NE_DB_PASS}"
 	name = "ne_110m_coastline"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
-	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zooom FROM ne_110m_coastline WHERE min_zooom <= !ZOOM! AND wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsBinary(wkb_geometry) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_110m_coastline WHERE min_zoom <= !ZOOM! AND wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_coastline"
