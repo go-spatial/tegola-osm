@@ -55,7 +55,7 @@ psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password
 	"https://osmdata.openstreetmap.de/download/land-polygons-split-3857.zip"
 )
 
-psql "dbname='postgres' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP TABLE IF EXISTS land_polygons"
+psql "dbname='$DB_NAME' host='$DB_HOST' port='$DB_PORT' user='$DB_USER' password='$DB_PW'" -c "DROP TABLE IF EXISTS land_polygons"
 
 # iterate our dataurls
 for i in "${!dataurls[@]}"; do
