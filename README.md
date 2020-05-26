@@ -16,16 +16,15 @@ This repo houses instructions and configuration files to aid with standing up an
 
 ## Download the OSM planet database in PBF format
 
-```bash
-curl -O https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf
-```
+
+* [ ] `curl -O https://planet.openstreetmap.org/pbf/planet-latest.osm.pbf`
+
 
 ## Import the OSM export into PostGIS using imposm3
 
-```bash
-./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write
-./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -deployproduction
-```
+* [ ] `./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -read /path/to/osm/planet-latest.osm.pbf -write`
+
+* [ ] `./imposm3 import -connection postgis://username:password@host/database-name -mapping imposm3.json -deployproduction`
 
 ## Import the OSM Land and Natural Earth dataset (requires gdal, Natural Earth can be skipped if you're only interested in OSM)
 
@@ -34,13 +33,16 @@ Update the database credentials inside of `natural_earth.sh` and `osm_land.sh`, 
 
 ### Option 2: Create a dbcredentials.sh file
 Create a `dbcredentials.sh` file which will be shared with the `osm_land` script.  This option is ideal for when the `natural_earth` and `osm` databases will reside on the same database server, and will use the same credentials. Ensure that the following variables are defined in your file:
+
 ```bash
 DB_HOST="mydbhost"
 DB_PORT="myport"
 DB_USER="myuser"
 DB_PW="mypassword"
 ```
-Once you have configured the `dbcredentials.sh` file, run the scripts as above: `./natural_earth.sh && ./osm_land.sh`
+Once you have configured the `dbcredentials.sh` file, run the scripts as above: 
+
+* [ ] `./natural_earth.sh && ./osm_land.sh`
 
 ### Option 3:
 Create separate configuration files in the same pattern as the above `dbcredentials.sh` file and pass the path to the config file using the `-c` option.  This is ideal if you have two different servers for the databases. Ensure the file you create follows this format:
@@ -51,7 +53,9 @@ DB_PORT="myport"
 DB_USER="myuser"
 DB_PW="mypassword"
 ```
-Once you have configured the files, run the scripts with the `-c` flag and provide the path to the credentials file, ie: `./natural_earth.sh -c natural_earth_creds.sh && ./osm_land.sh -c osm_creds.sh`
+Once you have configured the files, run the scripts with the `-c` flag and provide the path to the credentials file, ie: 
+
+* [ ] `./natural_earth.sh -c natural_earth_creds.sh && ./osm_land.sh -c osm_creds.sh`
 
 ### Usage:
 Both scripts support a `-v` flag for debugging.  `natural_earth.sh` also supports a `-d` flag, which will drop the existing natural earth database prior to import if set.  Since the `osm_land.sh` imports into a database shared with other data, it lacks this functionality.  Instead, only the relevent tables are dropped.
@@ -59,21 +63,21 @@ Both scripts support a `-v` flag for debugging.  `natural_earth.sh` also support
 ## Install SQL helper functions
 Execute `postgis_helpers.sql` against your OSM database. Currently this contains a single utility function for converting building heights from strings to numbers which is important if you want to extrude buildings for the 3d effect.
 
-```bash
-psql -U tegola -d database-name -a -f postgis_helpers.sql
-```
+
+* [ ] `psql -U tegola -d database-name -a -f postgis_helpers.sql`
+
 
 ## Setup SQL indexes
 Execute `postgis_index.sql` against your OSM database.
-```bash
-psql -U tegola -d database-name -a -f postgis_index.sql
-```
+
+* [ ] `psql -U tegola -d database-name -a -f postgis_index.sql`
+
 
 ## Launch tegola 
 
-```bash
-./tegola -config=tegola.toml
-```
+
+* [ ] `./tegola -config=tegola.toml`
+
 
 Open your browser to localhost and the port you configured tegola to run on (i.e. localhost:8080) to see the built in viewer. 
 
