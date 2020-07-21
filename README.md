@@ -280,4 +280,5 @@ Man made, historic, military, power, barriers, piers, etc.
 # How long does it take to import the entire planet?
 If you run this import, please send in a PR to report your import machine specs and how long it takes.
 
-**@peldhose**: 11.30 hours on a Google cloud server with 8 vCPU, 30GB RAM and 1TB storage (400GB used)
+**@peldhose**: 11.30 hours on a Google cloud server with 8 vCPU, 30GB RAM and 1TB storage (400GB used)  
+**@SahAssar** 15.43 hours on a Dell XPS 13 9380 i7-8565U 16GB RAM and 1TB SSD (375GB used by postgres after import)
