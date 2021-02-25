@@ -10,3 +10,6 @@
 # Tegola-specific files and directories to keep out of the repo
 dbcredentials.sh
 cache/
+
+# local ignored files
+_*
