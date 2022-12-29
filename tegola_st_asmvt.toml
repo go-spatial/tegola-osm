@@ -3,7 +3,7 @@
 # Note: this config requires the Natural Earth and OSM data to be in the same database 
 # as tegola is not able to conflate data across databases when using ST_AsMVT.
 
-# Note: this config is being used with a AWS Lambda + Cloudfornt + S3 deployment so
+# Note: this config is being used with a AWS Lambda + Cloudfront + S3 deployment so
 # some of the webserver and cache configs may not apply to other deployments.
 
 [webserver]
@@ -251,154 +251,154 @@ password = "${OSM_DB_PASS}"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "point"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM natural_earth.ne_110m_populated_places WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM ne_110m_populated_places WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_populated_places"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "point"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM natural_earth.ne_50m_populated_places WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM ne_50m_populated_places WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_populated_places"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "point"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM natural_earth.ne_10m_populated_places WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, scalerank, labelrank, name, min_zoom, featurecla, rank_max FROM ne_10m_populated_places WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_label_points"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "point"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, sr_subunit, scalerank FROM natural_earth.ne_10m_admin_0_label_points WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, sr_subunit, scalerank FROM ne_10m_admin_0_label_points WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_1_label_points"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "point"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, scalerank FROM natural_earth.ne_10m_admin_1_label_points WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, scalerank FROM ne_10m_admin_1_label_points WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM natural_earth.ne_110m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_110m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM natural_earth.ne_50m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_50m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_boundary_lines_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM natural_earth.ne_10m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_10m_admin_0_boundary_lines_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_0_boundary_lines_disputed_areas"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM natural_earth.ne_50m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_50m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_boundary_lines_disputed_areas"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM natural_earth.ne_10m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, min_zoom FROM ne_10m_admin_0_boundary_lines_disputed_areas WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_admin_0_countries"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM natural_earth.ne_110m_admin_0_countries WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_110m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_0_countries"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM natural_earth.ne_50m_admin_0_countries WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_50m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_0_countries"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM natural_earth.ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, name_long, abbrev, adm0_a3, min_zoom, min_label, max_label FROM ne_10m_admin_0_countries WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM natural_earth.ne_110m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_110m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
     [[providers.layers]]
 	name = "ne_50m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM natural_earth.ne_50m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom FROM ne_50m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_admin_1_states_provinces_lines"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom, min_label FROM natural_earth.ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, adm0_name, min_zoom, min_label FROM ne_10m_admin_1_states_provinces_lines WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_110m_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM natural_earth.ne_110m_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_110m_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM natural_earth.ne_50m_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_50m_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_land"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM natural_earth.ne_10m_land WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, min_zoom FROM ne_10m_land WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_50m_admin_1_states_provinces_lakes"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "polygon"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, postal, min_zoom, min_label FROM natural_earth.ne_50m_admin_1_states_provinces_lakes WHERE wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, featurecla, name, postal, min_zoom, min_label FROM ne_50m_admin_1_states_provinces_lakes WHERE wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_roads_3"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM natural_earth.ne_10m_roads WHERE min_zoom < 5 AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM ne_10m_roads WHERE min_zoom < 5 AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"
 
 	[[providers.layers]]
 	name = "ne_10m_roads_5"
 	geometry_fieldname = "geometry"
 	id_fieldname = "ogc_fid"
 	geometry_type = "linestring"
-	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM natural_earth.ne_10m_roads WHERE min_zoom <= 7  AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"
+	sql = "SELECT ST_AsMVTGeom(wkb_geometry, !BBOX!) AS geometry, ogc_fid, name, min_zoom, min_label, type, label FROM ne_10m_roads WHERE min_zoom <= 7  AND type <> 'Ferry Route' AND wkb_geometry && !BBOX!"
 
 [[maps]]
 name = "osm"
