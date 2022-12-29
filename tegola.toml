@@ -367,7 +367,7 @@ center = [-76.275329586789, 39.153492567373, 8.0] # optional center value. part 
 	name = "populated_places"
 	provider_layer = "ne.ne_10m_populated_places"
 	min_zoom = 5
-	max_zoom = 20
+	max_zoom = 16
 
 	[[maps.layers]]
 	name = "country_lines"
