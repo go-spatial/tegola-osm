@@ -17,11 +17,7 @@ aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 [[providers]]
 name = "ne"
 type = "postgis"
-host = "${NE_DB_HOST}"
-port = "${NE_DB_PORT}"
-database = "${NE_DB_NAME}"
-user = "${NE_DB_USER}"
-password = "${NE_DB_PASS}"
+uri = "${NE_DB_CONN_STR}"
 max_connections = 30
 
 	[[providers.layers]]

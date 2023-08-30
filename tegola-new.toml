@@ -17,16 +17,11 @@ region = "${S3CACHE_REGION}"
 aws_access_key_id = "${S3CACHE_AWS_ACCESS_KEY_ID}"
 aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 
-
 #   OpenStreetMap (OSM)
 [[providers]]
 name = "osm"
 type = "postgis"
-host = "${OSM_DB_HOST}"
-port = "${OSM_DB_PORT}"
-database = "${OSM_DB_NAME}"
-user = "${OSM_DB_USER}"
-password = "${OSM_DB_PASS}"
+uri = "${OSM_DB_CONN_STR}"
 max_connections = 30
 
 	[[providers.layers]]
@@ -207,11 +202,7 @@ max_connections = 30
 [[providers]]
 name = "ne"
 type = "postgis"
-host = "${NE_DB_HOST}"
-port = "${NE_DB_PORT}"
-database = "${NE_DB_NAME}"
-user = "${NE_DB_USER}"
-password = "${NE_DB_PASS}"
+uri = "${NE_DB_CONN_STR}"
 
 	[[providers.layers]]
 	name = "ne_110m_populated_places"

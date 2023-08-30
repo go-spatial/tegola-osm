@@ -22,11 +22,7 @@ aws_secret_access_key = "${S3CACHE_AWS_SECRET_ACCESS_KEY}"
 [[providers]]
 name = "osm"
 type = "postgis"
-host = "${OSM_DB_HOST}"
-port = "${OSM_DB_PORT}"
-database = "${OSM_DB_NAME}"
-user = "${OSM_DB_USER}"
-password = "${OSM_DB_PASS}"
+uri = "${OSM_DB_CONN_STR}"
 max_connections = 30
 
 	[[providers.layers]]

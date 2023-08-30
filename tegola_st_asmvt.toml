@@ -36,11 +36,7 @@ cache_control = "max-age=43200,s-maxage=300"
 [[providers]]
 name = "osm"
 type = "mvt_postgis"
-host = "${OSM_DB_HOST}"
-port = "${OSM_DB_PORT}"
-database = "${OSM_DB_NAME}"
-user = "${OSM_DB_USER}"
-password = "${OSM_DB_PASS}"
+uri = "${OSM_DB_CONN_STR}"
 
 	[[providers.layers]]
 	name = "land_8-16"
